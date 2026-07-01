@@ -1,129 +1,53 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Secret Love</title>
-
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(-45deg,#0f0c29,#302b63,#24243e,#ff0080);
-background-size:400% 400%;
-animation:bg 10s ease infinite;
-overflow:hidden;
-}
-
-@keyframes bg{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
-
-.card{
-width:350px;
-padding:35px;
-text-align:center;
-backdrop-filter:blur(15px);
-background:rgba(255,255,255,0.1);
-border:1px solid rgba(255,255,255,0.2);
-border-radius:25px;
-box-shadow:0 0 30px rgba(255,255,255,.2);
-color:white;
-}
-
-h1{
-margin-bottom:15px;
-font-size:28px;
-}
-
-input{
-width:100%;
-padding:14px;
-margin-top:15px;
-border:none;
-outline:none;
-border-radius:12px;
-background:rgba(255,255,255,.15);
-color:white;
-font-size:16px;
-}
-
-button{
-margin-top:15px;
-width:100%;
-padding:14px;
-border:none;
-border-radius:12px;
-background:#ff0080;
-color:white;
-font-size:17px;
-cursor:pointer;
-transition:.3s;
-}
-
-button:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px #ff0080;
-}
-
-#secret{
-display:none;
-animation:fade 1s;
-}
-
-@keyframes fade{
-from{opacity:0;transform:scale(.8);}
-to{opacity:1;transform:scale(1);}
-}
-
-.heart{
-font-size:70px;
-animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-50%{transform:scale(1.2);}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaxriyor AI</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="card" id="login">
-<h1>🔐 Maxfiy Sahifa</h1>
-<p>eng yaxshi korgan 4ta sonli paroling😂</p>
-<input type="password" id="code" placeholder="Kod">
-<button onclick="check()">Kirish</button>
+<div class="container">
+
+    <div class="sidebar">
+        <h2>🤖 Shaxriyor AI</h2>
+        <button class="new-chat">+ Yangi chat</button>
+
+        <div class="history">
+            <p>Bugungi suhbat</p>
+        </div>
+    </div>
+
+    <div class="chat">
+
+        <div class="header">
+            <h1>Shaxriyor AI</h1>
+        </div>
+
+        <div id="messages" class="messages">
+            <div class="ai">
+                Assalomu alaykum! Men Shaxriyor AI. Istalgan savolingizni yozing.
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input
+                type="text"
+                id="question"
+                placeholder="Savolingizni yozing..."
+            >
+
+            <button onclick="sendMessage()">
+                Yuborish
+            </button>
+        </div>
+
+    </div>
+
 </div>
 
-<div class="card" id="secret">
-<div class="heart">❤️</div>
-<h1>Salom </h1>
-<p>
-Ochgan bosen zor blokdan och🤣🎀
-</p>
-</div>
-
-<script>
-function check(){
-if(document.getElementById("code").value==="6969"){
-document.getElementById("login").style.display="none";
-document.getElementById("secret").style.display="block";
-}else{
-alert("❌ Noto'g'ri kod");
-}
-}
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
