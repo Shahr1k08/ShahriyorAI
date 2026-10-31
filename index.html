@@ -18,7 +18,7 @@
             color: white;
         }
 
-        /* Yulduzli fon uchun */
+        /* Yulduzli fon uchun canvas */
         canvas#bg-canvas {
             position: absolute;
             top: 0;
@@ -37,82 +37,101 @@
 
         /* Konvert / Kartochka dizayni */
         .card {
-            background: rgba(20, 20, 20, 0.8);
+            background: rgba(20, 20, 20, 0.85);
             border: 2px solid #e056fd;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 0 25px rgba(224, 86, 253, 0.4);
-            backdrop-filter: blur(5px);
-            transition: all 0.5s ease;
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(224, 86, 253, 0.5);
+            backdrop-filter: blur(8px);
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
 
         h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: #ff7675;
+            text-shadow: 0 0 10px rgba(255, 118, 117, 0.5);
         }
 
         .heart {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: #ff7675;
-            animation: pulse 1.5s infinite;
+            animation: pulse 1.2s infinite alternate;
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); text-shadow: 0 0 10px rgba(255, 118, 117, 0.4); }
+            100% { transform: scale(1.25); text-shadow: 0 0 25px rgba(255, 118, 117, 0.9); }
         }
 
-        /* Tugma */
+        /* Tugma dizayni */
         button {
-            background: transparent;
-            border: 2px solid #ff7675;
+            background: linear-gradient(45deg, #ff7675, #e056fd);
+            border: none;
             color: white;
-            padding: 12px 30px;
-            font-size: 1rem;
-            border-radius: 25px;
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
             cursor: pointer;
-            margin-top: 20px;
-            transition: 0.3s;
+            margin-top: 25px;
+            transition: 0.3s ease;
             letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(224, 86, 253, 0.4);
         }
 
         button:hover {
-            background: #ff7675;
-            box-shadow: 0 0 15px #ff7675;
+            transform: scale(1.08);
+            box-shadow: 0 0 25px rgba(255, 118, 117, 0.8);
         }
 
-        /* Ism chiqadigan qism */
+        /* Zulfiya ismi chiqadigan qism (Animatsiyasi bilan) */
         #display-text {
             display: none;
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: bold;
             background: linear-gradient(45deg, #ff7675, #e056fd, #74b9ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(224, 86, 253, 0.6);
-            letter-spacing: 3px;
+            text-shadow: 0 0 30px rgba(224, 86, 253, 0.6);
+            letter-spacing: 4px;
+        }
+
+        /* Silliq paydo bo'lish effekti */
+        @keyframes bloomAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+                filter: blur(15px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Fon uchun canvas -->
+    <!-- Fon yulduzlari uchun -->
     <canvas id="bg-canvas"></canvas>
 
     <div class="container">
+        <!-- Boshlang'ich konvert/kartochka -->
         <div class="card" id="card-box">
             <div class="heart">❤️</div>
             <h1>FOR YOU</h1>
             <button onclick="startAnimation()">Ko'rish uchun bosing</button>
         </div>
+
+        <!-- Tugma bosilganda chiqadigan ism -->
         <div id="display-text">Zulfiya</div>
     </div>
 
     <script>
-        // Yulduzli fon animatsiyasi
+        // Yulduzli fon yaratish va harakatlantirish
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -124,13 +143,13 @@
         resizeCanvas();
 
         const stars = [];
-        for (let i = 0; i < 150; i++) {
+        for (let i = 0; i < 180; i++) {
             stars.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                radius: Math.random() * 1.5,
+                radius: Math.random() * 1.8,
                 alpha: Math.random(),
-                speed: Math.random() * 0.02
+                speed: Math.random() * 0.025 + 0.005
             });
         }
 
@@ -143,28 +162,4 @@
                 ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
                 ctx.fill();
                 star.alpha += star.speed;
-                if (star.alpha > 1 || star.alpha < 0) star.speed = -star.speed;
-            });
-            requestAnimationFrame(drawStars);
-        }
-        drawStars();
-
-        // Tugma bosilgandagi amal
-        function startAnimation() {
-            const cardBox = document.getElementById('card-box');
-            const displayText = document.getElementById('display-text');
-
-            // Konvert yo'qoladi
-            cardBox.style.transform = 'scale(0)';
-            cardBox.style.opacity = '0';
-
-            setTimeout(() => {
-                cardBox.style.display = 'none';
-                // Ism chiqib keladi
-                displayText.style.display = 'block';
-                displayText.style.animation = 'fadeIn 2s ease-in-out';
-            }, 500);
-        }
-    </script>
-</body>
-</html>
+                if (star.alpha > 1 || star.alpha < 0) star.speed = -star.
