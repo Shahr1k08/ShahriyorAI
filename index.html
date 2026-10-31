@@ -1,275 +1,142 @@
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shaxriyordan sovg'a 🌹</title>
-
+<title>JDPU HEALTH</title>
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-height:100vh;
-overflow:hidden;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(180deg,#020111,#0b1f3a,#111);
-}
-
-body::before{
-content:"";
-position:absolute;
-width:200%;
-height:200%;
-background:
-radial-gradient(white 1px,transparent 1px);
-background-size:45px 45px;
-animation:stars 80s linear infinite;
-opacity:.45;
-}
-
-@keyframes stars{
-from{transform:translateY(0);}
-to{transform:translateY(-600px);}
-}
-
-.container{
-position:relative;
-z-index:2;
-text-align:center;
-}
-
-button{
-padding:18px 40px;
-font-size:24px;
-border:none;
-border-radius:50px;
-cursor:pointer;
-color:white;
-background:rgba(255,255,255,.15);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,.3);
-box-shadow:0 0 30px rgba(255,255,255,.3);
-transition:.35s;
-}
-
-button:hover{
-transform:scale(1.08);
-box-shadow:0 0 50px hotpink;
-}
-
-.ground{
-position:absolute;
-bottom:0;
-left:50%;
-transform:translateX(-50%);
-width:160px;
-height:8px;
-background:#222;
-border-radius:50%;
-display:none;
-}
-
-.stem{
-position:absolute;
-bottom:8px;
-left:50%;
-transform:translateX(-50%);
-width:8px;
-height:0;
-background:#198c19;
-border-radius:10px;
-}
-
-.leaf{
-position:absolute;
-width:36px;
-height:18px;
-background:#2ecc71;
-border-radius:100% 0;
-opacity:0;
-}
-
-.left{
-left:-28px;
-bottom:120px;
-transform:rotate(-35deg);
-}
-
-.right{
-left:2px;
-bottom:180px;
-transform:rotate(145deg);
-}
-
-.flower{
-position:absolute;
-left:50%;
-bottom:245px;
-transform:translateX(-50%) scale(.1);
-font-size:90px;
-opacity:0;
-filter:drop-shadow(0 0 15px crimson);
-}
-
-.message{
-position:absolute;
-top:-120px;
-left:50%;
-transform:translateX(-50%);
-font-size:32px;
-color:white;
-opacity:0;
-text-shadow:0 0 20px hotpink;
-}
-
-.heart{
-position:absolute;
-color:#ff4d6d;
-font-size:20px;
-animation:fly 5s linear forwards;
-}
-
-@keyframes growStem{
-to{
-height:240px;
-}
-}
-
-@keyframes bloom{
-0%{
-opacity:0;
-transform:translateX(-50%) scale(.2) rotate(-30deg);
-}
-100%{
-opacity:1;
-transform:translateX(-50%) scale(1) rotate(0);
-}
-}
-
-@keyframes leaf{
-to{
-opacity:1;
-}
-}
-
-@keyframes showText{
-to{
-opacity:1;
-top:-170px;
-}
-}
-
-@keyframes fly{
-0%{
-transform:translateY(0) scale(.5);
-opacity:1;
-}
-100%{
-transform:translateY(-500px) translateX(var(--x));
-opacity:0;
-}
-}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f3f7fc;color:#172b4d}
+header{background:#102d50;color:white;padding:22px 6%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:22px;font-weight:800;letter-spacing:1px}
+.logo span{color:#42c4e8}
+.hero{padding:45px 6%;background:linear-gradient(120deg,#103b68,#147eaa);color:white}
+.hero h1{font-size:32px;margin-bottom:12px}
+.hero p{color:#dceeff;line-height:1.6}
+.container{padding:30px 6%;max-width:1200px;margin:auto}
+.section-title{font-size:22px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:white;border-radius:15px;padding:23px;box-shadow:0 5px 22px #163c6410;cursor:pointer;transition:.2s;border:1px solid #e9eff6}
+.card:hover{transform:translateY(-5px);border-color:#42b9e0}
+.icon{font-size:30px;margin-bottom:15px}
+.card h3{margin-bottom:9px;font-size:17px}
+.card p{font-size:13px;color:#75859a;line-height:1.5}
+.welcome{background:white;padding:24px;border-radius:15px;margin-bottom:30px;border:1px solid #e9eff6}
+footer{text-align:center;padding:25px;color:#8290a2;font-size:13px}
+button{border:0;border-radius:9px;background:#137eaa;color:white;padding:12px 20px;cursor:pointer;margin-top:15px}
+#content{display:none;background:white;padding:25px;border-radius:15px;margin-top:25px;line-height:1.8}
+#content h2{margin-bottom:12px;color:#147eaa}
 </style>
-
 </head>
 <body>
 
-<div class="container">
+<header>
+ <div class="logo">JDPU <span>HEALTH</span></div>
+ <div>🏥 Tibbiy platforma</div>
+</header>
 
-<button id="gift">
-🎁 Shaxriyordan sovg'a
-</button>
+<section class="hero">
+ <h1>Salomatlik — eng katta boylik!</h1>
+ <p>Jizzax davlat pedagogika universiteti uchun<br>
+ tibbiy ta'lim va ma'rifat platformasi.</p>
+</section>
 
-<div class="ground" id="ground">
+<main class="container">
 
-<div class="stem" id="stem"></div>
+<div class="welcome">
+ <h2>Xush kelibsiz!</h2>
+ <p>Kerakli bo‘limni tanlang va foydali ma'lumotlar bilan tanishing.</p>
+</div>
 
-<div class="leaf left" id="leaf1"></div>
+<h2 class="section-title">📚 Asosiy bo‘limlar</h2>
 
-<div class="leaf right" id="leaf2"></div>
+<div class="grid">
 
-<div class="flower" id="flower">🌹</div>
+<div class="card" onclick="openPage('medicine')">
+ <div class="icon">🏥</div>
+ <h3>Tibbiyot</h3>
+ <p>Tibbiyotga oid bilimlar va foydali ma'lumotlar.</p>
+</div>
 
-<div class="message" id="msg">
-Siz uchun ❤️
+<div class="card" onclick="openPage('biology')">
+ <div class="icon">🧬</div>
+ <h3>Biologiya va genetika</h3>
+ <p>Hujayra, genetika va irsiyat haqida.</p>
+</div>
+
+<div class="card" onclick="openPage('materials')">
+ <div class="icon">📚</div>
+ <h3>O‘quv materiallari</h3>
+ <p>Talabalar uchun darsliklar va konspektlar.</p>
+</div>
+
+<div class="card" onclick="openPage('health')">
+ <div class="icon">❤️</div>
+ <h3>Sog‘lom turmush</h3>
+ <p>Sog‘lom ovqatlanish va profilaktika.</p>
+</div>
+
+<div class="card" onclick="openPage('firstaid')">
+ <div class="icon">🩺</div>
+ <h3>Birinchi yordam</h3>
+ <p>Favqulodda vaziyatlarda dastlabki yordam haqida.</p>
+</div>
+
+<div class="card" onclick="openPage('about')">
+ <div class="icon">ℹ️</div>
+ <h3>Platforma haqida</h3>
+ <p>JDPU Health loyihasi haqida ma'lumot.</p>
 </div>
 
 </div>
 
-</div>
+<div id="content"></div>
+
+</main>
+
+<footer>
+ © 2026 JDPU HEALTH | Tibbiy ta'lim va ma'rifat
+</footer>
 
 <script>
-
-const btn=document.getElementById("gift");
-const ground=document.getElementById("ground");
-const stem=document.getElementById("stem");
-const flower=document.getElementById("flower");
-const leaf1=document.getElementById("leaf1");
-const leaf2=document.getElementById("leaf2");
-const msg=document.getElementById("msg");
-
-btn.onclick=function(){
-
-btn.style.display="none";
-
-ground.style.display="block";
-
-stem.style.animation="growStem 3s forwards";
-
-setTimeout(()=>{
-leaf1.style.animation="leaf 1s forwards";
-},1200);
-
-setTimeout(()=>{
-leaf2.style.animation="leaf 1s forwards";
-},1700);
-
-setTimeout(()=>{
-flower.style.animation="bloom 1.6s forwards";
-},2500);
-
-setTimeout(()=>{
-msg.style.animation="showText 2s forwards";
-},4200);
-
-setInterval(createHeart,220);
-
+const pages={
+medicine:{
+title:"🏥 Tibbiyot",
+text:"Tibbiyot — inson salomatligini saqlash, kasalliklarning oldini olish va davolash bilan shug‘ullanuvchi fanlar majmuasi."
+},
+biology:{
+title:"🧬 Biologiya va genetika",
+text:"Biologiya tirik organizmlarni, genetika esa irsiyat va o‘zgaruvchanlik qonuniyatlarini o‘rganadi."
+},
+materials:{
+title:"📚 O‘quv materiallari",
+text:"Bu bo‘limda talabalar uchun tibbiy biologiya, anatomiya, fiziologiya va boshqa fanlarga oid materiallar joylashtiriladi."
+},
+health:{
+title:"❤️ Sog‘lom turmush tarzi",
+text:"Muvozanatli ovqatlanish, muntazam jismoniy faollik, yetarli uyqu va gigiyena salomatlik uchun muhim."
+},
+firstaid:{
+title:"🩺 Birinchi yordam",
+text:"Birinchi yordam — tibbiy xodimlar yetib kelguncha ko‘rsatiladigan dastlabki yordam. Og‘ir vaziyatlarda 103 ga murojaat qiling."
+},
+about:{
+title:"ℹ️ JDPU HEALTH",
+text:"JDPU Health — talabalar uchun tibbiy bilim, ma'rifat va foydali axborotlarni taqdim etishga mo‘ljallangan platforma."
 }
+};
 
-function createHeart(){
-
-let h=document.createElement("div");
-
-h.className="heart";
-
-h.innerHTML=["❤","💖","💕","💗"][Math.floor(Math.random()*4)];
-
-h.style.left=(window.innerWidth/2+(Math.random()*180-90))+"px";
-
-h.style.bottom="220px";
-
-h.style.setProperty("--x",(Math.random()*300-150)+"px");
-
-h.style.fontSize=(18+Math.random()*20)+"px";
-
-document.body.appendChild(h);
-
-setTimeout(()=>{
-
-h.remove();
-
-},5000);
-
+function openPage(name){
+const page=pages[name];
+const box=document.getElementById("content");
+box.style.display="block";
+box.innerHTML="<h2>"+page.title+"</h2><p>"+page.text+"</p><button onclick='closePage()'>⬅ Orqaga</button>";
+box.scrollIntoView({behavior:"smooth"});
 }
-
+function closePage(){
+document.getElementById("content").style.display="none";
+}
 </script>
-
 </body>
 </html>
