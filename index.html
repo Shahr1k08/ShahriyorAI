@@ -4,139 +4,344 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JDPU HEALTH</title>
+<meta name="theme-color" content="#086da8">
+<title>JDPU HEALTH | Personal Health</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#f3f7fc;color:#172b4d}
-header{background:#102d50;color:white;padding:22px 6%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:22px;font-weight:800;letter-spacing:1px}
-.logo span{color:#42c4e8}
-.hero{padding:45px 6%;background:linear-gradient(120deg,#103b68,#147eaa);color:white}
-.hero h1{font-size:32px;margin-bottom:12px}
-.hero p{color:#dceeff;line-height:1.6}
-.container{padding:30px 6%;max-width:1200px;margin:auto}
-.section-title{font-size:22px;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{background:white;border-radius:15px;padding:23px;box-shadow:0 5px 22px #163c6410;cursor:pointer;transition:.2s;border:1px solid #e9eff6}
-.card:hover{transform:translateY(-5px);border-color:#42b9e0}
-.icon{font-size:30px;margin-bottom:15px}
-.card h3{margin-bottom:9px;font-size:17px}
-.card p{font-size:13px;color:#75859a;line-height:1.5}
-.welcome{background:white;padding:24px;border-radius:15px;margin-bottom:30px;border:1px solid #e9eff6}
-footer{text-align:center;padding:25px;color:#8290a2;font-size:13px}
-button{border:0;border-radius:9px;background:#137eaa;color:white;padding:12px 20px;cursor:pointer;margin-top:15px}
-#content{display:none;background:white;padding:25px;border-radius:15px;margin-top:25px;line-height:1.8}
-#content h2{margin-bottom:12px;color:#147eaa}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ font-family:Arial,sans-serif;
+ background:#f2f7fc;color:#19334d;
+}
+header{
+ background:linear-gradient(120deg,#07558c,#1498c9);
+ color:white;padding:25px 6%;
+}
+.brand{font-size:25px;font-weight:800;letter-spacing:1px}
+.brand span{color:#9cecff}
+header p{font-size:12px;margin-top:7px;color:#d8f2ff}
+.container{max-width:1050px;margin:auto;padding:25px 16px}
+.hero{
+ background:linear-gradient(120deg,#0b669e,#168fc0);
+ color:white;border-radius:20px;padding:30px;margin-bottom:24px;
+}
+.hero h1{font-size:27px;margin-bottom:12px}
+.hero p{line-height:1.6;color:#e2f5ff}
+.section{margin-bottom:25px}
+.section h2{font-size:19px;margin-bottom:15px}
+.card{
+ background:white;border:1px solid #e3edf5;
+ border-radius:17px;padding:21px;
+ box-shadow:0 5px 20px #164b7010;
+}
+.formgrid{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:15px;
+}
+label{display:block;font-size:13px;font-weight:bold;margin-bottom:8px}
+input,select{
+ width:100%;padding:13px;border:1px solid #d9e5ef;
+ border-radius:10px;font-size:15px;background:#fbfdff;
+ color:#19334d;outline:none;
+}
+input:focus,select:focus{border-color:#138fc4}
+button{
+ border:0;padding:13px 18px;border-radius:10px;
+ background:#087fb7;color:white;font-weight:bold;
+ cursor:pointer;font-size:14px;
+}
+button:active{opacity:.8}
+.primary{width:100%;margin-top:18px}
+.secondary{background:#e9f5fc;color:#0877ad}
+.result{display:none;margin-top:22px}
+.results-grid{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:13px;
+}
+.metric{
+ background:#eff8fd;padding:18px;border-radius:13px;
+}
+.metric small{color:#627e93}
+.metric strong{display:block;font-size:25px;margin-top:8px;color:#087db4}
+.status{margin:17px 0;padding:15px;border-radius:12px;line-height:1.6}
+.good{background:#e8f8ef;color:#167a47}
+.warn{background:#fff5df;color:#93640b}
+.info{background:#eaf5fc;color:#176b9b}
+.history-item{
+ padding:14px 0;border-bottom:1px solid #edf1f5;
+ font-size:13px;line-height:1.7;
+}
+.history-item strong{color:#087fb7}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.actions button{flex:1}
+.hidden{display:none}
+footer{text-align:center;padding:25px;color:#8194a6;font-size:12px}
+@media(max-width:550px){
+ .formgrid,.results-grid{grid-template-columns:1fr}
+ .hero h1{font-size:23px}
+}
+@media print{
+ header,.hero,.form-section,.history-section,.actions,footer{display:none!important}
+ body{background:white}
+ .container{padding:0}
+ .result{display:block!important}
+ .card{box-shadow:none;border:0}
+}
 </style>
 </head>
+
 <body>
 
 <header>
- <div class="logo">JDPU <span>HEALTH</span></div>
- <div>🏥 Tibbiy platforma</div>
+ <div class="brand">JDPU <span>HEALTH</span></div>
+ <p>PERSONAL HEALTH MANAGEMENT SYSTEM</p>
 </header>
-
-<section class="hero">
- <h1>Salomatlik — eng katta boylik!</h1>
- <p>Jizzax davlat pedagogika universiteti uchun<br>
- tibbiy ta'lim va ma'rifat platformasi.</p>
-</section>
 
 <main class="container">
 
-<div class="welcome">
- <h2>Xush kelibsiz!</h2>
- <p>Kerakli bo‘limni tanlang va foydali ma'lumotlar bilan tanishing.</p>
-</div>
+<section class="hero">
+ <h1>Salomatligingiz — o‘z qo‘lingizda!</h1>
+ <p>Shaxsiy ko‘rsatkichlaringizni kiriting, tana massasi indeksini hisoblang va foydali tavsiyalar oling.</p>
+</section>
 
-<h2 class="section-title">📚 Asosiy bo‘limlar</h2>
+<section class="section form-section">
+ <div class="card">
+  <h2>👤 Shaxsiy ma'lumotlar</h2>
+  <div class="formgrid">
 
-<div class="grid">
+   <div>
+    <label>Ismingiz</label>
+    <input id="name" type="text" placeholder="Ismingizni kiriting" maxlength="50">
+   </div>
 
-<div class="card" onclick="openPage('medicine')">
- <div class="icon">🏥</div>
- <h3>Tibbiyot</h3>
- <p>Tibbiyotga oid bilimlar va foydali ma'lumotlar.</p>
-</div>
+   <div>
+    <label>Yoshingiz</label>
+    <input id="age" type="number" min="2" max="120" placeholder="Masalan: 20">
+   </div>
 
-<div class="card" onclick="openPage('biology')">
- <div class="icon">🧬</div>
- <h3>Biologiya va genetika</h3>
- <p>Hujayra, genetika va irsiyat haqida.</p>
-</div>
+   <div>
+    <label>Jinsingiz</label>
+    <select id="gender">
+     <option value="">Tanlang</option>
+     <option value="Erkak">Erkak</option>
+     <option value="Ayol">Ayol</option>
+    </select>
+   </div>
 
-<div class="card" onclick="openPage('materials')">
- <div class="icon">📚</div>
- <h3>O‘quv materiallari</h3>
- <p>Talabalar uchun darsliklar va konspektlar.</p>
-</div>
+   <div>
+    <label>Bo‘yingiz (cm)</label>
+    <input id="height" type="number" min="50" max="250" step="0.1" placeholder="Masalan: 175">
+   </div>
 
-<div class="card" onclick="openPage('health')">
- <div class="icon">❤️</div>
- <h3>Sog‘lom turmush</h3>
- <p>Sog‘lom ovqatlanish va profilaktika.</p>
-</div>
+   <div>
+    <label>Vazningiz (kg)</label>
+    <input id="weight" type="number" min="2" max="500" step="0.1" placeholder="Masalan: 70">
+   </div>
 
-<div class="card" onclick="openPage('firstaid')">
- <div class="icon">🩺</div>
- <h3>Birinchi yordam</h3>
- <p>Favqulodda vaziyatlarda dastlabki yordam haqida.</p>
-</div>
+  </div>
 
-<div class="card" onclick="openPage('about')">
- <div class="icon">ℹ️</div>
- <h3>Platforma haqida</h3>
- <p>JDPU Health loyihasi haqida ma'lumot.</p>
-</div>
+  <button class="primary" onclick="calculate()">📊 Salomatligimni tahlil qilish</button>
+ </div>
+</section>
 
-</div>
+<section class="section result" id="result">
+ <div class="card">
+  <h2>📋 Shaxsiy salomatlik hisoboti</h2>
+  <p id="greeting" style="margin:12px 0"></p>
 
-<div id="content"></div>
+  <div class="results-grid">
+   <div class="metric">
+    <small>Tana massasi indeksi</small>
+    <strong id="bmi">--</strong>
+   </div>
+   <div class="metric">
+    <small>Kunlik suyuqlik taxmini</small>
+    <strong id="water">--</strong>
+   </div>
+  </div>
+
+  <div id="bmiStatus" class="status info"></div>
+
+  <h3 style="margin:22px 0 12px">💡 Shaxsiy tavsiyalar</h3>
+  <div id="recommendations" style="line-height:1.8;font-size:14px"></div>
+
+  <div id="childNotice" class="status warn hidden"></div>
+
+  <div class="actions">
+   <button onclick="downloadPDF()">📄 PDF hisobot</button>
+   <button class="secondary" onclick="newCalculation()">Yangi hisoblash</button>
+  </div>
+ </div>
+</section>
+
+<section class="section history-section">
+ <div class="card">
+  <h2>🕒 Oldingi natijalar</h2>
+  <div id="history">
+   <p style="color:#8497a8;margin-top:12px">Hozircha natijalar mavjud emas.</p>
+  </div>
+  <button class="secondary" onclick="clearHistory()" style="margin-top:15px">Tarixni tozalash</button>
+ </div>
+</section>
 
 </main>
 
 <footer>
- © 2026 JDPU HEALTH | Tibbiy ta'lim va ma'rifat
+ © 2026 JDPU HEALTH | Tibbiy ma'rifat platformasi
+<br><br>
+Ushbu ilova umumiy ma'lumot beradi, tibbiy tashxis o‘rnini bosmaydi.
 </footer>
 
 <script>
-const pages={
-medicine:{
-title:"🏥 Tibbiyot",
-text:"Tibbiyot — inson salomatligini saqlash, kasalliklarning oldini olish va davolash bilan shug‘ullanuvchi fanlar majmuasi."
-},
-biology:{
-title:"🧬 Biologiya va genetika",
-text:"Biologiya tirik organizmlarni, genetika esa irsiyat va o‘zgaruvchanlik qonuniyatlarini o‘rganadi."
-},
-materials:{
-title:"📚 O‘quv materiallari",
-text:"Bu bo‘limda talabalar uchun tibbiy biologiya, anatomiya, fiziologiya va boshqa fanlarga oid materiallar joylashtiriladi."
-},
-health:{
-title:"❤️ Sog‘lom turmush tarzi",
-text:"Muvozanatli ovqatlanish, muntazam jismoniy faollik, yetarli uyqu va gigiyena salomatlik uchun muhim."
-},
-firstaid:{
-title:"🩺 Birinchi yordam",
-text:"Birinchi yordam — tibbiy xodimlar yetib kelguncha ko‘rsatiladigan dastlabki yordam. Og‘ir vaziyatlarda 103 ga murojaat qiling."
-},
-about:{
-title:"ℹ️ JDPU HEALTH",
-text:"JDPU Health — talabalar uchun tibbiy bilim, ma'rifat va foydali axborotlarni taqdim etishga mo‘ljallangan platforma."
-}
-};
+let currentReport = null;
 
-function openPage(name){
-const page=pages[name];
-const box=document.getElementById("content");
-box.style.display="block";
-box.innerHTML="<h2>"+page.title+"</h2><p>"+page.text+"</p><button onclick='closePage()'>⬅ Orqaga</button>";
-box.scrollIntoView({behavior:"smooth"});
+function calculate(){
+
+ const name=document.getElementById("name").value.trim();
+ const age=Number(document.getElementById("age").value);
+ const gender=document.getElementById("gender").value;
+ const height=Number(document.getElementById("height").value);
+ const weight=Number(document.getElementById("weight").value);
+
+ if(!name || !gender || !Number.isFinite(age) ||
+    !Number.isFinite(height) || !Number.isFinite(weight) ||
+    !Number.isInteger(age) || age<2 || age>120 ||
+    height<50 || height>250 || weight<2 || weight>500){
+  alert("Barcha ma'lumotlarni to‘g‘ri kiriting!");
+  return;
+ }
+
+ const bmi=weight/((height/100)**2);
+ const water=weight*30;
+ let category="";
+
+ if(age>=18){
+  if(bmi<18.5) category="Vazn yetishmovchiligi";
+  else if(bmi<25) category="Me'yoriy diapazon";
+  else if(bmi<30) category="Ortiqcha vazn diapazoni";
+  else category="Semizlik diapazoni";
+ }else{
+  category="Bolalar uchun maxsus baholash kerak";
+ }
+
+ document.getElementById("greeting").textContent=
+  "Salom, "+name+"! Sizning hisobotingiz tayyor.";
+
+ document.getElementById("bmi").textContent=
+  bmi.toFixed(1);
+
+ document.getElementById("water").textContent=
+  Math.round(water)+" ml";
+
+ const status=document.getElementById("bmiStatus");
+ const child=document.getElementById("childNotice");
+
+ child.classList.add("hidden");
+
+ if(age<18){
+  status.className="status warn";
+  status.textContent=
+   "Siz 18 yoshdan kichiksiz. Kattalar uchun BMI chegaralari sizga qo‘llanmaydi. Natijani yosh va jinsga mos o‘sish percentillari orqali pediatr baholashi kerak.";
+
+  child.textContent=
+   "Bolalar va o‘smirlar uchun vazn holatini baholashda o‘sish jadvallari ishlatiladi. Ushbu versiya bolalar uchun me'yor yoki ortiqcha vazn xulosasini bermaydi.";
+  child.classList.remove("hidden");
+ }else{
+  status.className="status info";
+  status.textContent="BMI toifasi: "+category+
+   ". Bu skrining ko‘rsatkichi, tashxis emas.";
+ }
+
+ let tips=[];
+
+ if(age<18){
+  tips=[
+   "O‘sish va rivojlanishni muntazam kuzatib boring.",
+   "Muvozanatli ovqatlanish va yoshga mos jismoniy faollikni saqlang.",
+   "Vazn bo‘yicha xavotir bo‘lsa, pediatr bilan maslahat qiling."
+  ];
+ }else{
+  tips=[
+   "Sabzavot, meva va oqsil manbalarini ratsionga qo‘shing.",
+   "Imkoniyatga qarab muntazam jismoniy faollikni saqlang.",
+   "Yetarli va muntazam uyquga e'tibor bering.",
+   "Suv ichishni kun davomida taqsimlang."
+  ];
+
+  if(bmi<18.5){
+   tips.push("Vazn pastligi sababini aniqlash uchun tibbiyot mutaxassisi bilan maslahat qiling.");
+  }else if(bmi>=25){
+   tips.push("Vazn va salomatlikni baholashda bel aylanasi va boshqa omillarni ham hisobga oling. Zarur bo‘lsa mutaxassisga murojaat qiling.");
+  }
+ }
+
+ document.getElementById("recommendations").innerHTML=
+  tips.map(t=>"• "+t).join("<br>");
+
+ currentReport={
+  name,age,gender,height,weight,
+  bmi:bmi.toFixed(1),
+  water:Math.round(water),
+  category,
+  date:new Date().toLocaleString("uz-UZ")
+ };
+
+ saveHistory(currentReport);
+
+ document.getElementById("result").style.display="block";
+ document.getElementById("result").scrollIntoView({behavior:"smooth"});
 }
-function closePage(){
-document.getElementById("content").style.display="none";
+
+function saveHistory(report){
+ let history=JSON.parse(localStorage.getItem("jdpuHistory")||"[]");
+ history.unshift(report);
+ history=history.slice(0,30);
+ localStorage.setItem("jdpuHistory",JSON.stringify(history));
+ showHistory();
 }
+
+function showHistory(){
+ let history=JSON.parse(localStorage.getItem("jdpuHistory")||"[]");
+ const box=document.getElementById("history");
+
+ if(!history.length){
+  box.innerHTML='<p style="color:#8497a8">Hozircha natijalar mavjud emas.</p>';
+  return;
+ }
+
+ box.innerHTML=history.map((item,i)=>`
+  <div class="history-item">
+   <strong>${escapeHTML(item.name)}</strong> — ${item.date}<br>
+   BMI: ${item.bmi} | ${escapeHTML(item.category)}
+  </div>
+ `).join("");
+}
+
+function escapeHTML(value){
+ return String(value).replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",
+  '"':"&quot;","'":"&#39;"
+ })[c]);
+}
+
+function downloadPDF(){
+ if(!currentReport)return;
+ window.print();
+}
+
+function newCalculation(){
+ document.getElementById("result").style.display="none";
+ document.getElementById("name").focus();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function clearHistory(){
+ if(confirm("Barcha saqlangan natijalar o‘chirilsinmi?")){
+  localStorage.removeItem("jdpuHistory");
+  showHistory();
+ }
+}
+
+showHistory();
 </script>
+
 </body>
 </html>
