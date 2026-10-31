@@ -4,344 +4,347 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#086da8">
-<title>JDPU HEALTH | Personal Health</title>
-
+<meta name="theme-color" content="#0756d9">
+<title>JDPU HEALTH</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+:root {
+  --blue:#0756d9;
+  --dark:#10264b;
+  --light:#eef5ff;
+  --muted:#71819b;
+  --white:#fff;
+}
+*{box-sizing:border-box}
 body{
- font-family:Arial,sans-serif;
- background:#f2f7fc;color:#19334d;
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#f3f7fd;
+  color:var(--dark);
 }
 header{
- background:linear-gradient(120deg,#07558c,#1498c9);
- color:white;padding:25px 6%;
+  background:linear-gradient(135deg,#0649bd,#1687f8);
+  color:white;
+  padding:27px 20px 35px;
+  border-radius:0 0 30px 30px;
 }
-.brand{font-size:25px;font-weight:800;letter-spacing:1px}
-.brand span{color:#9cecff}
-header p{font-size:12px;margin-top:7px;color:#d8f2ff}
-.container{max-width:1050px;margin:auto;padding:25px 16px}
-.hero{
- background:linear-gradient(120deg,#0b669e,#168fc0);
- color:white;border-radius:20px;padding:30px;margin-bottom:24px;
+.top{display:flex;align-items:center;gap:12px}
+.logo{
+  width:45px;height:45px;border-radius:15px;
+  display:grid;place-items:center;
+  background:#ffffff25;font-size:24px;
 }
-.hero h1{font-size:27px;margin-bottom:12px}
-.hero p{line-height:1.6;color:#e2f5ff}
-.section{margin-bottom:25px}
-.section h2{font-size:19px;margin-bottom:15px}
+.brand{font-weight:800;font-size:19px;letter-spacing:.5px}
+.sub{font-size:12px;opacity:.8;margin-top:3px}
+header h1{font-size:27px;line-height:1.2;margin:27px 0 8px}
+header p{font-size:14px;line-height:1.6;opacity:.9;margin:0}
+main{max-width:560px;margin:-15px auto 35px;padding:0 15px}
 .card{
- background:white;border:1px solid #e3edf5;
- border-radius:17px;padding:21px;
- box-shadow:0 5px 20px #164b7010;
+  background:white;border-radius:23px;padding:22px;
+  box-shadow:0 8px 30px #173b7010;margin-bottom:15px;
 }
-.formgrid{
- display:grid;grid-template-columns:repeat(2,1fr);gap:15px;
-}
-label{display:block;font-size:13px;font-weight:bold;margin-bottom:8px}
+.progress{display:flex;gap:7px;margin-bottom:22px}
+.progress span{height:5px;flex:1;border-radius:10px;background:#e6edf7}
+.progress span.active{background:var(--blue)}
+.step-label{font-size:12px;color:var(--blue);font-weight:800;letter-spacing:1px}
+h2{font-size:21px;margin:9px 0 7px}
+.desc{color:var(--muted);font-size:13px;line-height:1.6;margin:0 0 20px}
+label{display:block;font-size:13px;font-weight:700;margin:15px 0 7px}
 input,select{
- width:100%;padding:13px;border:1px solid #d9e5ef;
- border-radius:10px;font-size:15px;background:#fbfdff;
- color:#19334d;outline:none;
+  width:100%;padding:15px;border:1px solid #dce5f1;
+  border-radius:13px;background:#fbfdff;font-size:16px;
+  color:var(--dark);outline:none;
 }
-input:focus,select:focus{border-color:#138fc4}
+input:focus,select:focus{border-color:var(--blue)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 button{
- border:0;padding:13px 18px;border-radius:10px;
- background:#087fb7;color:white;font-weight:bold;
- cursor:pointer;font-size:14px;
+  border:0;border-radius:14px;padding:15px 18px;
+  font-size:15px;font-weight:750;cursor:pointer;
 }
-button:active{opacity:.8}
-.primary{width:100%;margin-top:18px}
-.secondary{background:#e9f5fc;color:#0877ad}
-.result{display:none;margin-top:22px}
-.results-grid{
- display:grid;grid-template-columns:repeat(2,1fr);gap:13px;
+.primary{background:var(--blue);color:white;width:100%;margin-top:22px}
+.secondary{background:#edf4ff;color:var(--blue);width:100%;margin-top:10px}
+.back{background:transparent;color:var(--muted);padding:10px 0}
+.hidden{display:none!important}
+.note{
+  background:#eef5ff;border-radius:13px;padding:13px;
+  font-size:12px;line-height:1.6;color:#456080;margin-top:16px;
 }
+.result-head{
+  background:linear-gradient(135deg,#0756d9,#1687f8);
+  color:white;border-radius:20px;padding:22px;
+}
+.result-head small{opacity:.8}
+.bmi-number{font-size:48px;font-weight:850;margin:8px 0}
+.status{
+  display:inline-block;background:#ffffff25;padding:8px 13px;
+  border-radius:30px;font-size:13px;font-weight:700;
+}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
 .metric{
- background:#eff8fd;padding:18px;border-radius:13px;
+  background:#f5f8fd;border-radius:15px;padding:15px;
 }
-.metric small{color:#627e93}
-.metric strong{display:block;font-size:25px;margin-top:8px;color:#087db4}
-.status{margin:17px 0;padding:15px;border-radius:12px;line-height:1.6}
-.good{background:#e8f8ef;color:#167a47}
-.warn{background:#fff5df;color:#93640b}
-.info{background:#eaf5fc;color:#176b9b}
+.metric small{color:var(--muted);font-size:11px}
+.metric strong{display:block;font-size:19px;margin-top:6px}
+.section-title{font-size:16px;font-weight:800;margin:22px 0 12px}
+.tip{
+  display:flex;gap:12px;padding:13px 0;
+  border-bottom:1px solid #edf1f7;
+}
+.tip:last-child{border:0}
+.tip-icon{
+  min-width:38px;height:38px;border-radius:12px;
+  background:#edf4ff;display:grid;place-items:center;font-size:18px;
+}
+.tip b{font-size:13px}
+.tip p{font-size:12px;color:var(--muted);line-height:1.5;margin:4px 0 0}
 .history-item{
- padding:14px 0;border-bottom:1px solid #edf1f5;
- font-size:13px;line-height:1.7;
+  background:#f5f8fd;padding:13px;border-radius:13px;
+  margin-top:9px;font-size:13px;line-height:1.6;
 }
-.history-item strong{color:#087fb7}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.actions button{flex:1}
-.hidden{display:none}
-footer{text-align:center;padding:25px;color:#8194a6;font-size:12px}
-@media(max-width:550px){
- .formgrid,.results-grid{grid-template-columns:1fr}
- .hero h1{font-size:23px}
-}
+footer{text-align:center;color:#93a0b4;font-size:11px;padding:15px}
 @media print{
- header,.hero,.form-section,.history-section,.actions,footer{display:none!important}
- body{background:white}
- .container{padding:0}
- .result{display:block!important}
- .card{box-shadow:none;border:0}
+  body{background:white!important}
+  header,.progress,.no-print,footer{display:none!important}
+  main{max-width:100%;margin:0;padding:0}
+  .card{box-shadow:none;border:0;padding:0;margin:0}
+  #report{display:block!important}
+  #formArea,#historyArea{display:none!important}
+  .result-head{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .metric,.tip-icon{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .section-title{break-after:avoid}
 }
 </style>
 </head>
-
 <body>
 
 <header>
- <div class="brand">JDPU <span>HEALTH</span></div>
- <p>PERSONAL HEALTH MANAGEMENT SYSTEM</p>
+  <div class="top">
+    <div class="logo">✚</div>
+    <div>
+      <div class="brand">JDPU HEALTH</div>
+      <div class="sub">Sog‘lom hayot sari birinchi qadam</div>
+    </div>
+  </div>
+  <h1>Salomatligingizni<br>yaxshiroq anglang.</h1>
+  <p>Shaxsiy ko‘rsatkichlaringizni kiriting va sog‘lom turmush uchun foydali tavsiyalar oling.</p>
 </header>
 
-<main class="container">
+<main>
+  <section id="formArea" class="card">
+    <div class="progress">
+      <span class="active" id="p1"></span>
+      <span id="p2"></span>
+      <span id="p3"></span>
+    </div>
 
-<section class="hero">
- <h1>Salomatligingiz — o‘z qo‘lingizda!</h1>
- <p>Shaxsiy ko‘rsatkichlaringizni kiriting, tana massasi indeksini hisoblang va foydali tavsiyalar oling.</p>
-</section>
+    <div id="step1">
+      <div class="step-label">01 / SHAXSIY MA’LUMOT</div>
+      <h2>Avval siz bilan tanishamiz</h2>
+      <p class="desc">Natijalarni to‘g‘riroq tushuntirish uchun quyidagi ma’lumotlarni kiriting.</p>
+      <label>Ismingiz</label>
+      <input id="name" placeholder="Ismingizni kiriting">
+      <label>Yoshingiz</label>
+      <input id="age" type="number" min="1" max="120" placeholder="Masalan: 20">
+      <label>Jinsingiz</label>
+      <select id="gender">
+        <option value="">Tanlang</option>
+        <option value="Erkak">Erkak</option>
+        <option value="Ayol">Ayol</option>
+      </select>
+      <button class="primary" onclick="next(2)">Davom etish →</button>
+    </div>
 
-<section class="section form-section">
- <div class="card">
-  <h2>👤 Shaxsiy ma'lumotlar</h2>
-  <div class="formgrid">
+    <div id="step2" class="hidden">
+      <div class="step-label">02 / TANA KO‘RSATKICHLARI</div>
+      <h2>Jismoniy ko‘rsatkichlaringiz</h2>
+      <p class="desc">Bo‘y va vazn ma’lumotlarini imkon qadar aniq kiriting.</p>
+      <div class="grid">
+        <div>
+          <label>Bo‘y (sm)</label>
+          <input id="height" type="number" placeholder="Masalan: 175">
+        </div>
+        <div>
+          <label>Vazn (kg)</label>
+          <input id="weight" type="number" placeholder="Masalan: 70">
+        </div>
+      </div>
+      <div class="note">💡 Maslahat: vaznni ertalab, ovqatlanishdan oldin o‘lchash natijalarni taqqoslashni osonlashtiradi.</div>
+      <button class="primary" onclick="next(3)">Davom etish →</button>
+      <button class="back" onclick="next(1)">← Ortga</button>
+    </div>
 
-   <div>
-    <label>Ismingiz</label>
-    <input id="name" type="text" placeholder="Ismingizni kiriting" maxlength="50">
-   </div>
+    <div id="step3" class="hidden">
+      <div class="step-label">03 / TASDIQLASH</div>
+      <h2>Ma’lumotlarni tekshiring</h2>
+      <p class="desc">Hisoblashdan oldin kiritgan ma’lumotlaringizni tekshirib oling.</p>
+      <div class="note" id="summary"></div>
+      <button class="primary" onclick="calculate()">Natijani hisoblash ✦</button>
+      <button class="back" onclick="next(2)">← Ortga qaytish</button>
+    </div>
+  </section>
 
-   <div>
-    <label>Yoshingiz</label>
-    <input id="age" type="number" min="2" max="120" placeholder="Masalan: 20">
-   </div>
+  <section id="report" class="hidden">
+    <div class="card">
+      <div class="result-head">
+        <small>JDPU HEALTH · SHAXSIY HISOBOT</small>
+        <h2 id="hello" style="color:white;margin-top:13px">Salom!</h2>
+        <div class="bmi-number" id="bmi">—</div>
+        <div class="status" id="status">Natija</div>
+        <p style="font-size:12px;line-height:1.6;margin:15px 0 0;opacity:.9" id="explain"></p>
+      </div>
 
-   <div>
-    <label>Jinsingiz</label>
-    <select id="gender">
-     <option value="">Tanlang</option>
-     <option value="Erkak">Erkak</option>
-     <option value="Ayol">Ayol</option>
-    </select>
-   </div>
+      <div class="metric-grid">
+        <div class="metric"><small>BO‘Y</small><strong id="rHeight">—</strong></div>
+        <div class="metric"><small>VAZN</small><strong id="rWeight">—</strong></div>
+        <div class="metric"><small>YOSH</small><strong id="rAge">—</strong></div>
+        <div class="metric"><small>JINS</small><strong id="rGender">—</strong></div>
+      </div>
 
-   <div>
-    <label>Bo‘yingiz (cm)</label>
-    <input id="height" type="number" min="50" max="250" step="0.1" placeholder="Masalan: 175">
-   </div>
+      <div class="section-title">Siz uchun foydali tavsiyalar</div>
+      <div id="tips"></div>
 
-   <div>
-    <label>Vazningiz (kg)</label>
-    <input id="weight" type="number" min="2" max="500" step="0.1" placeholder="Masalan: 70">
-   </div>
+      <div class="section-title">Suv iste’moli haqida</div>
+      <div class="metric">
+        <small>TAXMINIY KUNLIK MIQDOR</small>
+        <strong id="water">—</strong>
+        <p class="desc" style="margin:7px 0 0">Bu faqat umumiy taxmin. Haqiqiy ehtiyoj ob-havo, faollik, ovqatlanish va sog‘liq holatiga bog‘liq.</p>
+      </div>
 
-  </div>
+      <div class="note">
+        <b>Muhim:</b> BMI sog‘liq holatini aniqlaydigan tashxis emas, balki dastlabki baholash vositasidir. 18 yoshdan kichiklar uchun yosh va jinsga mos o‘sish jadvallari kerak. Aniq baholash uchun tibbiyot mutaxassisiga murojaat qiling.
+      </div>
+      <p style="font-size:11px;color:#8b98aa;margin-top:17px" id="date"></p>
+    </div>
 
-  <button class="primary" onclick="calculate()">📊 Salomatligimni tahlil qilish</button>
- </div>
-</section>
+    <div class="no-print">
+      <button class="primary" onclick="makePDF()">⬇ PDF hisobotni saqlash</button>
+      <button class="secondary" onclick="showHistory()">Oldingi natijalar</button>
+      <button class="secondary" onclick="restart()">Yangi hisoblash</button>
+    </div>
+  </section>
 
-<section class="section result" id="result">
- <div class="card">
-  <h2>📋 Shaxsiy salomatlik hisoboti</h2>
-  <p id="greeting" style="margin:12px 0"></p>
-
-  <div class="results-grid">
-   <div class="metric">
-    <small>Tana massasi indeksi</small>
-    <strong id="bmi">--</strong>
-   </div>
-   <div class="metric">
-    <small>Kunlik suyuqlik taxmini</small>
-    <strong id="water">--</strong>
-   </div>
-  </div>
-
-  <div id="bmiStatus" class="status info"></div>
-
-  <h3 style="margin:22px 0 12px">💡 Shaxsiy tavsiyalar</h3>
-  <div id="recommendations" style="line-height:1.8;font-size:14px"></div>
-
-  <div id="childNotice" class="status warn hidden"></div>
-
-  <div class="actions">
-   <button onclick="downloadPDF()">📄 PDF hisobot</button>
-   <button class="secondary" onclick="newCalculation()">Yangi hisoblash</button>
-  </div>
- </div>
-</section>
-
-<section class="section history-section">
- <div class="card">
-  <h2>🕒 Oldingi natijalar</h2>
-  <div id="history">
-   <p style="color:#8497a8;margin-top:12px">Hozircha natijalar mavjud emas.</p>
-  </div>
-  <button class="secondary" onclick="clearHistory()" style="margin-top:15px">Tarixni tozalash</button>
- </div>
-</section>
-
+  <section id="historyArea" class="card hidden">
+    <h2>Oldingi natijalar</h2>
+    <p class="desc">Ushbu qurilmada saqlangan hisob-kitoblaringiz.</p>
+    <div id="historyList"></div>
+    <button class="secondary" onclick="clearHistory()">Tarixni tozalash</button>
+    <button class="back" onclick="hideHistory()">← Hisobotga qaytish</button>
+  </section>
 </main>
-
-<footer>
- © 2026 JDPU HEALTH | Tibbiy ma'rifat platformasi
-<br><br>
-Ushbu ilova umumiy ma'lumot beradi, tibbiy tashxis o‘rnini bosmaydi.
-</footer>
+<footer>JDPU HEALTH · Sog‘lom turmush sari</footer>
 
 <script>
-let currentReport = null;
-
-function calculate(){
-
- const name=document.getElementById("name").value.trim();
- const age=Number(document.getElementById("age").value);
- const gender=document.getElementById("gender").value;
- const height=Number(document.getElementById("height").value);
- const weight=Number(document.getElementById("weight").value);
-
- if(!name || !gender || !Number.isFinite(age) ||
-    !Number.isFinite(height) || !Number.isFinite(weight) ||
-    !Number.isInteger(age) || age<2 || age>120 ||
-    height<50 || height>250 || weight<2 || weight>500){
-  alert("Barcha ma'lumotlarni to‘g‘ri kiriting!");
-  return;
- }
-
- const bmi=weight/((height/100)**2);
- const water=weight*30;
- let category="";
-
- if(age>=18){
-  if(bmi<18.5) category="Vazn yetishmovchiligi";
-  else if(bmi<25) category="Me'yoriy diapazon";
-  else if(bmi<30) category="Ortiqcha vazn diapazoni";
-  else category="Semizlik diapazoni";
- }else{
-  category="Bolalar uchun maxsus baholash kerak";
- }
-
- document.getElementById("greeting").textContent=
-  "Salom, "+name+"! Sizning hisobotingiz tayyor.";
-
- document.getElementById("bmi").textContent=
-  bmi.toFixed(1);
-
- document.getElementById("water").textContent=
-  Math.round(water)+" ml";
-
- const status=document.getElementById("bmiStatus");
- const child=document.getElementById("childNotice");
-
- child.classList.add("hidden");
-
- if(age<18){
-  status.className="status warn";
-  status.textContent=
-   "Siz 18 yoshdan kichiksiz. Kattalar uchun BMI chegaralari sizga qo‘llanmaydi. Natijani yosh va jinsga mos o‘sish percentillari orqali pediatr baholashi kerak.";
-
-  child.textContent=
-   "Bolalar va o‘smirlar uchun vazn holatini baholashda o‘sish jadvallari ishlatiladi. Ushbu versiya bolalar uchun me'yor yoki ortiqcha vazn xulosasini bermaydi.";
-  child.classList.remove("hidden");
- }else{
-  status.className="status info";
-  status.textContent="BMI toifasi: "+category+
-   ". Bu skrining ko‘rsatkichi, tashxis emas.";
- }
-
- let tips=[];
-
- if(age<18){
-  tips=[
-   "O‘sish va rivojlanishni muntazam kuzatib boring.",
-   "Muvozanatli ovqatlanish va yoshga mos jismoniy faollikni saqlang.",
-   "Vazn bo‘yicha xavotir bo‘lsa, pediatr bilan maslahat qiling."
-  ];
- }else{
-  tips=[
-   "Sabzavot, meva va oqsil manbalarini ratsionga qo‘shing.",
-   "Imkoniyatga qarab muntazam jismoniy faollikni saqlang.",
-   "Yetarli va muntazam uyquga e'tibor bering.",
-   "Suv ichishni kun davomida taqsimlang."
-  ];
-
-  if(bmi<18.5){
-   tips.push("Vazn pastligi sababini aniqlash uchun tibbiyot mutaxassisi bilan maslahat qiling.");
-  }else if(bmi>=25){
-   tips.push("Vazn va salomatlikni baholashda bel aylanasi va boshqa omillarni ham hisobga oling. Zarur bo‘lsa mutaxassisga murojaat qiling.");
+let current = 1;
+function next(n){
+  if(n===2){
+    if(!document.getElementById('name').value.trim() ||
+       !valid('age',1,120) || !document.getElementById('gender').value){
+      alert("Iltimos, barcha ma’lumotlarni to‘g‘ri kiriting.");return;
+    }
   }
- }
-
- document.getElementById("recommendations").innerHTML=
-  tips.map(t=>"• "+t).join("<br>");
-
- currentReport={
-  name,age,gender,height,weight,
-  bmi:bmi.toFixed(1),
-  water:Math.round(water),
-  category,
-  date:new Date().toLocaleString("uz-UZ")
- };
-
- saveHistory(currentReport);
-
- document.getElementById("result").style.display="block";
- document.getElementById("result").scrollIntoView({behavior:"smooth"});
+  if(n===3){
+    if(!valid('height',50,250)||!valid('weight',2,350)){
+      alert("Bo‘y yoki vazn qiymatini tekshiring.");return;
+    }
+    document.getElementById('summary').innerHTML =
+      "<b>Ism:</b> "+safe(name.value)+"<br><b>Yosh:</b> "+age.value+
+      "<br><b>Jins:</b> "+gender.value+"<br><b>Bo‘y:</b> "+height.value+
+      " sm<br><b>Vazn:</b> "+weight.value+" kg";
+  }
+  current=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('step'+i).classList.toggle('hidden',i!==n);
+    document.getElementById('p'+i).classList.toggle('active',i<=n);
+  });
 }
-
-function saveHistory(report){
- let history=JSON.parse(localStorage.getItem("jdpuHistory")||"[]");
- history.unshift(report);
- history=history.slice(0,30);
- localStorage.setItem("jdpuHistory",JSON.stringify(history));
- showHistory();
+function valid(id,min,max){
+  let v=Number(document.getElementById(id).value);
+  return Number.isFinite(v)&&v>=min&&v<=max;
 }
+function safe(s){
+  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function calculate(){
+  let nm=name.value.trim(), a=Number(age.value),
+      h=Number(height.value), w=Number(weight.value);
+  let bmi=w/((h/100)**2);
+  let adult=a>=18;
+  let status, explanation, advice=[];
 
+  if(!adult){
+    status="Maxsus baholash kerak";
+    explanation="18 yoshgacha BMI natijasi yosh va jinsga mos o‘sish jadvallari orqali baholanadi. Kattalar mezonlari qo‘llanilmaydi.";
+    advice=[
+      ["🩺","Mutaxassis bilan maslahat","Bolalar va o‘smirlar salomatligi bo‘yicha mutaxassis bilan natijani baholang."],
+      ["🥗","Muvozanatli ovqatlanish","Turli xil foydali mahsulotlarni iste’mol qiling."],
+      ["🏃","Faol hayot","Yoshingizga mos harakat va o‘yinlarga vaqt ajrating."]
+    ];
+  }else{
+    if(bmi<18.5){
+      status="Tana vazni past";
+      explanation="BMI kattalar uchun past vazn diapazonida. Buning sababini ovqatlanish va umumiy salomatlik bilan birga baholash kerak.";
+      advice.push(["🥗","Ovqatlanish","Muntazam va xilma-xil ovqatlaning. Vaznni keskin o‘zgartirishga urinmang."]);
+    }else if(bmi<25){
+      status="Me’yoriy diapazon";
+      explanation="BMI kattalar uchun me’yoriy diapazonda. Sog‘lom odatlarni davom ettirish muhim.";
+      advice.push(["🌿","Sog‘lom odatlarni saqlang","Muvozanatli ovqatlanish va muntazam jismoniy faollikni davom ettiring."]);
+    }else if(bmi<30){
+      status="Ortiqcha vazn diapazoni";
+      explanation="BMI kattalar uchun ortiqcha vazn diapazonida. Bu yakka o‘zi kasallik yoki tashxisni anglatmaydi.";
+      advice.push(["🚶","Harakatni ko‘paytiring","Kundalik yurish va o‘zingizga mos jismoniy faollikni asta-sekin oshiring."]);
+    }else{
+      status="Semizlik diapazoni";
+      explanation="BMI kattalar uchun semizlik diapazonida. Shaxsiy xavflarni baholash uchun shifokor bilan maslahatlashish foydali.";
+      advice.push(["🩺","Tibbiy maslahat","Qon bosimi, bel aylanasi va boshqa omillar bilan birga mutaxassis bahosini oling."]);
+    }
+    advice.push(["💧","Suv ichish","Chanqoq va kunlik sharoitingizga qarab yetarli suyuqlik iching."]);
+    advice.push(["😴","Uyqu","Muntazam uyqu tartibiga rioya qiling."]);
+  }
+
+  document.getElementById('formArea').classList.add('hidden');
+  document.getElementById('report').classList.remove('hidden');
+  document.getElementById('historyArea').classList.add('hidden');
+  document.getElementById('hello').textContent="Salom, "+nm+"!";
+  document.getElementById('bmi').textContent=bmi.toFixed(1);
+  document.getElementById('status').textContent=status;
+  document.getElementById('explain').textContent=explanation;
+  document.getElementById('rHeight').textContent=h+" sm";
+  document.getElementById('rWeight').textContent=w+" kg";
+  document.getElementById('rAge').textContent=a+" yosh";
+  document.getElementById('rGender').textContent=gender.value;
+  document.getElementById('water').textContent=(w*0.03).toFixed(1)+" litr atrofida";
+  document.getElementById('date').textContent="Hisobot sanasi: "+new Date().toLocaleDateString('uz-UZ');
+  document.getElementById('tips').innerHTML=advice.map(t=>
+    `<div class="tip"><div class="tip-icon">${t[0]}</div><div><b>${t[1]}</b><p>${t[2]}</p></div></div>`
+  ).join('');
+
+  let records=JSON.parse(localStorage.getItem('jdpuHistory')||'[]');
+  records.unshift({name:nm,age:a,bmi:bmi.toFixed(1),status:status,date:new Date().toLocaleDateString('uz-UZ')});
+  localStorage.setItem('jdpuHistory',JSON.stringify(records.slice(0,20)));
+}
+function makePDF(){
+  window.print();
+}
+function restart(){
+  document.getElementById('report').classList.add('hidden');
+  document.getElementById('formArea').classList.remove('hidden');
+  document.getElementById('historyArea').classList.add('hidden');
+  ['name','age','height','weight'].forEach(id=>document.getElementById(id).value='');
+  gender.value='';
+  next(1);
+}
 function showHistory(){
- let history=JSON.parse(localStorage.getItem("jdpuHistory")||"[]");
- const box=document.getElementById("history");
-
- if(!history.length){
-  box.innerHTML='<p style="color:#8497a8">Hozircha natijalar mavjud emas.</p>';
-  return;
- }
-
- box.innerHTML=history.map((item,i)=>`
-  <div class="history-item">
-   <strong>${escapeHTML(item.name)}</strong> — ${item.date}<br>
-   BMI: ${item.bmi} | ${escapeHTML(item.category)}
-  </div>
- `).join("");
+  document.getElementById('historyArea').classList.remove('hidden');
+  let records=JSON.parse(localStorage.getItem('jdpuHistory')||'[]');
+  historyList.innerHTML=records.length?records.map(r=>
+    `<div class="history-item"><b>${safe(r.name)}</b> · ${r.date}<br>BMI: ${r.bmi} · ${safe(r.status)}</div>`
+  ).join(''):"Hozircha saqlangan natijalar yo‘q.";
 }
-
-function escapeHTML(value){
- return String(value).replace(/[&<>"']/g,c=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",
-  '"':"&quot;","'":"&#39;"
- })[c]);
-}
-
-function downloadPDF(){
- if(!currentReport)return;
- window.print();
-}
-
-function newCalculation(){
- document.getElementById("result").style.display="none";
- document.getElementById("name").focus();
- window.scrollTo({top:0,behavior:"smooth"});
-}
-
+function hideHistory(){historyArea.classList.add('hidden')}
 function clearHistory(){
- if(confirm("Barcha saqlangan natijalar o‘chirilsinmi?")){
-  localStorage.removeItem("jdpuHistory");
-  showHistory();
- }
+  if(confirm("Barcha tarixiy natijalar o‘chirilsinmi?")){
+    localStorage.removeItem('jdpuHistory');showHistory();
+  }
 }
-
-showHistory();
 </script>
-
 </body>
 </html>
