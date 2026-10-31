@@ -1,550 +1,170 @@
-
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0756d9">
-<title>JDPU HEALTH</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You - Zulfiya</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #050505;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
 
-<style>
-*{box-sizing:border-box}
-:root{--blue:#0756d9;--dark:#142b4d;--muted:#7889a2}
-body{margin:0;background:#f2f6fc;color:var(--dark);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-header{padding:25px 20px 45px;background:linear-gradient(135deg,#063eaa,#1688f8);color:white;border-radius:0 0 30px 30px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:19px}
-.logo{width:44px;height:44px;border-radius:14px;background:#ffffff25;display:grid;place-items:center;font-size:25px}
-header h1{font-size:28px;line-height:1.2;margin:28px 0 9px}
-header p{font-size:13px;line-height:1.6;opacity:.9}
-main{max-width:560px;margin:-20px auto 30px;padding:0 14px}
-.card{background:white;border-radius:23px;padding:22px;margin-bottom:15px;box-shadow:0 8px 30px #173b7010}
-.progress{display:flex;gap:7px;margin-bottom:23px}
-.progress span{height:5px;flex:1;background:#e5edf8;border-radius:10px}
-.progress span.active{background:var(--blue)}
-.eyebrow{font-size:11px;letter-spacing:1.3px;font-weight:800;color:var(--blue)}
-h2{font-size:22px;margin:10px 0 7px}
-.desc{font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 20px}
-label{display:block;font-size:13px;font-weight:700;margin:15px 0 7px}
-input,select{width:100%;padding:15px;border:1px solid #dce5f1;border-radius:13px;background:#fbfdff;font-size:16px;color:var(--dark);outline:none}
-input:focus,select:focus{border-color:var(--blue)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-button{width:100%;border:0;border-radius:14px;padding:15px;font-size:15px;font-weight:750;cursor:pointer}
-.primary{background:var(--blue);color:white;margin-top:18px}
-.secondary{background:#edf4ff;color:var(--blue);margin-top:10px}
-.back{background:transparent;color:var(--muted);margin-top:8px}
-.hidden{display:none!important}
-.note{background:#eef5ff;color:#456080;padding:14px;border-radius:14px;font-size:12px;line-height:1.7;margin-top:16px}
-.result{background:linear-gradient(135deg,#0649bd,#1688f8);color:white;border-radius:20px;padding:23px}
-.result small{opacity:.8;font-size:11px}
-.number{font-size:52px;font-weight:850;margin:8px 0}
-.status{display:inline-block;padding:8px 13px;border-radius:30px;background:#ffffff25;font-size:12px;font-weight:750}
-.result p{font-size:13px;line-height:1.6}
-.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
-.metric{background:#f4f7fc;padding:15px;border-radius:15px}
-.metric small{font-size:11px;color:var(--muted)}
-.metric strong{display:block;font-size:20px;margin-top:6px}
-.section-title{font-weight:800;font-size:16px;margin:23px 0 12px}
-.tip{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #edf1f7}
-.tip:last-child{border:0}
-.tip-icon{width:40px;height:40px;flex-shrink:0;border-radius:13px;background:#edf4ff;display:grid;place-items:center;font-size:19px}
-.tip b{font-size:13px}
-.tip p{font-size:12px;color:var(--muted);line-height:1.6;margin:4px 0 0}
-.history{background:#f4f7fc;padding:13px;border-radius:13px;margin-top:9px;font-size:13px;line-height:1.6}
-.anatomy-entry{border:1px solid #e2ecfa}
-.anatomy-icon{width:55px;height:55px;border-radius:17px;background:#edf4ff;display:grid;place-items:center;font-size:27px;margin-bottom:15px}
-.anatomy-card{padding:17px;background:#f7f9fd;border-radius:16px;margin-top:12px}
-.anatomy-card h3{font-size:15px;margin:0 0 10px;color:#0756d9;line-height:1.5}
-.anatomy-card p{font-size:12px;line-height:1.7;color:#526782;margin:7px 0}
-.anatomy-card b{color:#17375e}
-.creator{text-align:center;padding:25px 20px}
-.creator-icon{font-size:35px;margin-bottom:10px}
-.creator-label{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--blue)}
-.creator h2{margin:8px 0;font-size:21px}
-.creator p{font-size:12px;color:var(--muted)}
-.creator-links{display:flex;gap:10px;margin-top:20px}
-.social{flex:1;text-decoration:none;padding:14px 8px;border-radius:13px;font-size:13px;font-weight:750}
-.instagram{background:#fff0f5;color:#d62976}
-.telegram{background:#eaf5ff;color:#1688d4}
-.quiz-option{display:block;width:100%;text-align:left;background:#f3f7fd;color:#284566;margin:8px 0;font-size:13px}
-.quiz-option:focus{outline:2px solid var(--blue)}
-.quiz-answer{font-size:13px;line-height:1.6;margin-top:10px}
-footer{text-align:center;color:#93a0b4;font-size:11px;padding:15px}
-@media print{
- body{background:white}
- header,.no-print,footer,#creator{display:none!important}
- main{margin:0;padding:0;max-width:100%}
- .card{box-shadow:none;padding:0}
- #report{display:block!important}
- #form,#historyPanel,#homeAnatomy,#anatomyPanel{display:none!important}
- .result{print-color-adjust:exact;-webkit-print-color-adjust:exact}
- .metric,.tip-icon{print-color-adjust:exact;-webkit-print-color-adjust:exact}
-}
-</style>
+        /* Yulduzli fon uchun */
+        canvas#bg-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Asosiy konteyner */
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        /* Konvert / Kartochka dizayni */
+        .card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid #e056fd;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(224, 86, 253, 0.4);
+            backdrop-filter: blur(5px);
+            transition: all 0.5s ease;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            color: #ff7675;
+        }
+
+        .heart {
+            font-size: 3rem;
+            color: #ff7675;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Tugma */
+        button {
+            background: transparent;
+            border: 2px solid #ff7675;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background: #ff7675;
+            box-shadow: 0 0 15px #ff7675;
+        }
+
+        /* Ism chiqadigan qism */
+        #display-text {
+            display: none;
+            font-size: 3.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff7675, #e056fd, #74b9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(224, 86, 253, 0.6);
+            letter-spacing: 3px;
+        }
+    </style>
 </head>
-
 <body>
-<header>
- <div class="brand">
-  <div class="logo">✚</div>
-  <div>JDPU HEALTH</div>
- </div>
- <h1>Salomatligingiz —<br>eng katta boyligingiz.</h1>
- <p>Salomatligingizni o‘rganing, tana ko‘rsatkichlaringizni hisoblang va tibbiy bilimlaringizni oshiring.</p>
-</header>
 
-<main>
+    <!-- Fon uchun canvas -->
+    <canvas id="bg-canvas"></canvas>
 
-<!-- ANATOMIYA KIRISH -->
-<section class="card anatomy-entry" id="homeAnatomy">
- <div class="anatomy-icon">🫀</div>
- <div class="eyebrow">TIBBIY BILIMLAR</div>
- <h2>ANATOMIYA</h2>
- <p class="desc">Inson tanasi tuzilishini o‘rganing. Ko‘krak muskullari haqida lotincha nomlari va anatomik xususiyatlari bilan tanishing.</p>
- <button class="primary" onclick="openAnatomy()">Anatomiyani o‘rganish →</button>
-</section>
+    <div class="container">
+        <div class="card" id="card-box">
+            <div class="heart">❤️</div>
+            <h1>FOR YOU</h1>
+            <button onclick="startAnimation()">Ko'rish uchun bosing</button>
+        </div>
+        <div id="display-text">Zulfiya</div>
+    </div>
 
-<!-- SALOMATLIK HISOBLAGICHI -->
-<section class="card" id="form">
- <div class="progress">
-  <span id="bar1" class="active"></span>
-  <span id="bar2"></span>
-  <span id="bar3"></span>
- </div>
+    <script>
+        // Yulduzli fon animatsiyasi
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
 
- <div id="step1">
-  <div class="eyebrow">1-BOSQICH · SHAXSIY MA’LUMOT</div>
-  <h2>Siz haqingizda</h2>
-  <p class="desc">Hisob-kitobni boshlash uchun ma’lumotlaringizni kiriting.</p>
-  <label>Ismingiz</label>
-  <input id="userName" placeholder="Ismingiz">
-  <label>Yoshingiz</label>
-  <input id="userAge" type="number" min="1" max="120" placeholder="Masalan: 20">
-  <label>Jinsingiz</label>
-  <select id="userGender">
-   <option value="">Tanlang</option>
-   <option value="Erkak">Erkak</option>
-   <option value="Ayol">Ayol</option>
-  </select>
-  <button class="primary" onclick="goStep(2)">Davom etish →</button>
- </div>
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
- <div id="step2" class="hidden">
-  <div class="eyebrow">2-BOSQICH · TANA KO‘RSATKICHLARI</div>
-  <h2>Bo‘y va vazn</h2>
-  <p class="desc">O‘lchovlaringizni imkon qadar aniq kiriting.</p>
-  <div class="grid">
-   <div><label>Bo‘y (sm)</label><input id="userHeight" type="number" placeholder="175"></div>
-   <div><label>Vazn (kg)</label><input id="userWeight" type="number" placeholder="70"></div>
-  </div>
-  <div class="note">💡 Bo‘y va vaznni to‘g‘ri kiritish hisob-kitob aniqligi uchun muhim.</div>
-  <button class="primary" onclick="goStep(3)">Davom etish →</button>
-  <button class="back" onclick="goStep(1)">← Ortga</button>
- </div>
+        const stars = [];
+        for (let i = 0; i < 150; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1.5,
+                alpha: Math.random(),
+                speed: Math.random() * 0.02
+            });
+        }
 
- <div id="step3" class="hidden">
-  <div class="eyebrow">3-BOSQICH · TASDIQLASH</div>
-  <h2>Ma’lumotlaringiz tayyor</h2>
-  <p class="desc">Hisoblashdan oldin ma’lumotlarni tekshiring.</p>
-  <div class="note" id="confirmation"></div>
-  <button class="primary" onclick="calculate()">✦ Natijani hisoblash</button>
-  <button class="back" onclick="goStep(2)">← Ortga</button>
- </div>
-</section>
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+            stars.forEach(star => {
+                ctx.globalAlpha = star.alpha;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fill();
+                star.alpha += star.speed;
+                if (star.alpha > 1 || star.alpha < 0) star.speed = -star.speed;
+            });
+            requestAnimationFrame(drawStars);
+        }
+        drawStars();
 
-<!-- NATIJA PANELI -->
-<section id="report" class="hidden">
- <div class="card">
-  <div class="result">
-   <small>JDPU HEALTH · SHAXSIY HISOBOT</small>
-   <h2 id="greeting" style="color:white">Salom!</h2>
-   <div class="number" id="bmiValue">0.0</div>
-   <div class="status" id="bmiStatus">Natija</div>
-   <p id="bmiExplanation"></p>
-  </div>
+        // Tugma bosilgandagi amal
+        function startAnimation() {
+            const cardBox = document.getElementById('card-box');
+            const displayText = document.getElementById('display-text');
 
-  <div class="metrics">
-   <div class="metric"><small>BO‘Y</small><strong id="outHeight">—</strong></div>
-   <div class="metric"><small>VAZN</small><strong id="outWeight">—</strong></div>
-   <div class="metric"><small>YOSH</small><strong id="outAge">—</strong></div>
-   <div class="metric"><small>JINS</small><strong id="outGender">—</strong></div>
-  </div>
+            // Konvert yo'qoladi
+            cardBox.style.transform = 'scale(0)';
+            cardBox.style.opacity = '0';
 
-  <div class="section-title">Siz uchun tavsiyalar</div>
-  <div id="recommendations"></div>
-
-  <div class="section-title">Suv iste’moli</div>
-  <div class="metric">
-   <small>TAXMINIY KUNLIK MIQDOR</small>
-   <strong id="waterValue">—</strong>
-   <p class="desc" style="margin:7px 0 0">Bu umumiy taxmin, tibbiy ko‘rsatma emas. Suvga ehtiyoj ob-havo, faollik va sog‘liq holatiga bog‘liq.</p>
-  </div>
-
-  <div class="note">
-   <b>Muhim:</b> BMI tashxis emas, dastlabki baholash vositasidir. 18 yoshgacha bo‘lganlar uchun natija yosh va jinsga mos o‘sish jadvallari orqali baholanadi. Sog‘liq bo‘yicha qaror uchun tibbiyot mutaxassisiga murojaat qiling.
-  </div>
-  <p id="reportDate" style="font-size:11px;color:#93a0b4;margin-top:18px"></p>
- </div>
-
- <div class="no-print">
-  <button class="primary" onclick="savePDF()">⬇ PDF hisobotni saqlash</button>
-  <button class="secondary" onclick="openHistory()">Oldingi natijalar</button>
-  <button class="secondary" onclick="newCalculation()">Yangi hisoblash</button>
- </div>
-</section>
-
-<!-- TARIX -->
-<section class="card hidden" id="historyPanel">
- <h2>Oldingi natijalar</h2>
- <p class="desc">Ushbu qurilmada saqlangan natijalar.</p>
- <div id="historyContent"></div>
- <button class="secondary" onclick="deleteHistory()">Tarixni tozalash</button>
- <button class="back" onclick="closeHistory()">← Hisobotga qaytish</button>
-</section>
-
-<!-- ANATOMIYA DARSLIGI -->
-<section id="anatomyPanel" class="hidden">
- <div class="card">
-  <button class="back" onclick="closeAnatomy()">← Bosh sahifaga qaytish</button>
-  <div class="eyebrow">ANATOMIYA · MUSKULLAR TIZIMI</div>
-  <h2>Ko‘krak muskullari</h2>
-  <p class="desc">Musculi thoracis — ko‘krak sohasi muskullari va ularning anatomik xususiyatlari.</p>
-
-  <div class="note">
-   <b>Umumiy ma’lumot</b><br>
-   Ko‘krak muskullari ko‘krak qafasi, yelka kamari va yuqori qo‘l harakatlarida qatnashadi. Ular oldingi yuzaki muskullar, ko‘krak qafasining xususiy muskullari va nafas olishda qatnashuvchi muskullardan tashkil topadi.
-  </div>
-
-  <div class="section-title">1. Yuzaki ko‘krak muskullari</div>
-
-  <div class="anatomy-card">
-   <h3>1. Katta ko‘krak muskuli — Musculus pectoralis major</h3>
-   <p><b>Joylashuvi:</b> Ko‘krakning oldingi yuzasida joylashgan keng, yelpig‘ichsimon muskul.</p>
-   <p><b>Boshlanishi:</b> O‘mrov suyagining medial yarmi, to‘sh suyagi, yuqori oltita qovurg‘a tog‘aylari va tashqi qiyshiq qorin muskuli aponevrozi.</p>
-   <p><b>Birikishi:</b> Yelka suyagining katta do‘mboqchalararo egatining lateral labiga (Labium laterale sulci intertubercularis).</p>
-   <p><b>Vazifasi:</b> Qo‘lni tanaga yaqinlashtiradi, ichkariga buradi. O‘mrov qismi qo‘lni oldinga ko‘taradi, to‘sh-qovurg‘a qismi ko‘tarilgan qo‘lni pastga tushirishga yordam beradi.</p>
-   <p><b>Innervatsiyasi:</b> Medial va lateral ko‘krak nervlari (Nervi pectorales medialis et lateralis), C5–T1.</p>
-  </div>
-
-  <div class="anatomy-card">
-   <h3>2. Kichik ko‘krak muskuli — Musculus pectoralis minor</h3>
-   <p><b>Joylashuvi:</b> Katta ko‘krak muskulining ostida joylashadi.</p>
-   <p><b>Boshlanishi:</b> III–V qovurg‘alarning oldingi yuzalaridan.</p>
-   <p><b>Birikishi:</b> Kurak suyagining tumshuqsimon o‘simtasiga (Processus coracoideus).</p>
-   <p><b>Vazifasi:</b> Kurakni oldinga va pastga tortadi, uni ko‘krak qafasiga barqarorlashtiradi. Kurak mahkam turganda nafas olishga yordam beradi.</p>
-   <p><b>Innervatsiyasi:</b> Medial ko‘krak nervi (Nervus pectoralis medialis), C8–T1.</p>
-  </div>
-
-  <div class="anatomy-card">
-   <h3>3. O‘mrovosti muskuli — Musculus subclavius</h3>
-   <p><b>Joylashuvi:</b> O‘mrov suyagining ostida, birinchi qovurg‘a bilan o‘mrov orasida.</p>
-   <p><b>Boshlanishi:</b> Birinchi qovurg‘a va uning tog‘ayi birikkan joydan.</p>
-   <p><b>Birikishi:</b> O‘mrov suyagining pastki yuzasidagi o‘mrovosti egatiga (Sulcus musculi subclavii).</p>
-   <p><b>Vazifasi:</b> O‘mrov suyagini pastga tortadi va to‘sh-o‘mrov bo‘g‘imini barqarorlashtiradi.</p>
-   <p><b>Innervatsiyasi:</b> O‘mrovosti nervi (Nervus subclavius), C5–C6.</p>
-  </div>
-
-  <div class="anatomy-card">
-   <h3>4. Oldingi tishsimon muskul — Musculus serratus anterior</h3>
-   <p><b>Joylashuvi:</b> Ko‘krak qafasining yon tomonida joylashadi.</p>
-   <p><b>Boshlanishi:</b> Odatda I–IX qovurg‘alarning tashqi yuzalaridan.</p>
-   <p><b>Birikishi:</b> Kurak suyagining medial chetining oldingi yuzasiga.</p>
-   <p><b>Vazifasi:</b> Kurakni oldinga suradi, uni ko‘krak qafasiga yopishtirib turadi va qo‘lni bosh ustiga ko‘tarishda kurakning yuqoriga aylanishiga yordam beradi.</p>
-   <p><b>Innervatsiyasi:</b> Uzun ko‘krak nervi (Nervus thoracicus longus), C5–C7.</p>
-  </div>
-
-  <div class="section-title">2. Ko‘krak qafasining xususiy muskullari</div>
-
-  <div class="anatomy-card">
-   <h3>5. Tashqi qovurg‘alararo muskullar — Musculi intercostales externi</h3>
-   <p><b>Joylashuvi:</b> Qo‘shni qovurg‘alar orasining tashqi qatlamida.</p>
-   <p><b>Boshlanishi va birikishi:</b> Yuqoridagi qovurg‘aning pastki chetidan pastdagi qovurg‘aning yuqori chetiga tutashadi.</p>
-   <p><b>Vazifasi:</b> Qovurg‘alarni ko‘tarib, nafas olishga yordam beradi.</p>
-   <p><b>Innervatsiyasi:</b> Qovurg‘alararo nervlar (Nervi intercostales), T1–T11.</p>
-  </div>
-
-  <div class="anatomy-card">
-   <h3>6. Ichki qovurg‘alararo muskullar — Musculi intercostales interni</h3>
-   <p><b>Joylashuvi:</b> Tashqi qovurg‘alararo muskullarning ichkarisida joylashadi.</p>
-   <p><b>Boshlanishi va birikishi:</b> Qo‘shni qovurg‘alar orasida, tashqi qovurg‘alararo muskullarga nisbatan tolalari qarama-qarshi yo‘nalishda joylashadi.</p>
-   <p><b>Vazifasi:</b> Suyak qismlaridagi tolalari majburiy nafas chiqarishda qovurg‘alarni pastga tushiradi. Tog‘ay qismlaridagi tolalari qovurg‘alarni ko‘tarishga yordam beradi.</p>
-   <p><b>Innervatsiyasi:</b> Qovurg‘alararo nervlar, T1–T11.</p>
-  </div>
-
-  <div class="anatomy-card">
-   <h3>7. Eng ichki qovurg‘alararo muskullar — Musculi intercostales intimi</h3>
-   <p><b>Joylashuvi:</b> Qovurg‘alararo muskullarning eng chuqur qatlamida.</p>
-   <p><b>Vazifasi:</b> Ichki qovurg‘alararo muskullarga o‘xshash holda nafas chiqarish mexanizmida qatnashadi.</p>
-   <p><b>Innervatsiyasi:</b> Qovurg‘alararo nervlar, T1–T11.</p>
-  </div>
-
-  <div class="anatomy-card">
-   <h3>8. Ko‘krakning ko‘ndalang muskuli — Musculus transversus thoracis</h3>
-   <p><b>Joylashuvi:</b> To‘sh suyagining orqa yuzasida, ko‘krak qafasining ichki tomonida.</p>
-   <p><b>Boshlanishi:</b> To‘sh suyagining pastki qismi va xanjarsimon o‘simtadan.</p>
-   <p><b>Birikishi:</b> II–VI qovurg‘a tog‘aylarining ichki yuzalariga.</p>
-   <p><b>Vazifasi:</b> Qovurg‘a tog‘aylarini pastga tortishda va nafas chiqarishda yordam beradi.</p>
-   <p><b>Innervatsiyasi:</b> Qovurg‘alararo nervlar.</p>
-  </div>
-
-  <div class="anatomy-card">
-   <h3>9. Qovurg‘alarni ko‘taruvchi muskullar — Musculi levatores costarum</h3>
-   <p><b>Joylashuvi:</b> Ko‘krak umurtqalarining ko‘ndalang o‘simtalari bilan qovurg‘alar orasida.</p>
-   <p><b>Vazifasi:</b> Qovurg‘alarni ko‘tarib, nafas olishga yordam beradi.</p>
-   <p><b>Innervatsiyasi:</b> Ko‘krak orqa miya nervlari shoxlari.</p>
-  </div>
-
-  <div class="anatomy-card">
-   <h3>10. Qovurg‘a osti muskullari — Musculi subcostales</h3>
-   <p><b>Joylashuvi:</b> Ko‘krak qafasining ichki orqa yuzasida, pastki qovurg‘alar yaqinida.</p>
-   <p><b>Vazifasi:</b> Qovurg‘alarni pastga tortib, nafas chiqarishga yordam beradi.</p>
-   <p><b>Innervatsiyasi:</b> Qovurg‘alararo nervlar.</p>
-  </div>
-
-  <div class="section-title">3. Diafragma</div>
-
-  <div class="anatomy-card">
-   <h3>Diafragma — Diaphragma</h3>
-   <p><b>Joylashuvi:</b> Ko‘krak va qorin bo‘shliqlarini ajratib turuvchi gumbazsimon muskul-pay to‘sig‘i.</p>
-   <p><b>Boshlanishi:</b> To‘sh suyagining xanjarsimon o‘simtasi, pastki oltita qovurg‘a va tog‘aylari hamda bel umurtqalaridan.</p>
-   <p><b>Birikishi:</b> Markaziy payga (Centrum tendineum).</p>
-   <p><b>Vazifasi:</b> Asosiy nafas olish muskuli. Qisqarganda pastga tushib, ko‘krak bo‘shlig‘i hajmini oshiradi.</p>
-   <p><b>Innervatsiyasi:</b> Diafragma nervi (Nervus phrenicus), C3–C5.</p>
-  </div>
-
-  <div class="section-title">4. Ko‘krak muskullarining umumiy vazifalari</div>
-  <div class="note">
-   <b>1.</b> Yelka va qo‘l harakatlarini bajarishda qatnashadi.<br>
-   <b>2.</b> Kurakni barqaror holatda ushlab turadi.<br>
-   <b>3.</b> Qovurg‘alarni ko‘tarish va tushirish orqali nafas olish-chiqarishga yordam beradi.<br>
-   <b>4.</b> Ko‘krak qafasining barqarorligini ta’minlaydi.<br>
-   <b>5.</b> Ayrim muskullar qo‘l mahkam turganda yordamchi nafas muskullari sifatida ishlaydi.
-  </div>
-
-  <div class="section-title">Bilimingizni tekshiring</div>
-
-  <div class="anatomy-card">
-   <b>1. Katta ko‘krak muskulining lotincha nomi qaysi?</b>
-   <button class="quiz-option" onclick="answerQuiz('q1','A')">A) Musculus pectoralis major</button>
-   <button class="quiz-option" onclick="answerQuiz('q1','B')">B) Musculus subclavius</button>
-   <button class="quiz-option" onclick="answerQuiz('q1','C')">C) Musculus serratus anterior</button>
-   <div id="q1" class="quiz-answer"></div>
-  </div>
-
-  <div class="anatomy-card">
-   <b>2. Asosiy nafas olish muskuli qaysi?</b>
-   <button class="quiz-option" onclick="answerQuiz('q2','A')">A) Kichik ko‘krak muskuli</button>
-   <button class="quiz-option" onclick="answerQuiz('q2','B')">B) Diafragma</button>
-   <button class="quiz-option" onclick="answerQuiz('q2','C')">C) O‘mrovosti muskuli</button>
-   <div id="q2" class="quiz-answer"></div>
-  </div>
-
-  <div class="anatomy-card">
-   <b>3. Oldingi tishsimon muskulni qaysi nerv innervatsiya qiladi?</b>
-   <button class="quiz-option" onclick="answerQuiz('q3','A')">A) Nervus phrenicus</button>
-   <button class="quiz-option" onclick="answerQuiz('q3','B')">B) Nervus thoracicus longus</button>
-   <button class="quiz-option" onclick="answerQuiz('q3','C')">C) Nervus subclavius</button>
-   <div id="q3" class="quiz-answer"></div>
-  </div>
-
-  <button class="primary" onclick="closeAnatomy()">Bosh sahifaga qaytish</button>
- </div>
-</section>
-
-<!-- LOYIHA YARATUVCHISI -->
-<section class="card creator" id="creator">
- <div class="creator-icon">👨‍💻</div>
- <div class="creator-label">LOYIHA YARATUVCHISI</div>
- <h2>Shaxriyor Axmatov</h2>
- <p>JDPU HEALTH loyihasi muallifi</p>
- <div class="creator-links">
-  <a href="https://instagram.com/Akhmatuv23" target="_blank" rel="noopener noreferrer" class="social instagram">◎ Instagram</a>
-  <a href="https://t.me/Akhmatuv" target="_blank" rel="noopener noreferrer" class="social telegram">➤ Telegram</a>
- </div>
-</section>
-
-</main>
-
-<footer>JDPU HEALTH · Sog‘lom hayot sari</footer>
-
-<script>
-function val(id){
- return document.getElementById(id).value.trim();
-}
-function show(id){document.getElementById(id).classList.remove('hidden')}
-function hide(id){document.getElementById(id).classList.add('hidden')}
-
-function safe(s){
- return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-
-function goStep(n){
- if(n===2){
-  let age=Number(val('userAge'));
-  if(!val('userName')||!age||age<1||age>120||!val('userGender')){
-   alert("Ism, yosh va jinsni to‘g‘ri kiriting.");return;
-  }
- }
- if(n===3){
-  let h=Number(val('userHeight')),w=Number(val('userWeight'));
-  if(!h||h<50||h>250||!w||w<2||w>350){
-   alert("Bo‘y yoki vazn qiymatini tekshiring.");return;
-  }
-  document.getElementById('confirmation').innerHTML=
-   "<b>Ism:</b> "+safe(val('userName'))+
-   "<br><b>Yosh:</b> "+val('userAge')+
-   "<br><b>Jins:</b> "+val('userGender')+
-   "<br><b>Bo‘y:</b> "+val('userHeight')+" sm"+
-   "<br><b>Vazn:</b> "+val('userWeight')+" kg";
- }
- [1,2,3].forEach(i=>{
-  document.getElementById('step'+i).classList.toggle('hidden',i!==n);
-  document.getElementById('bar'+i).classList.toggle('active',i<=n);
- });
-}
-
-function calculate(){
- try{
-  const nm=val('userName');
-  const age=Number(val('userAge'));
-  const gender=val('userGender');
-  const height=Number(val('userHeight'));
-  const weight=Number(val('userWeight'));
-
-  if(!nm||!age||!gender||!height||!weight){
-   alert("Barcha ma’lumotlarni kiriting.");return;
-  }
-
-  const bmi=weight/((height/100)**2);
-  let status,explanation,tips=[];
-
-  if(age<18){
-   status="Maxsus baholash kerak";
-   explanation="18 yoshgacha BMI yosh va jinsga mos o‘sish jadvallari orqali baholanadi. Kattalar mezonlari qo‘llanilmaydi.";
-   tips=[
-    ["🩺","Mutaxassis maslahati","Natijani pediatr bilan baholang."],
-    ["🥗","Muvozanatli ovqatlanish","Turli foydali mahsulotlarni iste’mol qiling."],
-    ["🏃","Faol hayot","Yoshingizga mos jismoniy faollikni tanlang."]
-   ];
-  }else{
-   if(bmi<18.5){
-    status="Tana vazni past";
-    explanation="BMI kattalar uchun past vazn diapazonida.";
-   }else if(bmi<25){
-    status="Me’yoriy diapazon";
-    explanation="BMI kattalar uchun me’yoriy diapazonda.";
-   }else if(bmi<30){
-    status="Ortiqcha vazn diapazoni";
-    explanation="BMI kattalar uchun ortiqcha vazn diapazonida.";
-   }else{
-    status="Semizlik diapazoni";
-    explanation="BMI kattalar uchun semizlik diapazonida.";
-   }
-   tips=[
-    ["🥗","Muvozanatli ovqatlanish","Sabzavot, meva va turli oziq-ovqatlarni me’yorida iste’mol qiling."],
-    ["🚶","Jismoniy faollik","Imkoningizga mos kundalik harakatni odat qiling."],
-    ["😴","Sifatli uyqu","Muntazam uyqu tartibiga rioya qiling."],
-    ["💧","Suv ichish","Chanqoq va sharoitingizga qarab yetarli suyuqlik iching."]
-   ];
-  }
-
-  document.getElementById('greeting').textContent="Salom, "+nm+"!";
-  document.getElementById('bmiValue').textContent=bmi.toFixed(1);
-  document.getElementById('bmiStatus').textContent=status;
-  document.getElementById('bmiExplanation').textContent=explanation;
-  document.getElementById('outHeight').textContent=height+" sm";
-  document.getElementById('outWeight').textContent=weight+" kg";
-  document.getElementById('outAge').textContent=age+" yosh";
-  document.getElementById('outGender').textContent=gender;
-  document.getElementById('waterValue').textContent=(weight*0.03).toFixed(1)+" litr atrofida";
-  document.getElementById('reportDate').textContent="Hisobot sanasi: "+new Date().toLocaleDateString('uz-UZ');
-
-  document.getElementById('recommendations').innerHTML=tips.map(t=>
-   '<div class="tip"><div class="tip-icon">'+t[0]+'</div><div><b>'+
-   t[1]+'</b><p>'+t[2]+'</p></div></div>'
-  ).join('');
-
-  hide('form');
-  hide('homeAnatomy');
-  hide('historyPanel');
-  hide('anatomyPanel');
-  show('report');
-  window.scrollTo(0,0);
-
-  try{
-   let history=JSON.parse(localStorage.getItem('jdpuHistory')||'[]');
-   history.unshift({name:nm,bmi:bmi.toFixed(1),status:status,date:new Date().toLocaleDateString('uz-UZ')});
-   localStorage.setItem('jdpuHistory',JSON.stringify(history.slice(0,20)));
-  }catch(e){console.log(e)}
- }catch(error){
-  alert("Hisoblashda xatolik yuz berdi. Qayta urinib ko‘ring.");
-  console.error(error);
- }
-}
-
-function savePDF(){window.print()}
-
-function newCalculation(){
- hide('report');
- hide('historyPanel');
- show('form');
- show('homeAnatomy');
- ['userName','userAge','userHeight','userWeight'].forEach(id=>document.getElementById(id).value='');
- document.getElementById('userGender').value='';
- goStep(1);
- window.scrollTo(0,0);
-}
-
-function openHistory(){
- let list=JSON.parse(localStorage.getItem('jdpuHistory')||'[]');
- document.getElementById('historyContent').innerHTML=list.length?
- list.map(x=>'<div class="history"><b>'+safe(x.name)+'</b> · '+safe(x.date)+
- '<br>BMI: '+safe(x.bmi)+' · '+safe(x.status)+'</div>').join(''):
- '<p class="desc">Hozircha natijalar mavjud emas.</p>';
- show('historyPanel');
- window.scrollTo(0,0);
-}
-
-function closeHistory(){hide('historyPanel')}
-
-function deleteHistory(){
- if(confirm("Barcha oldingi natijalar o‘chirilsinmi?")){
-  localStorage.removeItem('jdpuHistory');
-  openHistory();
- }
-}
-
-function openAnatomy(){
- hide('form');
- hide('homeAnatomy');
- hide('report');
- hide('historyPanel');
- show('anatomyPanel');
- window.scrollTo(0,0);
-}
-
-function closeAnatomy(){
- hide('anatomyPanel');
- show('form');
- show('homeAnatomy');
- window.scrollTo(0,0);
-}
-
-function answerQuiz(id,choice){
- const answers={
-  q1:{correct:'A',text:'To‘g‘ri! Katta ko‘krak muskuli — Musculus pectoralis major.'},
-  q2:{correct:'B',text:'To‘g‘ri! Diafragma — asosiy nafas olish muskuli.'},
-  q3:{correct:'B',text:'To‘g‘ri! Oldingi tishsimon muskulni uzun ko‘krak nervi innervatsiya qiladi.'}
- };
- const a=answers[id];
- const el=document.getElementById(id);
- if(choice===a.correct){
-  el.textContent='✓ '+a.text;
-  el.style.color='#16834a';
- }else{
-  el.textContent='✗ Noto‘g‘ri. Qayta urinib ko‘ring.';
-  el.style.color='#c33b4b';
- }
-}
-</script>
+            setTimeout(() => {
+                cardBox.style.display = 'none';
+                // Ism chiqib keladi
+                displayText.style.display = 'block';
+                displayText.style.animation = 'fadeIn 2s ease-in-out';
+            }, 500);
+        }
+    </script>
 </body>
 </html>
