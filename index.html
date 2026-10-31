@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0756d9">
-<title>JDPU HEALTH | Salomatlik platformasi</title>
+<title>JDPU HEALTH</title>
 
 <style>
 *{box-sizing:border-box}
@@ -29,11 +29,11 @@ input,select{width:100%;padding:15px;border:1px solid #dce5f1;border-radius:13px
 input:focus,select:focus{border-color:var(--blue)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 button{width:100%;border:0;border-radius:14px;padding:15px;font-size:15px;font-weight:750;cursor:pointer}
-.primary{background:var(--blue);color:white;margin-top:22px}
+.primary{background:var(--blue);color:white;margin-top:18px}
 .secondary{background:#edf4ff;color:var(--blue);margin-top:10px}
 .back{background:transparent;color:var(--muted);margin-top:8px}
 .hidden{display:none!important}
-.note{background:#eef5ff;color:#456080;padding:14px;border-radius:14px;font-size:12px;line-height:1.6;margin-top:16px}
+.note{background:#eef5ff;color:#456080;padding:14px;border-radius:14px;font-size:12px;line-height:1.7;margin-top:16px}
 .result{background:linear-gradient(135deg,#0649bd,#1688f8);color:white;border-radius:20px;padding:23px}
 .result small{opacity:.8;font-size:11px}
 .number{font-size:52px;font-weight:850;margin:8px 0}
@@ -48,8 +48,14 @@ button{width:100%;border:0;border-radius:14px;padding:15px;font-size:15px;font-w
 .tip:last-child{border:0}
 .tip-icon{width:40px;height:40px;flex-shrink:0;border-radius:13px;background:#edf4ff;display:grid;place-items:center;font-size:19px}
 .tip b{font-size:13px}
-.tip p{font-size:12px;color:var(--muted);line-height:1.5;margin:4px 0 0}
+.tip p{font-size:12px;color:var(--muted);line-height:1.6;margin:4px 0 0}
 .history{background:#f4f7fc;padding:13px;border-radius:13px;margin-top:9px;font-size:13px;line-height:1.6}
+.anatomy-entry{border:1px solid #e2ecfa}
+.anatomy-icon{width:55px;height:55px;border-radius:17px;background:#edf4ff;display:grid;place-items:center;font-size:27px;margin-bottom:15px}
+.anatomy-card{padding:17px;background:#f7f9fd;border-radius:16px;margin-top:12px}
+.anatomy-card h3{font-size:15px;margin:0 0 10px;color:#0756d9;line-height:1.5}
+.anatomy-card p{font-size:12px;line-height:1.7;color:#526782;margin:7px 0}
+.anatomy-card b{color:#17375e}
 .creator{text-align:center;padding:25px 20px}
 .creator-icon{font-size:35px;margin-bottom:10px}
 .creator-label{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--blue)}
@@ -59,6 +65,9 @@ button{width:100%;border:0;border-radius:14px;padding:15px;font-size:15px;font-w
 .social{flex:1;text-decoration:none;padding:14px 8px;border-radius:13px;font-size:13px;font-weight:750}
 .instagram{background:#fff0f5;color:#d62976}
 .telegram{background:#eaf5ff;color:#1688d4}
+.quiz-option{display:block;width:100%;text-align:left;background:#f3f7fd;color:#284566;margin:8px 0;font-size:13px}
+.quiz-option:focus{outline:2px solid var(--blue)}
+.quiz-answer{font-size:13px;line-height:1.6;margin-top:10px}
 footer{text-align:center;color:#93a0b4;font-size:11px;padding:15px}
 @media print{
  body{background:white}
@@ -66,7 +75,7 @@ footer{text-align:center;color:#93a0b4;font-size:11px;padding:15px}
  main{margin:0;padding:0;max-width:100%}
  .card{box-shadow:none;padding:0}
  #report{display:block!important}
- #form,#historyPanel{display:none!important}
+ #form,#historyPanel,#homeAnatomy,#anatomyPanel{display:none!important}
  .result{print-color-adjust:exact;-webkit-print-color-adjust:exact}
  .metric,.tip-icon{print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
@@ -80,10 +89,21 @@ footer{text-align:center;color:#93a0b4;font-size:11px;padding:15px}
   <div>JDPU HEALTH</div>
  </div>
  <h1>Salomatligingiz —<br>eng katta boyligingiz.</h1>
- <p>Shaxsiy ko‘rsatkichlaringizni hisoblang, natijalarni tahlil qiling va sog‘lom hayot uchun foydali tavsiyalar oling.</p>
+ <p>Salomatligingizni o‘rganing, tana ko‘rsatkichlaringizni hisoblang va tibbiy bilimlaringizni oshiring.</p>
 </header>
 
 <main>
+
+<!-- ANATOMIYA KIRISH -->
+<section class="card anatomy-entry" id="homeAnatomy">
+ <div class="anatomy-icon">🫀</div>
+ <div class="eyebrow">TIBBIY BILIMLAR</div>
+ <h2>ANATOMIYA</h2>
+ <p class="desc">Inson tanasi tuzilishini o‘rganing. Ko‘krak muskullari haqida lotincha nomlari va anatomik xususiyatlari bilan tanishing.</p>
+ <button class="primary" onclick="openAnatomy()">Anatomiyani o‘rganish →</button>
+</section>
+
+<!-- SALOMATLIK HISOBLAGICHI -->
 <section class="card" id="form">
  <div class="progress">
   <span id="bar1" class="active"></span>
@@ -131,6 +151,7 @@ footer{text-align:center;color:#93a0b4;font-size:11px;padding:15px}
  </div>
 </section>
 
+<!-- NATIJA PANELI -->
 <section id="report" class="hidden">
  <div class="card">
   <div class="result">
@@ -171,12 +192,162 @@ footer{text-align:center;color:#93a0b4;font-size:11px;padding:15px}
  </div>
 </section>
 
+<!-- TARIX -->
 <section class="card hidden" id="historyPanel">
  <h2>Oldingi natijalar</h2>
  <p class="desc">Ushbu qurilmada saqlangan natijalar.</p>
  <div id="historyContent"></div>
  <button class="secondary" onclick="deleteHistory()">Tarixni tozalash</button>
  <button class="back" onclick="closeHistory()">← Hisobotga qaytish</button>
+</section>
+
+<!-- ANATOMIYA DARSLIGI -->
+<section id="anatomyPanel" class="hidden">
+ <div class="card">
+  <button class="back" onclick="closeAnatomy()">← Bosh sahifaga qaytish</button>
+  <div class="eyebrow">ANATOMIYA · MUSKULLAR TIZIMI</div>
+  <h2>Ko‘krak muskullari</h2>
+  <p class="desc">Musculi thoracis — ko‘krak sohasi muskullari va ularning anatomik xususiyatlari.</p>
+
+  <div class="note">
+   <b>Umumiy ma’lumot</b><br>
+   Ko‘krak muskullari ko‘krak qafasi, yelka kamari va yuqori qo‘l harakatlarida qatnashadi. Ular oldingi yuzaki muskullar, ko‘krak qafasining xususiy muskullari va nafas olishda qatnashuvchi muskullardan tashkil topadi.
+  </div>
+
+  <div class="section-title">1. Yuzaki ko‘krak muskullari</div>
+
+  <div class="anatomy-card">
+   <h3>1. Katta ko‘krak muskuli — Musculus pectoralis major</h3>
+   <p><b>Joylashuvi:</b> Ko‘krakning oldingi yuzasida joylashgan keng, yelpig‘ichsimon muskul.</p>
+   <p><b>Boshlanishi:</b> O‘mrov suyagining medial yarmi, to‘sh suyagi, yuqori oltita qovurg‘a tog‘aylari va tashqi qiyshiq qorin muskuli aponevrozi.</p>
+   <p><b>Birikishi:</b> Yelka suyagining katta do‘mboqchalararo egatining lateral labiga (Labium laterale sulci intertubercularis).</p>
+   <p><b>Vazifasi:</b> Qo‘lni tanaga yaqinlashtiradi, ichkariga buradi. O‘mrov qismi qo‘lni oldinga ko‘taradi, to‘sh-qovurg‘a qismi ko‘tarilgan qo‘lni pastga tushirishga yordam beradi.</p>
+   <p><b>Innervatsiyasi:</b> Medial va lateral ko‘krak nervlari (Nervi pectorales medialis et lateralis), C5–T1.</p>
+  </div>
+
+  <div class="anatomy-card">
+   <h3>2. Kichik ko‘krak muskuli — Musculus pectoralis minor</h3>
+   <p><b>Joylashuvi:</b> Katta ko‘krak muskulining ostida joylashadi.</p>
+   <p><b>Boshlanishi:</b> III–V qovurg‘alarning oldingi yuzalaridan.</p>
+   <p><b>Birikishi:</b> Kurak suyagining tumshuqsimon o‘simtasiga (Processus coracoideus).</p>
+   <p><b>Vazifasi:</b> Kurakni oldinga va pastga tortadi, uni ko‘krak qafasiga barqarorlashtiradi. Kurak mahkam turganda nafas olishga yordam beradi.</p>
+   <p><b>Innervatsiyasi:</b> Medial ko‘krak nervi (Nervus pectoralis medialis), C8–T1.</p>
+  </div>
+
+  <div class="anatomy-card">
+   <h3>3. O‘mrovosti muskuli — Musculus subclavius</h3>
+   <p><b>Joylashuvi:</b> O‘mrov suyagining ostida, birinchi qovurg‘a bilan o‘mrov orasida.</p>
+   <p><b>Boshlanishi:</b> Birinchi qovurg‘a va uning tog‘ayi birikkan joydan.</p>
+   <p><b>Birikishi:</b> O‘mrov suyagining pastki yuzasidagi o‘mrovosti egatiga (Sulcus musculi subclavii).</p>
+   <p><b>Vazifasi:</b> O‘mrov suyagini pastga tortadi va to‘sh-o‘mrov bo‘g‘imini barqarorlashtiradi.</p>
+   <p><b>Innervatsiyasi:</b> O‘mrovosti nervi (Nervus subclavius), C5–C6.</p>
+  </div>
+
+  <div class="anatomy-card">
+   <h3>4. Oldingi tishsimon muskul — Musculus serratus anterior</h3>
+   <p><b>Joylashuvi:</b> Ko‘krak qafasining yon tomonida joylashadi.</p>
+   <p><b>Boshlanishi:</b> Odatda I–IX qovurg‘alarning tashqi yuzalaridan.</p>
+   <p><b>Birikishi:</b> Kurak suyagining medial chetining oldingi yuzasiga.</p>
+   <p><b>Vazifasi:</b> Kurakni oldinga suradi, uni ko‘krak qafasiga yopishtirib turadi va qo‘lni bosh ustiga ko‘tarishda kurakning yuqoriga aylanishiga yordam beradi.</p>
+   <p><b>Innervatsiyasi:</b> Uzun ko‘krak nervi (Nervus thoracicus longus), C5–C7.</p>
+  </div>
+
+  <div class="section-title">2. Ko‘krak qafasining xususiy muskullari</div>
+
+  <div class="anatomy-card">
+   <h3>5. Tashqi qovurg‘alararo muskullar — Musculi intercostales externi</h3>
+   <p><b>Joylashuvi:</b> Qo‘shni qovurg‘alar orasining tashqi qatlamida.</p>
+   <p><b>Boshlanishi va birikishi:</b> Yuqoridagi qovurg‘aning pastki chetidan pastdagi qovurg‘aning yuqori chetiga tutashadi.</p>
+   <p><b>Vazifasi:</b> Qovurg‘alarni ko‘tarib, nafas olishga yordam beradi.</p>
+   <p><b>Innervatsiyasi:</b> Qovurg‘alararo nervlar (Nervi intercostales), T1–T11.</p>
+  </div>
+
+  <div class="anatomy-card">
+   <h3>6. Ichki qovurg‘alararo muskullar — Musculi intercostales interni</h3>
+   <p><b>Joylashuvi:</b> Tashqi qovurg‘alararo muskullarning ichkarisida joylashadi.</p>
+   <p><b>Boshlanishi va birikishi:</b> Qo‘shni qovurg‘alar orasida, tashqi qovurg‘alararo muskullarga nisbatan tolalari qarama-qarshi yo‘nalishda joylashadi.</p>
+   <p><b>Vazifasi:</b> Suyak qismlaridagi tolalari majburiy nafas chiqarishda qovurg‘alarni pastga tushiradi. Tog‘ay qismlaridagi tolalari qovurg‘alarni ko‘tarishga yordam beradi.</p>
+   <p><b>Innervatsiyasi:</b> Qovurg‘alararo nervlar, T1–T11.</p>
+  </div>
+
+  <div class="anatomy-card">
+   <h3>7. Eng ichki qovurg‘alararo muskullar — Musculi intercostales intimi</h3>
+   <p><b>Joylashuvi:</b> Qovurg‘alararo muskullarning eng chuqur qatlamida.</p>
+   <p><b>Vazifasi:</b> Ichki qovurg‘alararo muskullarga o‘xshash holda nafas chiqarish mexanizmida qatnashadi.</p>
+   <p><b>Innervatsiyasi:</b> Qovurg‘alararo nervlar, T1–T11.</p>
+  </div>
+
+  <div class="anatomy-card">
+   <h3>8. Ko‘krakning ko‘ndalang muskuli — Musculus transversus thoracis</h3>
+   <p><b>Joylashuvi:</b> To‘sh suyagining orqa yuzasida, ko‘krak qafasining ichki tomonida.</p>
+   <p><b>Boshlanishi:</b> To‘sh suyagining pastki qismi va xanjarsimon o‘simtadan.</p>
+   <p><b>Birikishi:</b> II–VI qovurg‘a tog‘aylarining ichki yuzalariga.</p>
+   <p><b>Vazifasi:</b> Qovurg‘a tog‘aylarini pastga tortishda va nafas chiqarishda yordam beradi.</p>
+   <p><b>Innervatsiyasi:</b> Qovurg‘alararo nervlar.</p>
+  </div>
+
+  <div class="anatomy-card">
+   <h3>9. Qovurg‘alarni ko‘taruvchi muskullar — Musculi levatores costarum</h3>
+   <p><b>Joylashuvi:</b> Ko‘krak umurtqalarining ko‘ndalang o‘simtalari bilan qovurg‘alar orasida.</p>
+   <p><b>Vazifasi:</b> Qovurg‘alarni ko‘tarib, nafas olishga yordam beradi.</p>
+   <p><b>Innervatsiyasi:</b> Ko‘krak orqa miya nervlari shoxlari.</p>
+  </div>
+
+  <div class="anatomy-card">
+   <h3>10. Qovurg‘a osti muskullari — Musculi subcostales</h3>
+   <p><b>Joylashuvi:</b> Ko‘krak qafasining ichki orqa yuzasida, pastki qovurg‘alar yaqinida.</p>
+   <p><b>Vazifasi:</b> Qovurg‘alarni pastga tortib, nafas chiqarishga yordam beradi.</p>
+   <p><b>Innervatsiyasi:</b> Qovurg‘alararo nervlar.</p>
+  </div>
+
+  <div class="section-title">3. Diafragma</div>
+
+  <div class="anatomy-card">
+   <h3>Diafragma — Diaphragma</h3>
+   <p><b>Joylashuvi:</b> Ko‘krak va qorin bo‘shliqlarini ajratib turuvchi gumbazsimon muskul-pay to‘sig‘i.</p>
+   <p><b>Boshlanishi:</b> To‘sh suyagining xanjarsimon o‘simtasi, pastki oltita qovurg‘a va tog‘aylari hamda bel umurtqalaridan.</p>
+   <p><b>Birikishi:</b> Markaziy payga (Centrum tendineum).</p>
+   <p><b>Vazifasi:</b> Asosiy nafas olish muskuli. Qisqarganda pastga tushib, ko‘krak bo‘shlig‘i hajmini oshiradi.</p>
+   <p><b>Innervatsiyasi:</b> Diafragma nervi (Nervus phrenicus), C3–C5.</p>
+  </div>
+
+  <div class="section-title">4. Ko‘krak muskullarining umumiy vazifalari</div>
+  <div class="note">
+   <b>1.</b> Yelka va qo‘l harakatlarini bajarishda qatnashadi.<br>
+   <b>2.</b> Kurakni barqaror holatda ushlab turadi.<br>
+   <b>3.</b> Qovurg‘alarni ko‘tarish va tushirish orqali nafas olish-chiqarishga yordam beradi.<br>
+   <b>4.</b> Ko‘krak qafasining barqarorligini ta’minlaydi.<br>
+   <b>5.</b> Ayrim muskullar qo‘l mahkam turganda yordamchi nafas muskullari sifatida ishlaydi.
+  </div>
+
+  <div class="section-title">Bilimingizni tekshiring</div>
+
+  <div class="anatomy-card">
+   <b>1. Katta ko‘krak muskulining lotincha nomi qaysi?</b>
+   <button class="quiz-option" onclick="answerQuiz('q1','A')">A) Musculus pectoralis major</button>
+   <button class="quiz-option" onclick="answerQuiz('q1','B')">B) Musculus subclavius</button>
+   <button class="quiz-option" onclick="answerQuiz('q1','C')">C) Musculus serratus anterior</button>
+   <div id="q1" class="quiz-answer"></div>
+  </div>
+
+  <div class="anatomy-card">
+   <b>2. Asosiy nafas olish muskuli qaysi?</b>
+   <button class="quiz-option" onclick="answerQuiz('q2','A')">A) Kichik ko‘krak muskuli</button>
+   <button class="quiz-option" onclick="answerQuiz('q2','B')">B) Diafragma</button>
+   <button class="quiz-option" onclick="answerQuiz('q2','C')">C) O‘mrovosti muskuli</button>
+   <div id="q2" class="quiz-answer"></div>
+  </div>
+
+  <div class="anatomy-card">
+   <b>3. Oldingi tishsimon muskulni qaysi nerv innervatsiya qiladi?</b>
+   <button class="quiz-option" onclick="answerQuiz('q3','A')">A) Nervus phrenicus</button>
+   <button class="quiz-option" onclick="answerQuiz('q3','B')">B) Nervus thoracicus longus</button>
+   <button class="quiz-option" onclick="answerQuiz('q3','C')">C) Nervus subclavius</button>
+   <div id="q3" class="quiz-answer"></div>
+  </div>
+
+  <button class="primary" onclick="closeAnatomy()">Bosh sahifaga qaytish</button>
+ </div>
 </section>
 
 <!-- LOYIHA YARATUVCHISI -->
@@ -186,14 +357,11 @@ footer{text-align:center;color:#93a0b4;font-size:11px;padding:15px}
  <h2>Shaxriyor Axmatov</h2>
  <p>JDPU HEALTH loyihasi muallifi</p>
  <div class="creator-links">
-  <a href="https://instagram.com/Akhmatuv23"
-     target="_blank" rel="noopener noreferrer"
-     class="social instagram">◎ Instagram</a>
-  <a href="https://t.me/Akhmatuv"
-     target="_blank" rel="noopener noreferrer"
-     class="social telegram">➤ Telegram</a>
+  <a href="https://instagram.com/Akhmatuv23" target="_blank" rel="noopener noreferrer" class="social instagram">◎ Instagram</a>
+  <a href="https://t.me/Akhmatuv" target="_blank" rel="noopener noreferrer" class="social telegram">➤ Telegram</a>
  </div>
 </section>
+
 </main>
 
 <footer>JDPU HEALTH · Sog‘lom hayot sari</footer>
@@ -296,7 +464,9 @@ function calculate(){
   ).join('');
 
   hide('form');
+  hide('homeAnatomy');
   hide('historyPanel');
+  hide('anatomyPanel');
   show('report');
   window.scrollTo(0,0);
 
@@ -317,6 +487,7 @@ function newCalculation(){
  hide('report');
  hide('historyPanel');
  show('form');
+ show('homeAnatomy');
  ['userName','userAge','userHeight','userWeight'].forEach(id=>document.getElementById(id).value='');
  document.getElementById('userGender').value='';
  goStep(1);
@@ -339,6 +510,39 @@ function deleteHistory(){
  if(confirm("Barcha oldingi natijalar o‘chirilsinmi?")){
   localStorage.removeItem('jdpuHistory');
   openHistory();
+ }
+}
+
+function openAnatomy(){
+ hide('form');
+ hide('homeAnatomy');
+ hide('report');
+ hide('historyPanel');
+ show('anatomyPanel');
+ window.scrollTo(0,0);
+}
+
+function closeAnatomy(){
+ hide('anatomyPanel');
+ show('form');
+ show('homeAnatomy');
+ window.scrollTo(0,0);
+}
+
+function answerQuiz(id,choice){
+ const answers={
+  q1:{correct:'A',text:'To‘g‘ri! Katta ko‘krak muskuli — Musculus pectoralis major.'},
+  q2:{correct:'B',text:'To‘g‘ri! Diafragma — asosiy nafas olish muskuli.'},
+  q3:{correct:'B',text:'To‘g‘ri! Oldingi tishsimon muskulni uzun ko‘krak nervi innervatsiya qiladi.'}
+ };
+ const a=answers[id];
+ const el=document.getElementById(id);
+ if(choice===a.correct){
+  el.textContent='✓ '+a.text;
+  el.style.color='#16834a';
+ }else{
+  el.textContent='✗ Noto‘g‘ri. Qayta urinib ko‘ring.';
+  el.style.color='#c33b4b';
  }
 }
 </script>
