@@ -5,10 +5,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0756d9">
-<title>JDPU HEALTH</title>
+<title>JDPU HEALTH | Salomatlik platformasi</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#f2f6fc;color:#142b4d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+:root{--blue:#0756d9;--dark:#142b4d;--muted:#7889a2}
+body{margin:0;background:#f2f6fc;color:var(--dark);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 header{padding:25px 20px 45px;background:linear-gradient(135deg,#063eaa,#1688f8);color:white;border-radius:0 0 30px 30px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:19px}
 .logo{width:44px;height:44px;border-radius:14px;background:#ffffff25;display:grid;place-items:center;font-size:25px}
@@ -18,18 +20,18 @@ main{max-width:560px;margin:-20px auto 30px;padding:0 14px}
 .card{background:white;border-radius:23px;padding:22px;margin-bottom:15px;box-shadow:0 8px 30px #173b7010}
 .progress{display:flex;gap:7px;margin-bottom:23px}
 .progress span{height:5px;flex:1;background:#e5edf8;border-radius:10px}
-.progress span.active{background:#0861df}
-.eyebrow{font-size:11px;letter-spacing:1.3px;font-weight:800;color:#0861df}
+.progress span.active{background:var(--blue)}
+.eyebrow{font-size:11px;letter-spacing:1.3px;font-weight:800;color:var(--blue)}
 h2{font-size:22px;margin:10px 0 7px}
-.desc{font-size:13px;color:#7889a2;line-height:1.6;margin:0 0 20px}
+.desc{font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 20px}
 label{display:block;font-size:13px;font-weight:700;margin:15px 0 7px}
-input,select{width:100%;padding:15px;border:1px solid #dce5f1;border-radius:13px;background:#fbfdff;font-size:16px;color:#142b4d;outline:none}
-input:focus,select:focus{border-color:#0861df}
+input,select{width:100%;padding:15px;border:1px solid #dce5f1;border-radius:13px;background:#fbfdff;font-size:16px;color:var(--dark);outline:none}
+input:focus,select:focus{border-color:var(--blue)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 button{width:100%;border:0;border-radius:14px;padding:15px;font-size:15px;font-weight:750;cursor:pointer}
-.primary{background:#0861df;color:white;margin-top:22px}
-.secondary{background:#edf4ff;color:#0861df;margin-top:10px}
-.back{background:transparent;color:#71819b;margin-top:8px}
+.primary{background:var(--blue);color:white;margin-top:22px}
+.secondary{background:#edf4ff;color:var(--blue);margin-top:10px}
+.back{background:transparent;color:var(--muted);margin-top:8px}
 .hidden{display:none!important}
 .note{background:#eef5ff;color:#456080;padding:14px;border-radius:14px;font-size:12px;line-height:1.6;margin-top:16px}
 .result{background:linear-gradient(135deg,#0649bd,#1688f8);color:white;border-radius:20px;padding:23px}
@@ -39,37 +41,46 @@ button{width:100%;border:0;border-radius:14px;padding:15px;font-size:15px;font-w
 .result p{font-size:13px;line-height:1.6}
 .metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
 .metric{background:#f4f7fc;padding:15px;border-radius:15px}
-.metric small{font-size:11px;color:#7889a2}
+.metric small{font-size:11px;color:var(--muted)}
 .metric strong{display:block;font-size:20px;margin-top:6px}
 .section-title{font-weight:800;font-size:16px;margin:23px 0 12px}
 .tip{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #edf1f7}
 .tip:last-child{border:0}
 .tip-icon{width:40px;height:40px;flex-shrink:0;border-radius:13px;background:#edf4ff;display:grid;place-items:center;font-size:19px}
 .tip b{font-size:13px}
-.tip p{font-size:12px;color:#7889a2;line-height:1.5;margin:4px 0 0}
+.tip p{font-size:12px;color:var(--muted);line-height:1.5;margin:4px 0 0}
 .history{background:#f4f7fc;padding:13px;border-radius:13px;margin-top:9px;font-size:13px;line-height:1.6}
+.creator{text-align:center;padding:25px 20px}
+.creator-icon{font-size:35px;margin-bottom:10px}
+.creator-label{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--blue)}
+.creator h2{margin:8px 0;font-size:21px}
+.creator p{font-size:12px;color:var(--muted)}
+.creator-links{display:flex;gap:10px;margin-top:20px}
+.social{flex:1;text-decoration:none;padding:14px 8px;border-radius:13px;font-size:13px;font-weight:750}
+.instagram{background:#fff0f5;color:#d62976}
+.telegram{background:#eaf5ff;color:#1688d4}
 footer{text-align:center;color:#93a0b4;font-size:11px;padding:15px}
 @media print{
  body{background:white}
- header,.no-print,footer{display:none!important}
+ header,.no-print,footer,#creator{display:none!important}
  main{margin:0;padding:0;max-width:100%}
  .card{box-shadow:none;padding:0}
  #report{display:block!important}
- #form{display:none!important}
+ #form,#historyPanel{display:none!important}
  .result{print-color-adjust:exact;-webkit-print-color-adjust:exact}
  .metric,.tip-icon{print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
 </style>
 </head>
-<body>
 
+<body>
 <header>
  <div class="brand">
   <div class="logo">✚</div>
   <div>JDPU HEALTH</div>
  </div>
  <h1>Salomatligingiz —<br>eng katta boyligingiz.</h1>
- <p>Shaxsiy ko‘rsatkichlaringizni hisoblang, natijalarni tahlil qiling va sog‘lom hayot uchun tavsiyalar oling.</p>
+ <p>Shaxsiy ko‘rsatkichlaringizni hisoblang, natijalarni tahlil qiling va sog‘lom hayot uchun foydali tavsiyalar oling.</p>
 </header>
 
 <main>
@@ -100,12 +111,12 @@ footer{text-align:center;color:#93a0b4;font-size:11px;padding:15px}
  <div id="step2" class="hidden">
   <div class="eyebrow">2-BOSQICH · TANA KO‘RSATKICHLARI</div>
   <h2>Bo‘y va vazn</h2>
-  <p class="desc">O‘lchovlaringizni kiriting. Natija shu ma’lumotlar asosida hisoblanadi.</p>
+  <p class="desc">O‘lchovlaringizni imkon qadar aniq kiriting.</p>
   <div class="grid">
    <div><label>Bo‘y (sm)</label><input id="userHeight" type="number" placeholder="175"></div>
    <div><label>Vazn (kg)</label><input id="userWeight" type="number" placeholder="70"></div>
   </div>
-  <div class="note">💡 Ma’lumotlarni imkon qadar aniq kiriting.</div>
+  <div class="note">💡 Bo‘y va vaznni to‘g‘ri kiritish hisob-kitob aniqligi uchun muhim.</div>
   <button class="primary" onclick="goStep(3)">Davom etish →</button>
   <button class="back" onclick="goStep(1)">← Ortga</button>
  </div>
@@ -148,7 +159,7 @@ footer{text-align:center;color:#93a0b4;font-size:11px;padding:15px}
   </div>
 
   <div class="note">
-   <b>Eslatma:</b> BMI tashxis emas, dastlabki baholash vositasidir. 18 yoshgacha bo‘lganlar uchun natija yosh va jinsga mos o‘sish jadvallari orqali baholanadi. Sog‘liq bo‘yicha qaror uchun tibbiyot mutaxassisiga murojaat qiling.
+   <b>Muhim:</b> BMI tashxis emas, dastlabki baholash vositasidir. 18 yoshgacha bo‘lganlar uchun natija yosh va jinsga mos o‘sish jadvallari orqali baholanadi. Sog‘liq bo‘yicha qaror uchun tibbiyot mutaxassisiga murojaat qiling.
   </div>
   <p id="reportDate" style="font-size:11px;color:#93a0b4;margin-top:18px"></p>
  </div>
@@ -167,62 +178,75 @@ footer{text-align:center;color:#93a0b4;font-size:11px;padding:15px}
  <button class="secondary" onclick="deleteHistory()">Tarixni tozalash</button>
  <button class="back" onclick="closeHistory()">← Hisobotga qaytish</button>
 </section>
+
+<!-- LOYIHA YARATUVCHISI -->
+<section class="card creator" id="creator">
+ <div class="creator-icon">👨‍💻</div>
+ <div class="creator-label">LOYIHA YARATUVCHISI</div>
+ <h2>Shaxriyor Axmatov</h2>
+ <p>JDPU HEALTH loyihasi muallifi</p>
+ <div class="creator-links">
+  <a href="https://instagram.com/Akhmatuv23"
+     target="_blank" rel="noopener noreferrer"
+     class="social instagram">◎ Instagram</a>
+  <a href="https://t.me/Akhmatuv"
+     target="_blank" rel="noopener noreferrer"
+     class="social telegram">➤ Telegram</a>
+ </div>
+</section>
 </main>
 
 <footer>JDPU HEALTH · Sog‘lom hayot sari</footer>
 
 <script>
-function value(id){
+function val(id){
  return document.getElementById(id).value.trim();
 }
-function show(id){
- document.getElementById(id).classList.remove('hidden');
+function show(id){document.getElementById(id).classList.remove('hidden')}
+function hide(id){document.getElementById(id).classList.add('hidden')}
+
+function safe(s){
+ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
-function hide(id){
- document.getElementById(id).classList.add('hidden');
-}
+
 function goStep(n){
  if(n===2){
-  let age=Number(value('userAge'));
-  if(!value('userName') || !age || age<1 || age>120 || !value('userGender')){
-   alert("Ism, yosh va jinsni to‘g‘ri kiriting.");
-   return;
+  let age=Number(val('userAge'));
+  if(!val('userName')||!age||age<1||age>120||!val('userGender')){
+   alert("Ism, yosh va jinsni to‘g‘ri kiriting.");return;
   }
  }
  if(n===3){
-  let h=Number(value('userHeight'));
-  let w=Number(value('userWeight'));
-  if(!h || h<50 || h>250 || !w || w<2 || w>350){
-   alert("Bo‘y yoki vazn qiymatini tekshiring.");
-   return;
+  let h=Number(val('userHeight')),w=Number(val('userWeight'));
+  if(!h||h<50||h>250||!w||w<2||w>350){
+   alert("Bo‘y yoki vazn qiymatini tekshiring.");return;
   }
   document.getElementById('confirmation').innerHTML=
-   "<b>Ism:</b> "+escapeText(value('userName'))+
-   "<br><b>Yosh:</b> "+value('userAge')+
-   "<br><b>Jins:</b> "+value('userGender')+
-   "<br><b>Bo‘y:</b> "+value('userHeight')+" sm"+
-   "<br><b>Vazn:</b> "+value('userWeight')+" kg";
+   "<b>Ism:</b> "+safe(val('userName'))+
+   "<br><b>Yosh:</b> "+val('userAge')+
+   "<br><b>Jins:</b> "+val('userGender')+
+   "<br><b>Bo‘y:</b> "+val('userHeight')+" sm"+
+   "<br><b>Vazn:</b> "+val('userWeight')+" kg";
  }
  [1,2,3].forEach(i=>{
   document.getElementById('step'+i).classList.toggle('hidden',i!==n);
   document.getElementById('bar'+i).classList.toggle('active',i<=n);
  });
 }
-function escapeText(s){
- return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
+
 function calculate(){
  try{
-  const nm=value('userName');
-  const age=Number(value('userAge'));
-  const gender=value('userGender');
-  const height=Number(value('userHeight'));
-  const weight=Number(value('userWeight'));
+  const nm=val('userName');
+  const age=Number(val('userAge'));
+  const gender=val('userGender');
+  const height=Number(val('userHeight'));
+  const weight=Number(val('userWeight'));
+
   if(!nm||!age||!gender||!height||!weight){
-   alert("Barcha ma’lumotlarni kiriting.");
-   return;
+   alert("Barcha ma’lumotlarni kiriting.");return;
   }
-  const bmi=weight/((height/100)*(height/100));
+
+  const bmi=weight/((height/100)**2);
   let status,explanation,tips=[];
 
   if(age<18){
@@ -280,15 +304,15 @@ function calculate(){
    let history=JSON.parse(localStorage.getItem('jdpuHistory')||'[]');
    history.unshift({name:nm,bmi:bmi.toFixed(1),status:status,date:new Date().toLocaleDateString('uz-UZ')});
    localStorage.setItem('jdpuHistory',JSON.stringify(history.slice(0,20)));
-  }catch(e){}
+  }catch(e){console.log(e)}
  }catch(error){
-  alert("Hisoblashda xatolik yuz berdi. Ma’lumotlarni tekshirib qayta urinib ko‘ring.");
+  alert("Hisoblashda xatolik yuz berdi. Qayta urinib ko‘ring.");
   console.error(error);
  }
 }
-function savePDF(){
- window.print();
-}
+
+function savePDF(){window.print()}
+
 function newCalculation(){
  hide('report');
  hide('historyPanel');
@@ -298,16 +322,19 @@ function newCalculation(){
  goStep(1);
  window.scrollTo(0,0);
 }
+
 function openHistory(){
  let list=JSON.parse(localStorage.getItem('jdpuHistory')||'[]');
  document.getElementById('historyContent').innerHTML=list.length?
- list.map(x=>'<div class="history"><b>'+escapeText(x.name)+'</b> · '+x.date+
- '<br>BMI: '+x.bmi+' · '+escapeText(x.status)+'</div>').join(''):
+ list.map(x=>'<div class="history"><b>'+safe(x.name)+'</b> · '+safe(x.date)+
+ '<br>BMI: '+safe(x.bmi)+' · '+safe(x.status)+'</div>').join(''):
  '<p class="desc">Hozircha natijalar mavjud emas.</p>';
  show('historyPanel');
  window.scrollTo(0,0);
 }
+
 function closeHistory(){hide('historyPanel')}
+
 function deleteHistory(){
  if(confirm("Barcha oldingi natijalar o‘chirilsinmi?")){
   localStorage.removeItem('jdpuHistory');
