@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0756d9">
 <title>JDPU HEALTH</title>
+
 <style>
 :root{
  --blue:#0861df;--blue2:#1688f8;--dark:#142b4d;
@@ -52,6 +53,7 @@ h3{font-size:15px;margin:0 0 9px}
 .menu-icon{font-size:25px;margin-bottom:10px}
 .menu-item b{display:block;font-size:13px}
 .menu-item small{display:block;color:var(--muted);font-size:11px;margin-top:5px;line-height:1.4}
+
 input,select{
  width:100%;padding:14px;border:1px solid #dce5f1;
  border-radius:12px;background:#fbfdff;color:var(--dark);
@@ -65,7 +67,31 @@ button{
 }
 .primary{background:var(--blue);color:white;width:100%;margin-top:17px}
 .secondary{background:#edf4ff;color:var(--blue);width:100%;margin-top:10px}
-.ghost{background:transparent;color:var(--muted);padding:10px 0}
+
+/* ORQAGA TUGMASI */
+.back-btn{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:9px;
+ padding:11px 18px;
+ margin-bottom:20px;
+ border:1px solid #d8e7fb;
+ border-radius:12px;
+ background:linear-gradient(135deg,#edf5ff,#ffffff);
+ color:#0861df;
+ font-size:13px;
+ font-weight:800;
+ cursor:pointer;
+ box-shadow:0 4px 12px #0861df12;
+ transition:all .2s ease;
+}
+.back-btn:hover{
+ background:#e2efff;
+ transform:translateX(-3px);
+ box-shadow:0 6px 15px #0861df20;
+}
+.back-btn:active{transform:scale(.97)}
 .hidden{display:none!important}
 .row{display:flex;gap:10px;align-items:center}
 .row>*{flex:1;min-width:0}
@@ -114,6 +140,7 @@ button{
 .instagram{background:#fff0f5;color:#d62976}
 .telegram{background:#eaf5ff;color:#1688d4}
 footer{text-align:center;color:#94a2b6;font-size:11px;padding:15px}
+
 @media(max-width:360px){
  .menu-grid{grid-template-columns:1fr}
  .grid2{grid-template-columns:1fr 1fr}
@@ -128,6 +155,7 @@ footer{text-align:center;color:#94a2b6;font-size:11px;padding:15px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -192,7 +220,7 @@ footer{text-align:center;color:#94a2b6;font-size:11px;padding:15px}
 <!-- BMI -->
 <section id="bmiPage" class="hidden">
  <div class="card">
-  <button class="ghost" onclick="goHome()">← Bosh sahifa</button>
+  <button class="back-btn" onclick="goHome()">← Orqaga</button>
   <div class="eyebrow">SHAXSIY SALOMATLIK</div>
   <h2>BMI hisoblagichi</h2>
   <p class="desc">Tana massasi indeksini hisoblash uchun ma’lumotlaringizni kiriting.</p>
@@ -232,7 +260,7 @@ footer{text-align:center;color:#94a2b6;font-size:11px;padding:15px}
 <!-- SUV -->
 <section id="waterPage" class="hidden">
  <div class="card">
-  <button class="ghost" onclick="goHome()">← Bosh sahifa</button>
+  <button class="back-btn" onclick="goHome()">← Orqaga</button>
   <div class="eyebrow">KUNLIK ODATLAR</div>
   <h2>💧 Suv ichish nazorati</h2>
   <p class="desc">Ichgan suvingizni qayd eting va kunlik progressni kuzating.</p>
@@ -259,7 +287,7 @@ footer{text-align:center;color:#94a2b6;font-size:11px;padding:15px}
 <!-- QON BOSIMI VA PULS -->
 <section id="vitalsPage" class="hidden">
  <div class="card">
-  <button class="ghost" onclick="goHome()">← Bosh sahifa</button>
+  <button class="back-btn" onclick="goHome()">← Orqaga</button>
   <div class="eyebrow">SOG‘LIQ KO‘RSATKICHLARI</div>
   <h2>❤️ Qon bosimi va puls</h2>
   <p class="desc">O‘lchagan ko‘rsatkichlaringizni kiriting. Ular qurilmangizda saqlanadi.</p>
@@ -288,7 +316,7 @@ footer{text-align:center;color:#94a2b6;font-size:11px;padding:15px}
 <!-- TESTLAR -->
 <section id="quizPage" class="hidden">
  <div class="card">
-  <button class="ghost" onclick="goHome()">← Bosh sahifa</button>
+  <button class="back-btn" onclick="goHome()">← Orqaga</button>
   <div class="eyebrow">BILIMINGIZNI SINANG</div>
   <h2>🎓 Tibbiy bilimlar testi</h2>
   <p class="desc">Savollarga javob bering va bilimingizni tekshiring.</p>
@@ -306,7 +334,7 @@ footer{text-align:center;color:#94a2b6;font-size:11px;padding:15px}
 <!-- TARIX -->
 <section id="historyPage" class="hidden">
  <div class="card">
-  <button class="ghost" onclick="goHome()">← Bosh sahifa</button>
+  <button class="back-btn" onclick="goHome()">← Orqaga</button>
   <div class="eyebrow">SHAXSIY MA’LUMOTLAR</div>
   <h2>📊 Saqlangan tarix</h2>
   <div class="section-title">BMI natijalari</div>
@@ -319,7 +347,7 @@ footer{text-align:center;color:#94a2b6;font-size:11px;padding:15px}
 <!-- PDF HISOBOT -->
 <section id="reportPage" class="hidden">
  <div class="card">
-  <button class="ghost no-print" onclick="goHome()">← Bosh sahifa</button>
+  <button class="back-btn no-print" onclick="goHome()">← Orqaga</button>
   <div class="eyebrow">JDPU HEALTH</div>
   <h2>📄 Shaxsiy hisobot</h2>
   <p class="desc">Saqlangan salomatlik ma’lumotlaringizni ko‘rib chiqing va PDF qilib saqlang.</p>
@@ -360,17 +388,21 @@ function setData(key,value){
 function safe(s){
  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
+
 function openPage(id){
  ['home','bmiPage','waterPage','vitalsPage','quizPage','historyPage','reportPage'].forEach(x=>$(x).classList.add('hidden'));
  $('creator').classList.add('hidden');
  $(id).classList.remove('hidden');
+
  if(id==='waterPage')renderWater();
  if(id==='vitalsPage')renderVitals();
  if(id==='historyPage')renderHistory();
  if(id==='reportPage')renderReport();
  if(id==='quizPage' && quizIndex<0)startQuiz();
+
  window.scrollTo(0,0);
 }
+
 function goHome(){
  ['bmiPage','waterPage','vitalsPage','quizPage','historyPage','reportPage'].forEach(x=>$(x).classList.add('hidden'));
  $('home').classList.remove('hidden');
@@ -383,11 +415,14 @@ function goHome(){
 function calculateBMI(){
  const name=read('bmiName'),age=Number(read('bmiAge'));
  const gender=read('bmiGender'),h=Number(read('bmiHeight')),w=Number(read('bmiWeight'));
+
  if(!name||!age||age>120||age<1||!gender||h<50||h>250||w<2||w>350){
   alert("Barcha ma’lumotlarni to‘g‘ri kiriting.");return;
  }
+
  const bmi=w/((h/100)**2);
  let status,explain,tips=[];
+
  if(age<18){
   status="Maxsus baholash kerak";
   explain="18 yoshgacha BMI yosh va jinsga mos o‘sish jadvallari bilan baholanadi. Kattalar mezonlari qo‘llanilmaydi.";
@@ -401,6 +436,7 @@ function calculateBMI(){
   else if(bmi<25){status="Me’yoriy diapazon";explain="BMI kattalar uchun me’yoriy diapazonda."}
   else if(bmi<30){status="Ortiqcha vazn diapazoni";explain="BMI kattalar uchun ortiqcha vazn diapazonida."}
   else{status="Semizlik diapazoni";explain="BMI kattalar uchun semizlik diapazonida."}
+
   tips=[
    ["🥗","Ovqatlanish","Muvozanatli va xilma-xil ovqatlaning."],
    ["🚶","Harakat","Imkoningizga mos kundalik faollikni tanlang."],
@@ -408,6 +444,7 @@ function calculateBMI(){
    ["🩺","Sog‘liq nazorati","Zarur bo‘lsa tibbiyot mutaxassisi bilan maslahatlashing."]
   ];
  }
+
  $('bmiGreeting').textContent="Salom, "+name+"!";
  $('bmiNumber').textContent=bmi.toFixed(1);
  $('bmiStatus').textContent=status;
@@ -416,17 +453,24 @@ function calculateBMI(){
  $('outWeight').textContent=w+" kg";
  $('outAge').textContent=age+" yosh";
  $('outGender').textContent=gender;
- $('bmiTips').innerHTML=tips.map(t=>'<div class="tip"><div class="tip-icon">'+t[0]+'</div><div><b>'+t[1]+'</b><p>'+t[2]+'</p></div></div>').join('');
+
+ $('bmiTips').innerHTML=tips.map(t=>
+  '<div class="tip"><div class="tip-icon">'+t[0]+'</div><div><b>'+t[1]+'</b><p>'+t[2]+'</p></div></div>'
+ ).join('');
+
  $('bmiResult').classList.remove('hidden');
+
  const history=getData('jdpuBMI');
  history.unshift({name,age,gender,h,w,bmi:bmi.toFixed(1),status,date:dateText()});
  setData('jdpuBMI',history.slice(0,30));
+
  $('bmiResult').scrollIntoView({behavior:'smooth'});
 }
 
 /* SUV NAZORATI */
 function waterKey(){return 'jdpuWater_'+today()}
 function waterData(){return getData(waterKey(),{total:0,goal:2000})}
+
 function renderWater(){
  const d=waterData();
  $('waterCurrent').textContent=d.total;
@@ -436,21 +480,31 @@ function renderWater(){
  $('waterProgressText').textContent=d.total>=d.goal?'Kunlik maqsad bajarildi! 🎉':(d.goal-d.total)+' ml qoldi · Maqsad: '+d.goal+' ml';
  updateHomeWater();
 }
+
 function addWater(amount){
  const d=waterData();
  d.total=Math.min(20000,d.total+amount);
  d.goal=Math.max(100,Math.min(10000,Number($('waterGoal').value)||2000));
- setData(waterKey(),d);renderWater();
+ setData(waterKey(),d);
+ renderWater();
 }
+
 function resetWater(){
  if(confirm("Bugungi suv hisobini nolga tushirasizmi?")){
-  const d=waterData();d.total=0;setData(waterKey(),d);renderWater();
+  const d=waterData();
+  d.total=0;
+  setData(waterKey(),d);
+  renderWater();
  }
 }
+
 $('waterGoal').addEventListener('change',()=>{
- const d=waterData();d.goal=Math.max(100,Math.min(10000,Number($('waterGoal').value)||2000));
- setData(waterKey(),d);renderWater();
+ const d=waterData();
+ d.goal=Math.max(100,Math.min(10000,Number($('waterGoal').value)||2000));
+ setData(waterKey(),d);
+ renderWater();
 });
+
 function updateHomeWater(){
  const d=waterData();
  if($('homeWater')){
@@ -463,26 +517,38 @@ function updateHomeWater(){
 /* QON BOSIMI VA PULS */
 function saveVitals(){
  const sys=Number(read('sys')),dia=Number(read('dia')),pulse=Number(read('pulse'));
+
  if(!Number.isInteger(sys)||sys<50||sys>260||!Number.isInteger(dia)||dia<30||dia>160||!Number.isInteger(pulse)||pulse<20||pulse>250){
   alert("Qon bosimi va puls qiymatlarini tekshiring.");return;
  }
- if(sys<=dia){alert("Yuqori bosim pastki bosimdan katta bo‘lishi kerak.");return}
+
+ if(sys<=dia){
+  alert("Yuqori bosim pastki bosimdan katta bo‘lishi kerak.");return;
+ }
+
  const list=getData('jdpuVitals');
  list.unshift({sys,dia,pulse,time:read('measureTime'),date:dateText()});
  setData('jdpuVitals',list.slice(0,50));
- $('sys').value='';$('dia').value='';$('pulse').value='';
+
+ $('sys').value='';
+ $('dia').value='';
+ $('pulse').value='';
+
  renderVitals();
  alert("Ko‘rsatkichlar saqlandi.");
 }
+
 function renderVitals(){
  const list=getData('jdpuVitals');
  $('vitalsHistory').innerHTML=list.length?list.map(v=>
   '<div class="record"><b>'+safe(v.sys)+' / '+safe(v.dia)+' mmHg</b><br>Puls: '+safe(v.pulse)+' / daqiqa<br>'+safe(v.time)+' · '+safe(v.date)+'</div>'
  ).join(''):'<p class="desc">Hozircha o‘lchovlar yo‘q.</p>';
 }
+
 function clearVitals(){
  if(confirm("Barcha o‘lchovlarni o‘chirishni xohlaysizmi?")){
-  localStorage.removeItem('jdpuVitals');renderVitals();
+  localStorage.removeItem('jdpuVitals');
+  renderVitals();
  }
 }
 
@@ -499,14 +565,19 @@ const questions=[
  {q:"Puls nimani ifodalaydi?",o:["Yurak urishining tomirlarda sezilishi","Nafas hajmi","Tana harorati"],a:0,e:"Puls yurak qisqarishlari natijasida arteriyalarda paydo bo‘ladigan tebranishdir."},
  {q:"Qo‘lni tirsak bo‘g‘imida bukishda qaysi muskul muhim?",o:["Biseps","Diafragma","Deltoid"],a:0,e:"Biseps tirsak bo‘g‘imini bukishda muhim qatnashadi."}
 ];
+
 let quizIndex=-1,quizScore=0,quizChosen=false;
+
 function startQuiz(){
- quizIndex=0;quizScore=0;quizChosen=false;
+ quizIndex=0;
+ quizScore=0;
+ quizChosen=false;
  $('quizFinal').classList.add('hidden');
  $('quizRestart').classList.add('hidden');
  $('quizNext').classList.remove('hidden');
  showQuestion();
 }
+
 function showQuestion(){
  const q=questions[quizIndex];
  $('quizCounter').textContent=(quizIndex+1)+' / '+questions.length;
@@ -516,31 +587,40 @@ function showQuestion(){
  $('quizFeedback').classList.add('hidden');
  $('quizNext').disabled=true;
  quizChosen=false;
+
  q.o.forEach((option,i)=>{
   const b=document.createElement('button');
-  b.className='quiz-option';b.textContent=String.fromCharCode(65+i)+') '+option;
+  b.className='quiz-option';
+  b.textContent=String.fromCharCode(65+i)+') '+option;
   b.onclick=()=>chooseAnswer(i);
   $('quizOptions').appendChild(b);
  });
 }
+
 function chooseAnswer(i){
  if(quizChosen)return;
  quizChosen=true;
+
  const q=questions[quizIndex];
  const buttons=$('quizOptions').querySelectorAll('button');
+
  buttons.forEach((b,index)=>{
   b.disabled=true;
   if(index===q.a)b.style.background='#d9f5e9';
   if(index===i&&i!==q.a)b.style.background='#ffe5e8';
  });
+
  if(i===q.a)quizScore++;
+
  $('quizFeedback').textContent=(i===q.a?'✓ To‘g‘ri! ':'✗ Noto‘g‘ri. ')+q.e;
  $('quizFeedback').classList.remove('hidden');
  $('quizNext').disabled=false;
 }
+
 function nextQuestion(){
  if(!quizChosen)return;
  quizIndex++;
+
  if(quizIndex>=questions.length){
   $('quizQuestion').textContent='Test yakunlandi!';
   $('quizOptions').innerHTML='';
@@ -548,29 +628,38 @@ function nextQuestion(){
   $('quizNext').classList.add('hidden');
   $('quizBar').style.width='100%';
   $('quizFinal').classList.remove('hidden');
+
   $('quizFinal').innerHTML='<h3>Natijangiz: '+quizScore+' / '+questions.length+'</h3><p>'+ (quizScore>=8?'Ajoyib natija!':'Yaxshi urinish. Yana mashq qiling!')+'</p>';
   $('quizRestart').classList.remove('hidden');
+
   const history=getData('jdpuQuiz');
   history.unshift({score:quizScore,date:dateText()});
   setData('jdpuQuiz',history.slice(0,20));
- }else showQuestion();
+ }else{
+  showQuestion();
+ }
 }
 
 /* TARIX VA HISOBOT */
 function renderHistory(){
  const b=getData('jdpuBMI');
+
  $('bmiHistory').innerHTML=b.length?b.map(x=>
   '<div class="history-item"><b>'+safe(x.name)+'</b><br>BMI: '+safe(x.bmi)+' · '+safe(x.status)+'<br>'+safe(x.date)+'</div>'
  ).join(''):'<p class="desc">BMI tarixi mavjud emas.</p>';
+
  const v=getData('jdpuVitals');
+
  $('historyVitals').innerHTML=v.length?v.slice(0,15).map(x=>
   '<div class="history-item"><b>'+safe(x.sys)+' / '+safe(x.dia)+' mmHg</b><br>Puls: '+safe(x.pulse)+' · '+safe(x.date)+'</div>'
  ).join(''):'<p class="desc">Qaydlar mavjud emas.</p>';
 }
+
 function renderReport(){
  const b=getData('jdpuBMI');
  const v=getData('jdpuVitals');
  const w=waterData();
+
  $('reportContent').innerHTML=
   '<div class="metric"><small>BUGUNGI SUV</small><strong>'+w.total+' / '+w.goal+' ml</strong></div>'+
   '<div class="section-title">BMI tarixi</div>'+
