@@ -4,674 +4,819 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0756d9">
-<title>JDPU HEALTH</title>
+<meta name="theme-color" content="#071a35">
+<title>JDPU HEALTH | Tibbiyot akademiyasi</title>
 
 <style>
 :root{
- --blue:#0861df;--blue2:#1688f8;--dark:#142b4d;
- --muted:#7b8ba3;--bg:#f2f6fc;--line:#e6edf6;
- --green:#168b61;--red:#d64d5b;--white:#fff;
+ --bg:#071a35;
+ --panel:#102747;
+ --panel2:#153253;
+ --blue:#398bff;
+ --cyan:#39d5e8;
+ --text:#edf5ff;
+ --muted:#9bb0ca;
+ --line:#254365;
+ --green:#35c995;
+ --gold:#ffc45c;
+ --red:#ff7185;
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
- margin:0;background:var(--bg);color:var(--dark);
+ margin:0;background:var(--bg);color:var(--text);
  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
-header{
- padding:24px 20px 45px;color:white;
- background:linear-gradient(135deg,#063eaa,#1688f8);
- border-radius:0 0 30px 30px;
+button,input,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{
+ outline:2px solid var(--cyan);outline-offset:3px
 }
-.brand{display:flex;align-items:center;gap:12px;font-weight:850;font-size:19px}
-.logo{
- width:44px;height:44px;border-radius:14px;
- display:grid;place-items:center;background:#ffffff25;font-size:25px;
+.app{max-width:1200px;margin:auto;min-height:100vh}
+.topbar{
+ position:sticky;top:0;z-index:20;
+ display:flex;align-items:center;justify-content:space-between;
+ gap:12px;padding:14px 22px;
+ background:#071a35ed;backdrop-filter:blur(18px);
+ border-bottom:1px solid var(--line);
 }
-header h1{font-size:27px;line-height:1.2;margin:25px 0 8px}
-header p{font-size:13px;line-height:1.6;opacity:.9;margin:0}
-main{max-width:650px;margin:-20px auto 30px;padding:0 14px}
-.card{
- background:white;border-radius:22px;padding:20px;
- margin-bottom:14px;box-shadow:0 7px 28px #173b700c;
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.5px}
+.brand-logo{
+ width:42px;height:42px;border-radius:14px;
+ display:grid;place-items:center;
+ background:linear-gradient(135deg,#1674ed,#37d4e6);
+ font-size:23px;box-shadow:0 5px 22px #1688ff45;
 }
-.welcome{
- background:linear-gradient(135deg,#eaf3ff,#f6faff);
- border:1px solid #e0ebfb;
+.brand small{display:block;font-size:9px;color:var(--muted);letter-spacing:2px;margin-top:3px}
+.top-actions{display:flex;align-items:center;gap:9px}
+.xp-chip{
+ border:1px solid #345579;background:#102747;
+ padding:9px 12px;border-radius:30px;
+ color:var(--gold);font-size:12px;font-weight:800;
 }
-.eyebrow{font-size:10px;font-weight:850;letter-spacing:1.4px;color:var(--blue)}
-h2{font-size:21px;margin:9px 0 7px}
-h3{font-size:15px;margin:0 0 9px}
-.desc{font-size:13px;line-height:1.6;color:var(--muted);margin:0 0 15px}
-.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-.menu-item{
- background:#f5f8fd;border:1px solid #eaf0f8;
- border-radius:17px;padding:16px 13px;min-height:115px;
- cursor:pointer;text-align:left;color:var(--dark);
+.avatar{
+ width:39px;height:39px;border-radius:50%;
+ display:grid;place-items:center;background:#193d65;
+ border:1px solid #3a638a;font-size:18px;
 }
-.menu-item:active{transform:scale(.98)}
-.menu-icon{font-size:25px;margin-bottom:10px}
-.menu-item b{display:block;font-size:13px}
-.menu-item small{display:block;color:var(--muted);font-size:11px;margin-top:5px;line-height:1.4}
-
-input,select{
- width:100%;padding:14px;border:1px solid #dce5f1;
- border-radius:12px;background:#fbfdff;color:var(--dark);
- font-size:16px;outline:none;
+.layout{display:grid;grid-template-columns:225px minmax(0,1fr);gap:22px;padding:22px}
+.sidebar{
+ position:sticky;top:86px;align-self:start;
+ background:#0d2341;border:1px solid var(--line);
+ border-radius:20px;padding:13px;
 }
-input:focus,select:focus{border-color:var(--blue)}
-label{display:block;font-size:12px;font-weight:750;margin:14px 0 7px}
-button{
- border:0;border-radius:13px;padding:14px 16px;
- font-size:14px;font-weight:750;cursor:pointer;
+.side-label{
+ color:#718ba9;font-size:9px;font-weight:900;
+ letter-spacing:1.8px;padding:12px 10px 7px;
 }
-.primary{background:var(--blue);color:white;width:100%;margin-top:17px}
-.secondary{background:#edf4ff;color:var(--blue);width:100%;margin-top:10px}
-
-/* ORQAGA TUGMASI */
+.nav-btn{
+ display:flex;align-items:center;gap:12px;width:100%;
+ border:0;background:transparent;color:#b8c9dc;
+ padding:12px 11px;border-radius:12px;
+ text-align:left;font-size:12px;font-weight:700;margin:2px 0;
+}
+.nav-btn span{font-size:18px;width:23px;text-align:center}
+.nav-btn:hover,.nav-btn.active{background:#193d65;color:white}
+.nav-btn.active{box-shadow:inset 3px 0 var(--cyan)}
+.main{min-width:0}
+.page{display:none;animation:appear .25s ease}
+.page.active{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.hero{
+ position:relative;overflow:hidden;
+ background:linear-gradient(120deg,#123c70,#1259a5 60%,#087eaa);
+ border:1px solid #2b6595;border-radius:24px;
+ padding:27px;margin-bottom:17px;
+}
+.hero:after{
+ content:"✚";position:absolute;right:35px;top:8px;
+ font-size:145px;color:#ffffff0c;font-weight:900;
+}
+.hero-content{position:relative;z-index:1;max-width:600px}
+.eyebrow{font-size:10px;letter-spacing:2px;font-weight:900;color:var(--cyan)}
+.hero h1{font-size:clamp(25px,4vw,38px);line-height:1.15;margin:13px 0 9px}
+.hero p{font-size:13px;color:#d2e6fa;line-height:1.7;max-width:500px}
+.primary-btn,.outline-btn,.soft-btn{
+ border:0;border-radius:12px;padding:12px 16px;
+ font-size:12px;font-weight:800;transition:.2s;
+}
+.primary-btn{background:linear-gradient(110deg,#398bff,#27c7df);color:white}
+.primary-btn:hover{filter:brightness(1.1);transform:translateY(-2px)}
+.outline-btn{background:transparent;border:1px solid #45688e;color:#d7e9ff}
+.soft-btn{background:#193c62;color:#bfe0ff}
 .back-btn{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- gap:9px;
- padding:11px 18px;
- margin-bottom:20px;
- border:1px solid #d8e7fb;
- border-radius:12px;
- background:linear-gradient(135deg,#edf5ff,#ffffff);
- color:#0861df;
- font-size:13px;
- font-weight:800;
- cursor:pointer;
- box-shadow:0 4px 12px #0861df12;
- transition:all .2s ease;
+ display:inline-flex;align-items:center;gap:8px;
+ padding:10px 15px;margin-bottom:15px;
+ color:#bfe3ff;background:#153656;border:1px solid #345b7e;
+ border-radius:12px;font-size:12px;font-weight:800;
 }
-.back-btn:hover{
- background:#e2efff;
- transform:translateX(-3px);
- box-shadow:0 6px 15px #0861df20;
+.back-btn:hover{background:#1b4a76}
+.section-head{
+ display:flex;align-items:end;justify-content:space-between;
+ gap:12px;margin:22px 0 12px;
 }
-.back-btn:active{transform:scale(.97)}
+.section-head h2{font-size:19px;margin:0}
+.section-head p{font-size:11px;color:var(--muted);margin:5px 0 0}
+.muted{color:var(--muted)}
+.small{font-size:11px;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.card{
+ background:linear-gradient(145deg,#102747,#0d213d);
+ border:1px solid var(--line);border-radius:18px;padding:17px;
+ min-width:0;
+}
+.card h3{font-size:14px;margin:0 0 8px}
+.card p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
+.stat-card{display:flex;align-items:center;gap:12px}
+.stat-icon{
+ width:43px;height:43px;flex-shrink:0;border-radius:14px;
+ display:grid;place-items:center;background:#1b426d;font-size:21px;
+}
+.stat-number{font-size:23px;font-weight:900}
+.stat-label{font-size:10px;color:var(--muted);margin-top:3px}
+.feature-card{
+ text-align:left;width:100%;color:var(--text);
+ background:linear-gradient(145deg,#153455,#102541);
+ border:1px solid #294b6e;border-radius:18px;padding:17px;
+ transition:.2s;min-height:145px;
+}
+.feature-card:hover{transform:translateY(-3px);border-color:#398bff;box-shadow:0 10px 25px #0002}
+.feature-icon{font-size:27px;margin-bottom:13px}
+.feature-card b{display:block;font-size:13px;margin-bottom:6px}
+.feature-card small{font-size:11px;line-height:1.5;color:var(--muted)}
+.tag{
+ display:inline-flex;padding:5px 9px;border-radius:30px;
+ background:#1a4268;color:#8edcf5;font-size:9px;font-weight:900;
+}
+.progress{height:8px;background:#203a59;border-radius:30px;overflow:hidden;margin:10px 0}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#398bff,#39d5e8);border-radius:30px;transition:.3s}
+input,select{
+ width:100%;padding:12px 13px;color:var(--text);
+ background:#091d37;border:1px solid #2c4969;border-radius:11px;
+ outline:none;font-size:13px;
+}
+label{display:block;font-size:11px;font-weight:800;color:#c6d8ec;margin:13px 0 7px}
+input::placeholder{color:#7188a5}
+.search{margin-bottom:13px}
+.list-item{
+ padding:13px;background:#122c4b;border:1px solid #274767;
+ border-radius:13px;margin-top:9px;
+}
+.list-item b{font-size:12px}
+.list-item p{font-size:11px;color:var(--muted);line-height:1.6;margin:5px 0 0}
+.lesson-card,.term-card,.system-card{
+ width:100%;text-align:left;color:var(--text);
+ background:#102747;border:1px solid var(--line);
+ border-radius:15px;padding:15px;
+}
+.lesson-card:hover,.term-card:hover,.system-card:hover{border-color:var(--cyan)}
+.lesson-card .emoji,.system-card .emoji{font-size:25px;display:block;margin-bottom:9px}
+.lesson-card b,.system-card b{font-size:12px;display:block}
+.lesson-card small,.system-card small{font-size:10px;color:var(--muted);display:block;margin-top:5px;line-height:1.5}
+.detail-title{font-size:25px;margin:10px 0}
+.detail-body{font-size:13px;line-height:1.8;color:#c2d4e8}
+.detail-body h3{color:white;margin-top:20px}
+.detail-body ul{padding-left:20px}
+.term-card{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.term-card strong{font-size:14px;color:#7edaf0}
+.term-card small{font-size:11px;color:var(--muted);text-align:right}
+.flashcard{
+ min-height:220px;display:grid;place-items:center;text-align:center;
+ background:radial-gradient(circle at top,#1d5383,#102747 70%);
+ border:1px solid #3673a0;border-radius:22px;padding:25px;
+}
+.flashcard strong{font-size:clamp(23px,5vw,34px)}
+.flashcard p{color:#a8c4e0;font-size:13px}
+.answer-option{
+ width:100%;text-align:left;margin-top:8px;
+ background:#183554;border:1px solid #2b4e70;
+ border-radius:12px;padding:13px;color:#e7f3ff;font-size:12px;
+}
+.answer-option:disabled{opacity:1}
+.answer-option.correct{background:#15513f;border-color:#35c995}
+.answer-option.wrong{background:#5a2b3a;border-color:#ff7185}
+.feedback{
+ margin-top:12px;padding:13px;border-radius:12px;
+ background:#183c5b;color:#cdeaff;font-size:12px;line-height:1.6;
+}
+.badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.badge-item{
+ background:#142f4f;border:1px solid #2b4b6b;
+ border-radius:13px;padding:12px 5px;text-align:center;
+}
+.badge-item span{font-size:25px;display:block;margin-bottom:6px}
+.badge-item small{font-size:9px;color:var(--muted)}
+.badge-item.locked{opacity:.35;filter:grayscale(1)}
+.empty{
+ text-align:center;padding:28px 12px;color:var(--muted);
+ font-size:12px;line-height:1.7;
+}
+.footer{text-align:center;padding:25px;color:#6f88a5;font-size:10px}
+.mobile-nav{display:none}
 .hidden{display:none!important}
-.row{display:flex;gap:10px;align-items:center}
-.row>*{flex:1;min-width:0}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.note{
- background:#eef5ff;color:#456080;padding:13px;
- border-radius:13px;font-size:12px;line-height:1.6;margin-top:14px;
+@media(max-width:800px){
+ .layout{grid-template-columns:1fr;padding:15px}
+ .sidebar{display:none}
+ .mobile-nav{
+  display:flex;position:fixed;bottom:0;left:0;right:0;z-index:30;
+  background:#091d37f5;backdrop-filter:blur(15px);
+  border-top:1px solid var(--line);justify-content:space-around;
+  padding:8px 4px calc(8px + env(safe-area-inset-bottom));
+ }
+ .mobile-nav button{
+  border:0;background:none;color:#91a8c3;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  font-size:9px;font-weight:700;padding:5px;
+ }
+ .mobile-nav button span{font-size:19px}
+ .mobile-nav button.active{color:var(--cyan)}
+ body{padding-bottom:70px}
+ .topbar{padding:11px 15px}
 }
-.progress{height:9px;background:#e8eff8;border-radius:20px;overflow:hidden;margin:10px 0}
-.progress-fill{height:100%;background:linear-gradient(90deg,#0756d9,#36a4ff);width:0%;transition:.3s}
-.metric{background:#f4f7fc;border-radius:14px;padding:14px}
-.metric small{font-size:10px;color:var(--muted);font-weight:700}
-.metric strong{display:block;font-size:20px;margin-top:5px}
-.section-title{font-size:15px;font-weight:850;margin:20px 0 10px}
-.history-item{padding:13px;background:#f5f8fd;border-radius:12px;margin-top:9px;font-size:12px;line-height:1.7}
-.result-head{
- background:linear-gradient(135deg,#0649bd,#1688f8);
- color:white;padding:22px;border-radius:18px;
-}
-.result-number{font-size:48px;font-weight:900;margin:7px 0}
-.pill{display:inline-block;background:#ffffff25;padding:7px 12px;border-radius:30px;font-size:12px}
-.tip{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
-.tip:last-child{border:0}
-.tip-icon{width:39px;height:39px;flex-shrink:0;border-radius:12px;background:#edf4ff;display:grid;place-items:center;font-size:18px}
-.tip b{font-size:13px}
-.tip p{font-size:12px;color:var(--muted);line-height:1.5;margin:4px 0 0}
-.water-total{font-size:34px;font-weight:900;color:var(--blue);margin:10px 0}
-.water-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
-.water-buttons button{background:#edf4ff;color:var(--blue);padding:12px 5px;font-size:12px}
-.record{background:#f5f8fd;border-radius:13px;padding:13px;margin-top:9px;font-size:12px;line-height:1.7}
-.quiz-option{
- width:100%;text-align:left;background:#f3f7fd;color:#284566;
- margin-top:8px;font-size:13px;
-}
-.quiz-option.selected{background:#dcecff;outline:2px solid var(--blue)}
-.quiz-option:disabled{opacity:1}
-.quiz-result{background:#eef5ff;border-radius:15px;padding:15px;margin-top:15px}
-.creator{text-align:center;padding:24px}
-.creator-icon{font-size:32px}
-.creator-label{font-size:10px;font-weight:850;letter-spacing:2px;color:var(--blue)}
-.creator-links{display:flex;gap:10px;margin-top:16px}
-.social{
- flex:1;text-decoration:none;padding:13px 8px;
- border-radius:12px;font-size:13px;font-weight:750;
-}
-.instagram{background:#fff0f5;color:#d62976}
-.telegram{background:#eaf5ff;color:#1688d4}
-footer{text-align:center;color:#94a2b6;font-size:11px;padding:15px}
-
-@media(max-width:360px){
- .menu-grid{grid-template-columns:1fr}
- .grid2{grid-template-columns:1fr 1fr}
+@media(max-width:470px){
+ .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .grid{grid-template-columns:1fr 1fr}
+ .hero{padding:21px}
+ .hero:after{right:10px;font-size:105px}
+ .card{padding:14px}
+ .feature-card{padding:13px;min-height:135px}
 }
 @media print{
- body{background:white}
- header,.no-print,footer,#home,#creator{display:none!important}
- main{margin:0;padding:0;max-width:100%}
- .card{box-shadow:none;padding:0}
- #report{display:block!important}
- .result-head{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ body{background:white;color:#111}
+ .topbar,.sidebar,.mobile-nav,.back-btn,.no-print,.footer{display:none!important}
+ .layout{display:block;padding:0}
+ .page{display:none!important}
+ #page-report{display:block!important}
+ .card{background:white;color:#111;border:1px solid #ddd}
 }
 </style>
 </head>
 
 <body>
+<div class="app">
 
-<header>
- <div class="brand"><div class="logo">✚</div><div>JDPU HEALTH</div></div>
- <h1>Salomatligingiz —<br>eng katta boyligingiz.</h1>
- <p>Salomatlik ko‘rsatkichlaringizni kuzating, foydali odatlarni shakllantiring va tibbiy bilimlaringizni oshiring.</p>
+<header class="topbar">
+ <div class="brand">
+  <div class="brand-logo">✚</div>
+  <div>JDPU HEALTH<small>MEDICAL ACADEMY</small></div>
+ </div>
+ <div class="top-actions">
+  <div class="xp-chip">⚡ <span id="topXP">0</span> XP</div>
+  <div class="avatar">🩺</div>
+ </div>
 </header>
 
-<main>
+<div class="layout">
+
+<aside class="sidebar">
+ <div class="side-label">ASOSIY</div>
+ <button class="nav-btn active" data-page="home"><span>⌂</span>Bosh sahifa</button>
+ <button class="nav-btn" data-page="anatomy"><span>🫀</span>Anatomiya</button>
+ <button class="nav-btn" data-page="lessons"><span>📚</span>Interaktiv darslar</button>
+ <button class="nav-btn" data-page="quiz"><span>🧠</span>Test markazi</button>
+ <button class="nav-btn" data-page="dictionary"><span>🔤</span>Lotincha lug‘at</button>
+ <button class="nav-btn" data-page="flashcards"><span>🃏</span>Flashcard</button>
+ <div class="side-label">SHAXSIY</div>
+ <button class="nav-btn" data-page="progress"><span>🏆</span>Yutuqlarim</button>
+ <button class="nav-btn" data-page="health"><span>❤️</span>Sog‘liq vositalari</button>
+ <button class="nav-btn" data-page="report"><span>📄</span>Hisobot</button>
+ <div class="side-label">LOYIHA</div>
+ <div class="small muted" style="padding:10px">JDPU HEALTH — tibbiyot bilimlarini o‘rganish uchun ta’limiy platforma.</div>
+</aside>
+
+<main class="main">
 
 <!-- BOSH SAHIFA -->
-<section id="home">
- <div class="card welcome">
-  <div class="eyebrow">SOG‘LOM HAYOT PLATFORMASI</div>
-  <h2>Salom! Xush kelibsiz 👋</h2>
-  <p class="desc">Barcha salomatlik vositalaringiz bitta joyda. O‘zingiz uchun foydali bo‘limni tanlang.</p>
+<section class="page active" id="page-home">
+ <div class="hero">
+  <div class="hero-content">
+   <div class="eyebrow">WELCOME TO MEDICAL ACADEMY</div>
+   <h1>Tibbiyot bilimlarini<br>yangi bosqichda o‘rganing.</h1>
+   <p>Anatomiya, fiziologiya, lotincha atamalar va tibbiy testlar. O‘rganing, mashq qiling va o‘z natijalaringizni kuzating.</p>
+   <button class="primary-btn" onclick="navigate('anatomy')">Akademiyani boshlash →</button>
+  </div>
  </div>
 
- <div class="menu-grid">
-  <button class="menu-item" onclick="openPage('bmiPage')">
-   <div class="menu-icon">⚖️</div>
-   <b>BMI hisoblash</b>
-   <small>Bo‘y, vazn va tana indeksi</small>
-  </button>
-  <button class="menu-item" onclick="openPage('waterPage')">
-   <div class="menu-icon">💧</div>
-   <b>Suv nazorati</b>
-   <small>Kunlik suv iste’moli</small>
-  </button>
-  <button class="menu-item" onclick="openPage('vitalsPage')">
-   <div class="menu-icon">❤️</div>
-   <b>Qon bosimi va puls</b>
-   <small>Ko‘rsatkichlarni qayd etish</small>
-  </button>
-  <button class="menu-item" onclick="openPage('quizPage')">
-   <div class="menu-icon">🎓</div>
-   <b>Tibbiy bilimlar</b>
-   <small>Testlar va bilimni tekshirish</small>
-  </button>
-  <button class="menu-item" onclick="openPage('historyPage')">
-   <div class="menu-icon">📊</div>
-   <b>Shaxsiy tarix</b>
-   <small>Saqlangan ko‘rsatkichlar</small>
-  </button>
-  <button class="menu-item" onclick="openPage('reportPage')">
-   <div class="menu-icon">📄</div>
-   <b>PDF hisobot</b>
-   <small>Natijalarni PDF shaklida saqlash</small>
-  </button>
+ <div class="grid3">
+  <div class="card stat-card"><div class="stat-icon">⚡</div><div><div class="stat-number" id="homeXP">0</div><div class="stat-label">Yig‘ilgan XP</div></div></div>
+  <div class="card stat-card"><div class="stat-icon">📚</div><div><div class="stat-number" id="homeLessons">0</div><div class="stat-label">O‘tilgan darslar</div></div></div>
+  <div class="card stat-card"><div class="stat-icon">🎯</div><div><div class="stat-number" id="homeTests">0</div><div class="stat-label">Yechilgan testlar</div></div></div>
  </div>
+
+ <div class="section-head"><div><h2>Akademiya bo‘limlari</h2><p>O‘zingizga kerakli yo‘nalishni tanlang</p></div></div>
+ <div class="grid">
+  <button class="feature-card" onclick="navigate('anatomy')"><div class="feature-icon">🫀</div><b>Anatomiya akademiyasi</b><small>Inson tanasi, organlar va tizimlar haqida o‘rganing.</small></button>
+  <button class="feature-card" onclick="navigate('lessons')"><div class="feature-icon">📖</div><b>Interaktiv darslar</b><small>Mavzularni ketma-ket o‘zlashtiring.</small></button>
+  <button class="feature-card" onclick="navigate('quiz')"><div class="feature-icon">🧠</div><b>Tibbiy testlar</b><small>Bilimingizni savollar orqali tekshiring.</small></button>
+  <button class="feature-card" onclick="navigate('dictionary')"><div class="feature-icon">🔤</div><b>Lotincha lug‘at</b><small>Atamalarni o‘rganing va qidiring.</small></button>
+  <button class="feature-card" onclick="navigate('flashcards')"><div class="feature-icon">🃏</div><b>Yodlash kartalari</b><small>Atamalarni takrorlash orqali yodlang.</small></button>
+  <button class="feature-card" onclick="navigate('progress')"><div class="feature-icon">🏆</div><b>Yutuqlar va statistika</b><small>O‘sishingizni kuzating va nishonlarni oching.</small></button>
+ </div>
+
+ <div class="section-head"><div><h2>Bugungi vazifa</h2><p>Har kuni oz-ozdan o‘rganing</p></div><span class="tag">DAILY MISSION</span></div>
+ <div class="card">
+  <div class="row" style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+   <div><b style="font-size:13px">🧠 5 ta tibbiy savolga javob bering</b><p class="small muted" style="margin-top:5px">Vazifani bajaring va 20 XP oling.</p></div>
+   <button class="primary-btn" onclick="navigate('quiz')">Boshlash</button>
+  </div>
+ </div>
+</section>
+
+<!-- ANATOMIYA -->
+<section class="page" id="page-anatomy">
+ <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
+ <div class="section-head"><div><div class="eyebrow">HUMAN ANATOMY</div><h2>Anatomiya akademiyasi</h2><p>Inson organizmining asosiy tizimlarini o‘rganing.</p></div></div>
+ <div id="anatomyList" class="grid"></div>
+ <div id="anatomyDetail" class="card hidden" style="margin-top:14px">
+  <button class="back-btn" onclick="closeAnatomy()">← Tizimlarga qaytish</button>
+  <div id="anatomyContent"></div>
+ </div>
+</section>
+
+<!-- DARSLAR -->
+<section class="page" id="page-lessons">
+ <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
+ <div class="eyebrow">LEARNING CENTER</div>
+ <h2>Interaktiv darslar</h2>
+ <p class="small muted">Mavzuni tanlang, matnni o‘qing va o‘zlashtirganingizni belgilang.</p>
+ <div id="lessonList" class="grid" style="margin-top:15px"></div>
+ <div id="lessonDetail" class="card hidden" style="margin-top:14px">
+  <button class="back-btn" onclick="closeLesson()">← Darslarga qaytish</button>
+  <div id="lessonContent"></div>
+  <button class="primary-btn" id="completeLessonBtn" onclick="completeLesson()">✓ Darsni tugatdim · +15 XP</button>
+ </div>
+</section>
+
+<!-- TEST -->
+<section class="page" id="page-quiz">
+ <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
+ <div class="eyebrow">KNOWLEDGE TEST</div>
+ <h2>Tibbiy test markazi</h2>
+ <p class="small muted">Savolga javob bering. Har bir to‘g‘ri javob uchun 10 XP.</p>
+ <div class="grid" style="margin-top:15px">
+  <button class="feature-card" onclick="startQuiz('anatomy')"><div class="feature-icon">🫀</div><b>Anatomiya testi</b><small>Organlar, suyaklar va muskullar</small></button>
+  <button class="feature-card" onclick="startQuiz('general')"><div class="feature-icon">🩺</div><b>Umumiy tibbiyot</b><small>Organizm va fiziologiya</small></button>
+  <button class="feature-card" onclick="startQuiz('latin')"><div class="feature-icon">🔤</div><b>Lotin tili testi</b><small>Anatomik terminlar</small></button>
+  <button class="feature-card" onclick="startQuiz('mixed')"><div class="feature-icon">🎓</div><b>Aralash test</b><small>Turli mavzulardan savollar</small></button>
+ </div>
+ <div id="quizBox" class="card hidden" style="margin-top:15px">
+  <div class="row" style="display:flex;justify-content:space-between">
+   <span class="tag" id="quizCategory">TEST</span>
+   <b class="small" id="quizCount">1 / 5</b>
+  </div>
+  <div class="progress"><div class="progress-fill" id="quizProgress"></div></div>
+  <h3 id="quizQuestion" style="font-size:17px;line-height:1.5;margin-top:20px">Savol</h3>
+  <div id="quizAnswers"></div>
+  <div id="quizFeedback" class="feedback hidden"></div>
+  <button class="primary-btn hidden" id="quizNext" style="width:100%;margin-top:15px" onclick="nextQuiz()">Keyingi savol →</button>
+  <div id="quizFinish" class="hidden"></div>
+ </div>
+</section>
+
+<!-- LUG'AT -->
+<section class="page" id="page-dictionary">
+ <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
+ <div class="eyebrow">MEDICAL LATIN</div>
+ <h2>Lotincha anatomik lug‘at</h2>
+ <p class="small muted">Lotincha yoki o‘zbekcha atamani qidirishingiz mumkin.</p>
+ <input class="search" id="termSearch" placeholder="🔍 Masalan: Cor, yurak, musculus..." oninput="renderTerms()">
+ <div id="termList"></div>
+</section>
+
+<!-- FLASHCARD -->
+<section class="page" id="page-flashcards">
+ <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
+ <div class="eyebrow">MEMORY TRAINING</div>
+ <h2>Yodlash kartalari</h2>
+ <p class="small muted">Atamani eslang, kartani bosing va tarjimasini tekshiring.</p>
+ <div class="card" style="margin-top:15px">
+  <div class="row" style="display:flex;justify-content:space-between">
+   <span class="tag">FLASHCARD</span>
+   <span class="small muted" id="flashCount">1 / 10</span>
+  </div>
+  <div class="flashcard" id="flashCard" onclick="flipFlashcard()" style="margin-top:14px">
+   <div><div class="eyebrow">LOTINCHA ATAMA</div><strong id="flashTerm">Cor</strong><p id="flashHint">Tarjimasini eslang...</p></div>
+  </div>
+  <div class="grid" style="margin-top:12px">
+   <button class="soft-btn" onclick="previousFlash()">← Oldingi</button>
+   <button class="primary-btn" onclick="nextFlash()">Keyingi →</button>
+  </div>
+  <button class="outline-btn" style="width:100%;margin-top:10px" onclick="flipFlashcard()">Javobni ko‘rsatish</button>
+ </div>
+</section>
+
+<!-- YUTUQLAR -->
+<section class="page" id="page-progress">
+ <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
+ <div class="eyebrow">YOUR PERFORMANCE</div>
+ <h2>Yutuqlarim</h2>
+ <div class="card" style="margin-top:14px">
+  <div class="row" style="display:flex;align-items:center;gap:14px">
+   <div style="font-size:42px">🎓</div>
+   <div style="flex:1">
+    <b id="rankName">Yangi tadqiqotchi</b>
+    <p class="small muted" id="rankDescription">Bilim sari ilk qadam.</p>
+   </div>
+   <div class="stat-number" style="color:var(--gold)" id="progressXP">0 XP</div>
+  </div>
+  <div class="progress"><div class="progress-fill" id="rankProgress"></div></div>
+  <p class="small muted" id="nextRank">Keyingi darajaga 100 XP qoldi.</p>
+ </div>
+ <div class="section-head"><div><h2>Faollik statistikasi</h2></div></div>
+ <div class="grid3">
+  <div class="card"><div class="stat-number" id="statLessons">0</div><div class="stat-label">Darslar</div></div>
+  <div class="card"><div class="stat-number" id="statTests">0</div><div class="stat-label">Testlar</div></div>
+  <div class="card"><div class="stat-number" id="statCorrect">0</div><div class="stat-label">To‘g‘ri javoblar</div></div>
+ </div>
+ <div class="section-head"><div><h2>Mukofot nishonlari</h2><p>Yutuqlaringizni oching</p></div></div>
+ <div class="badge-grid" id="badgeGrid"></div>
+</section>
+
+<!-- SOG'LIQ VOSITALARI -->
+<section class="page" id="page-health">
+ <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
+ <div class="eyebrow">PERSONAL HEALTH</div>
+ <h2>Sog‘liq vositalari</h2>
+ <p class="small muted">Shaxsiy ko‘rsatkichlaringizni qayd etish uchun yordamchi vositalar.</p>
 
  <div class="card" style="margin-top:14px">
-  <div class="eyebrow">KUNLIK FAOLLIK</div>
-  <h3>Bugungi suv iste’molingiz</h3>
-  <div class="water-total"><span id="homeWater">0</span> ml</div>
-  <div class="progress"><div id="homeWaterBar" class="progress-fill"></div></div>
-  <p class="desc" id="homeWaterGoal">Suv maqsadingizni belgilang.</p>
-  <button class="secondary" onclick="openPage('waterPage')">Suv nazoratiga o‘tish →</button>
- </div>
-</section>
-
-<!-- BMI -->
-<section id="bmiPage" class="hidden">
- <div class="card">
-  <button class="back-btn" onclick="goHome()">← Orqaga</button>
-  <div class="eyebrow">SHAXSIY SALOMATLIK</div>
-  <h2>BMI hisoblagichi</h2>
-  <p class="desc">Tana massasi indeksini hisoblash uchun ma’lumotlaringizni kiriting.</p>
-
-  <label>Ismingiz</label>
-  <input id="bmiName" placeholder="Ismingiz">
-  <div class="grid2">
-   <div><label>Yosh</label><input id="bmiAge" type="number" min="1" max="120" placeholder="20"></div>
-   <div><label>Jins</label><select id="bmiGender"><option value="">Tanlang</option><option>Erkak</option><option>Ayol</option></select></div>
-   <div><label>Bo‘y (sm)</label><input id="bmiHeight" type="number" placeholder="175"></div>
-   <div><label>Vazn (kg)</label><input id="bmiWeight" type="number" placeholder="70"></div>
+  <h3>⚖️ BMI hisoblash</h3>
+  <div class="grid">
+   <div><label>Bo‘y (sm)</label><input id="height" type="number" placeholder="175"></div>
+   <div><label>Vazn (kg)</label><input id="weight" type="number" placeholder="70"></div>
   </div>
-  <button class="primary" onclick="calculateBMI()">Natijani hisoblash</button>
+  <button class="primary-btn" style="margin-top:13px" onclick="calcBMI()">Hisoblash</button>
+  <div id="bmiOutput" class="feedback hidden"></div>
  </div>
 
- <div id="bmiResult" class="card hidden">
-  <div class="result-head">
-   <small>SHAXSIY BMI HISOBOTI</small>
-   <h2 id="bmiGreeting" style="color:white">Natija</h2>
-   <div class="result-number" id="bmiNumber">0.0</div>
-   <span class="pill" id="bmiStatus"></span>
-   <p id="bmiExplain" style="font-size:13px;line-height:1.6"></p>
+ <div class="card" style="margin-top:12px">
+  <h3>💧 Suv nazorati</h3>
+  <div class="stat-number"><span id="waterTotal">0</span> ml</div>
+  <div class="progress"><div class="progress-fill" id="waterProgress"></div></div>
+  <p class="small muted" id="waterLabel">Kunlik maqsad: 2000 ml</p>
+  <div class="grid3" style="margin-top:12px">
+   <button class="soft-btn" onclick="addWater(200)">+200</button>
+   <button class="soft-btn" onclick="addWater(250)">+250</button>
+   <button class="soft-btn" onclick="addWater(500)">+500</button>
   </div>
-  <div class="grid2" style="margin-top:12px">
-   <div class="metric"><small>BO‘Y</small><strong id="outHeight">—</strong></div>
-   <div class="metric"><small>VAZN</small><strong id="outWeight">—</strong></div>
-   <div class="metric"><small>YOSH</small><strong id="outAge">—</strong></div>
-   <div class="metric"><small>JINS</small><strong id="outGender">—</strong></div>
+  <button class="outline-btn" style="margin-top:10px;width:100%" onclick="resetWater()">Hisobni tozalash</button>
+ </div>
+
+ <div class="card" style="margin-top:12px">
+  <h3>❤️ Qon bosimi va puls qaydi</h3>
+  <div class="grid">
+   <div><label>Yuqori bosim</label><input id="systolic" type="number" placeholder="120"></div>
+   <div><label>Pastki bosim</label><input id="diastolic" type="number" placeholder="80"></div>
   </div>
-  <div class="section-title">Tavsiyalar</div>
-  <div id="bmiTips"></div>
-  <div class="note">BMI tashxis emas, dastlabki skrining ko‘rsatkichidir. 18 yoshgacha bo‘lganlarda yosh va jinsga mos o‘sish jadvallari kerak.</div>
-  <button class="secondary" onclick="window.print()">PDF / Chop etish</button>
+  <label>Puls / daqiqa</label><input id="pulseValue" type="number" placeholder="72">
+  <button class="primary-btn" style="margin-top:13px" onclick="savePressure()">Saqlash</button>
+  <div id="pressureHistory"></div>
+  <p class="small muted" style="margin-top:12px">Bu vosita qaydlarni saqlaydi, tashxis qo‘ymaydi. Natijalarni tibbiyot mutaxassisi bilan muhokama qiling.</p>
  </div>
 </section>
 
-<!-- SUV -->
-<section id="waterPage" class="hidden">
- <div class="card">
-  <button class="back-btn" onclick="goHome()">← Orqaga</button>
-  <div class="eyebrow">KUNLIK ODATLAR</div>
-  <h2>💧 Suv ichish nazorati</h2>
-  <p class="desc">Ichgan suvingizni qayd eting va kunlik progressni kuzating.</p>
-
-  <label>Kunlik maqsad (ml)</label>
-  <input id="waterGoal" type="number" min="100" max="10000" value="2000">
-  <div class="water-total"><span id="waterCurrent">0</span> <small style="font-size:15px;color:#7889a2">ml ichildi</small></div>
-  <div class="progress"><div id="waterBar" class="progress-fill"></div></div>
-  <p class="desc" id="waterProgressText">Kunlik maqsad: 2000 ml</p>
-
-  <div class="water-buttons">
-   <button onclick="addWater(100)">+100 ml</button>
-   <button onclick="addWater(200)">+200 ml</button>
-   <button onclick="addWater(250)">+250 ml</button>
-   <button onclick="addWater(300)">+300 ml</button>
-   <button onclick="addWater(500)">+500 ml</button>
-   <button onclick="addWater(750)">+750 ml</button>
-  </div>
-  <button class="secondary" onclick="resetWater()">Bugungi hisobni nolga tushirish</button>
-  <div class="note">Suvga ehtiyoj har bir insonda turlicha. Bu maqsadni o‘zingizga mos belgilang. Yurak yoki buyrak kasalligi sabab suyuqlik cheklovi bo‘lsa, shifokor ko‘rsatmasiga amal qiling.</div>
- </div>
-</section>
-
-<!-- QON BOSIMI VA PULS -->
-<section id="vitalsPage" class="hidden">
- <div class="card">
-  <button class="back-btn" onclick="goHome()">← Orqaga</button>
-  <div class="eyebrow">SOG‘LIQ KO‘RSATKICHLARI</div>
-  <h2>❤️ Qon bosimi va puls</h2>
-  <p class="desc">O‘lchagan ko‘rsatkichlaringizni kiriting. Ular qurilmangizda saqlanadi.</p>
-
-  <div class="grid2">
-   <div><label>Sistolik (yuqori)</label><input id="sys" type="number" placeholder="120"></div>
-   <div><label>Diastolik (pastki)</label><input id="dia" type="number" placeholder="80"></div>
-  </div>
-  <label>Puls (bir daqiqadagi urish)</label>
-  <input id="pulse" type="number" placeholder="72">
-  <label>O‘lchov vaqti</label>
-  <select id="measureTime">
-   <option>Ertalab</option><option>Kunduzi</option><option>Kechqurun</option>
-  </select>
-  <button class="primary" onclick="saveVitals()">Ko‘rsatkichlarni saqlash</button>
-  <div class="note">Qon bosimini tinch holatda, to‘g‘ri o‘tirgan holda o‘lchang. Bir martalik o‘lchov tashxis qo‘yish uchun yetarli emas. Natijani shifokor bilan muhokama qiling.</div>
- </div>
-
- <div class="card">
-  <h3>Saqlangan o‘lchovlar</h3>
-  <div id="vitalsHistory"><p class="desc">Hozircha o‘lchovlar yo‘q.</p></div>
-  <button class="secondary" onclick="clearVitals()">O‘lchovlar tarixini tozalash</button>
- </div>
-</section>
-
-<!-- TESTLAR -->
-<section id="quizPage" class="hidden">
- <div class="card">
-  <button class="back-btn" onclick="goHome()">← Orqaga</button>
-  <div class="eyebrow">BILIMINGIZNI SINANG</div>
-  <h2>🎓 Tibbiy bilimlar testi</h2>
-  <p class="desc">Savollarga javob bering va bilimingizni tekshiring.</p>
-  <div class="metric"><small>SAVOLLAR</small><strong id="quizCounter">1 / 10</strong></div>
-  <div class="progress"><div class="progress-fill" id="quizBar"></div></div>
-  <h3 id="quizQuestion" style="margin-top:20px">Savol</h3>
-  <div id="quizOptions"></div>
-  <div id="quizFeedback" class="note hidden"></div>
-  <button class="primary" id="quizNext" onclick="nextQuestion()" disabled>Keyingi savol →</button>
-  <div id="quizFinal" class="quiz-result hidden"></div>
-  <button class="secondary hidden" id="quizRestart" onclick="startQuiz()">Testni qayta boshlash</button>
- </div>
-</section>
-
-<!-- TARIX -->
-<section id="historyPage" class="hidden">
- <div class="card">
-  <button class="back-btn" onclick="goHome()">← Orqaga</button>
-  <div class="eyebrow">SHAXSIY MA’LUMOTLAR</div>
-  <h2>📊 Saqlangan tarix</h2>
-  <div class="section-title">BMI natijalari</div>
-  <div id="bmiHistory"></div>
-  <div class="section-title">Qon bosimi va puls</div>
-  <div id="historyVitals"></div>
- </div>
-</section>
-
-<!-- PDF HISOBOT -->
-<section id="reportPage" class="hidden">
- <div class="card">
-  <button class="back-btn no-print" onclick="goHome()">← Orqaga</button>
-  <div class="eyebrow">JDPU HEALTH</div>
-  <h2>📄 Shaxsiy hisobot</h2>
-  <p class="desc">Saqlangan salomatlik ma’lumotlaringizni ko‘rib chiqing va PDF qilib saqlang.</p>
-  <div id="reportContent"></div>
-  <button class="primary no-print" onclick="window.print()">PDF saqlash / Chop etish</button>
- </div>
-</section>
-
-<!-- YARATUVCHI -->
-<section class="card creator" id="creator">
- <div class="creator-icon">👨‍💻</div>
- <div class="creator-label">LOYIHA YARATUVCHISI</div>
- <h2>Shaxriyor Axmatov</h2>
- <p class="desc">JDPU HEALTH loyihasi muallifi</p>
- <div class="creator-links">
-  <a href="https://instagram.com/Akhmatuv23" target="_blank" rel="noopener noreferrer" class="social instagram">◎ Instagram</a>
-  <a href="https://t.me/Akhmatuv" target="_blank" rel="noopener noreferrer" class="social telegram">➤ Telegram</a>
- </div>
+<!-- HISOBOT -->
+<section class="page" id="page-report">
+ <button class="back-btn no-print" onclick="navigate('home')">← Bosh sahifa</button>
+ <div class="eyebrow">ACADEMY REPORT</div>
+ <h2>Shaxsiy o‘quv hisoboti</h2>
+ <div class="card" style="margin-top:14px" id="reportData"></div>
+ <button class="primary-btn no-print" style="margin-top:14px;width:100%" onclick="window.print()">PDF / Chop etish</button>
 </section>
 
 </main>
-<footer>JDPU HEALTH · Sog‘lom hayot sari</footer>
+</div>
+
+<nav class="mobile-nav">
+ <button class="active" data-page="home"><span>⌂</span>Bosh sahifa</button>
+ <button data-page="anatomy"><span>🫀</span>Anatomiya</button>
+ <button data-page="lessons"><span>📚</span>Darslar</button>
+ <button data-page="quiz"><span>🧠</span>Testlar</button>
+ <button data-page="progress"><span>🏆</span>Yutuqlar</button>
+</nav>
+
+<div class="footer">JDPU HEALTH · MEDICAL ACADEMY · Ta’limiy platforma</div>
 
 <script>
 const $=id=>document.getElementById(id);
-const read=(id)=>$(id).value.trim();
-const today=()=>new Date().toLocaleDateString('sv-SE');
-const dateText=()=>new Date().toLocaleString('uz-UZ');
+const store={
+ get(key,fallback){try{return JSON.parse(localStorage.getItem('jdpuAcademy_'+key))??fallback}catch(e){return fallback}},
+ set(key,value){try{localStorage.setItem('jdpuAcademy_'+key,JSON.stringify(value))}catch(e){alert('Brauzer xotirasiga saqlab bo‘lmadi.')}}
+};
 
-function getData(key,def=[]){
- try{return JSON.parse(localStorage.getItem(key)||JSON.stringify(def))}
- catch(e){return def}
-}
-function setData(key,value){
- try{localStorage.setItem(key,JSON.stringify(value))}
- catch(e){alert("Ma’lumotni saqlash imkoni bo‘lmadi. Brauzer xotirasini tekshiring.")}
-}
-function safe(s){
- return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
+let state=store.get('state',{xp:0,lessons:[],tests:0,correct:0,quizHistory:[]});
+function saveState(){store.set('state',state);updateStats()}
+function addXP(n){state.xp+=n;saveState()}
 
-function openPage(id){
- ['home','bmiPage','waterPage','vitalsPage','quizPage','historyPage','reportPage'].forEach(x=>$(x).classList.add('hidden'));
- $('creator').classList.add('hidden');
- $(id).classList.remove('hidden');
-
- if(id==='waterPage')renderWater();
- if(id==='vitalsPage')renderVitals();
- if(id==='historyPage')renderHistory();
- if(id==='reportPage')renderReport();
- if(id==='quizPage' && quizIndex<0)startQuiz();
-
- window.scrollTo(0,0);
+const pages=['home','anatomy','lessons','quiz','dictionary','flashcards','progress','health','report'];
+function navigate(name){
+ pages.forEach(p=>$('page-'+p).classList.toggle('active',p===name));
+ document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(name==='progress')updateStats();
+ if(name==='report')renderReport();
+ if(name==='health'){renderWater();renderPressure()}
+ if(name==='dictionary')renderTerms();
 }
 
-function goHome(){
- ['bmiPage','waterPage','vitalsPage','quizPage','historyPage','reportPage'].forEach(x=>$(x).classList.add('hidden'));
- $('home').classList.remove('hidden');
- $('creator').classList.remove('hidden');
- updateHomeWater();
- window.scrollTo(0,0);
-}
-
-/* BMI */
-function calculateBMI(){
- const name=read('bmiName'),age=Number(read('bmiAge'));
- const gender=read('bmiGender'),h=Number(read('bmiHeight')),w=Number(read('bmiWeight'));
-
- if(!name||!age||age>120||age<1||!gender||h<50||h>250||w<2||w>350){
-  alert("Barcha ma’lumotlarni to‘g‘ri kiriting.");return;
- }
-
- const bmi=w/((h/100)**2);
- let status,explain,tips=[];
-
- if(age<18){
-  status="Maxsus baholash kerak";
-  explain="18 yoshgacha BMI yosh va jinsga mos o‘sish jadvallari bilan baholanadi. Kattalar mezonlari qo‘llanilmaydi.";
-  tips=[
-   ["🩺","Mutaxassis bilan maslahat","Natijani pediatr bilan baholang."],
-   ["🥗","Muvozanatli ovqatlanish","Turli foydali mahsulotlarni iste’mol qiling."],
-   ["🏃","Faol hayot","Yoshingizga mos harakatni odat qiling."]
-  ];
- }else{
-  if(bmi<18.5){status="Tana vazni past";explain="BMI kattalar uchun past vazn diapazonida."}
-  else if(bmi<25){status="Me’yoriy diapazon";explain="BMI kattalar uchun me’yoriy diapazonda."}
-  else if(bmi<30){status="Ortiqcha vazn diapazoni";explain="BMI kattalar uchun ortiqcha vazn diapazonida."}
-  else{status="Semizlik diapazoni";explain="BMI kattalar uchun semizlik diapazonida."}
-
-  tips=[
-   ["🥗","Ovqatlanish","Muvozanatli va xilma-xil ovqatlaning."],
-   ["🚶","Harakat","Imkoningizga mos kundalik faollikni tanlang."],
-   ["😴","Uyqu","Muntazam uyqu tartibiga rioya qiling."],
-   ["🩺","Sog‘liq nazorati","Zarur bo‘lsa tibbiyot mutaxassisi bilan maslahatlashing."]
-  ];
- }
-
- $('bmiGreeting').textContent="Salom, "+name+"!";
- $('bmiNumber').textContent=bmi.toFixed(1);
- $('bmiStatus').textContent=status;
- $('bmiExplain').textContent=explain;
- $('outHeight').textContent=h+" sm";
- $('outWeight').textContent=w+" kg";
- $('outAge').textContent=age+" yosh";
- $('outGender').textContent=gender;
-
- $('bmiTips').innerHTML=tips.map(t=>
-  '<div class="tip"><div class="tip-icon">'+t[0]+'</div><div><b>'+t[1]+'</b><p>'+t[2]+'</p></div></div>'
- ).join('');
-
- $('bmiResult').classList.remove('hidden');
-
- const history=getData('jdpuBMI');
- history.unshift({name,age,gender,h,w,bmi:bmi.toFixed(1),status,date:dateText()});
- setData('jdpuBMI',history.slice(0,30));
-
- $('bmiResult').scrollIntoView({behavior:'smooth'});
-}
-
-/* SUV NAZORATI */
-function waterKey(){return 'jdpuWater_'+today()}
-function waterData(){return getData(waterKey(),{total:0,goal:2000})}
-
-function renderWater(){
- const d=waterData();
- $('waterCurrent').textContent=d.total;
- $('waterGoal').value=d.goal;
- const pct=Math.min(100,d.goal?d.total/d.goal*100:0);
- $('waterBar').style.width=pct+'%';
- $('waterProgressText').textContent=d.total>=d.goal?'Kunlik maqsad bajarildi! 🎉':(d.goal-d.total)+' ml qoldi · Maqsad: '+d.goal+' ml';
- updateHomeWater();
-}
-
-function addWater(amount){
- const d=waterData();
- d.total=Math.min(20000,d.total+amount);
- d.goal=Math.max(100,Math.min(10000,Number($('waterGoal').value)||2000));
- setData(waterKey(),d);
- renderWater();
-}
-
-function resetWater(){
- if(confirm("Bugungi suv hisobini nolga tushirasizmi?")){
-  const d=waterData();
-  d.total=0;
-  setData(waterKey(),d);
-  renderWater();
- }
-}
-
-$('waterGoal').addEventListener('change',()=>{
- const d=waterData();
- d.goal=Math.max(100,Math.min(10000,Number($('waterGoal').value)||2000));
- setData(waterKey(),d);
- renderWater();
-});
-
-function updateHomeWater(){
- const d=waterData();
- if($('homeWater')){
-  $('homeWater').textContent=d.total;
-  $('homeWaterBar').style.width=Math.min(100,d.total/d.goal*100)+'%';
-  $('homeWaterGoal').textContent='Kunlik maqsad: '+d.goal+' ml';
- }
-}
-
-/* QON BOSIMI VA PULS */
-function saveVitals(){
- const sys=Number(read('sys')),dia=Number(read('dia')),pulse=Number(read('pulse'));
-
- if(!Number.isInteger(sys)||sys<50||sys>260||!Number.isInteger(dia)||dia<30||dia>160||!Number.isInteger(pulse)||pulse<20||pulse>250){
-  alert("Qon bosimi va puls qiymatlarini tekshiring.");return;
- }
-
- if(sys<=dia){
-  alert("Yuqori bosim pastki bosimdan katta bo‘lishi kerak.");return;
- }
-
- const list=getData('jdpuVitals');
- list.unshift({sys,dia,pulse,time:read('measureTime'),date:dateText()});
- setData('jdpuVitals',list.slice(0,50));
-
- $('sys').value='';
- $('dia').value='';
- $('pulse').value='';
-
- renderVitals();
- alert("Ko‘rsatkichlar saqlandi.");
-}
-
-function renderVitals(){
- const list=getData('jdpuVitals');
- $('vitalsHistory').innerHTML=list.length?list.map(v=>
-  '<div class="record"><b>'+safe(v.sys)+' / '+safe(v.dia)+' mmHg</b><br>Puls: '+safe(v.pulse)+' / daqiqa<br>'+safe(v.time)+' · '+safe(v.date)+'</div>'
- ).join(''):'<p class="desc">Hozircha o‘lchovlar yo‘q.</p>';
-}
-
-function clearVitals(){
- if(confirm("Barcha o‘lchovlarni o‘chirishni xohlaysizmi?")){
-  localStorage.removeItem('jdpuVitals');
-  renderVitals();
- }
-}
-
-/* TIBBIY TEST */
-const questions=[
- {q:"Katta ko‘krak muskulining lotincha nomi qaysi?",o:["Musculus pectoralis major","Musculus subclavius","Musculus serratus anterior"],a:0,e:"Katta ko‘krak muskuli — Musculus pectoralis major."},
- {q:"Inson tanasidagi asosiy nafas olish muskuli qaysi?",o:["Diafragma","Biseps","Triseps"],a:0,e:"Diafragma qisqarib, ko‘krak bo‘shlig‘i hajmini oshiradi."},
- {q:"Yurak nechta kameradan tashkil topgan?",o:["2 ta","3 ta","4 ta"],a:2,e:"Yurak 2 ta bo‘lmacha va 2 ta qorinchadan iborat."},
- {q:"Qonni yurakdan tana a’zolariga olib chiqadigan tomir nima?",o:["Arteriya","Vena","Kapillyar"],a:0,e:"Arteriyalar qonni yurakdan olib chiqadi."},
- {q:"Odam skeletida nechta suyak bo‘ladi (kattalarda odatda)?",o:["106 ta","206 ta","306 ta"],a:1,e:"Katta yoshli inson skeletida odatda 206 ta suyak bo‘ladi."},
- {q:"Qonning kislorod tashuvchi hujayralari qaysilar?",o:["Leykotsitlar","Trombotsitlar","Eritrotsitlar"],a:2,e:"Eritrotsitlar tarkibidagi gemoglobin kislorod tashiydi."},
- {q:"Buyrakning asosiy vazifalaridan biri nima?",o:["Qonni filtrlash","Ovoz chiqarish","Ovqatni chaynash"],a:0,e:"Buyraklar qonni filtrlab, siydik hosil qiladi."},
- {q:"Vitamin C ning boshqa nomi qaysi?",o:["Retinol","Askorbin kislota","Kalsiferol"],a:1,e:"Vitamin C — askorbin kislota."},
- {q:"Puls nimani ifodalaydi?",o:["Yurak urishining tomirlarda sezilishi","Nafas hajmi","Tana harorati"],a:0,e:"Puls yurak qisqarishlari natijasida arteriyalarda paydo bo‘ladigan tebranishdir."},
- {q:"Qo‘lni tirsak bo‘g‘imida bukishda qaysi muskul muhim?",o:["Biseps","Diafragma","Deltoid"],a:0,e:"Biseps tirsak bo‘g‘imini bukishda muhim qatnashadi."}
+/* ANATOMIYA MA'LUMOTLARI */
+const systems=[
+ {id:'skeletal',icon:'🦴',name:'Skelet tizimi',latin:'Systema skeletale',desc:'Suyaklar, bo‘g‘imlar va skelet tuzilishi.',
+ body:`<h3>Umumiy ma’lumot</h3><p>Odam skeleti tanaga tayanch beradi, ichki a’zolarni himoya qiladi va harakatda qatnashadi. Katta yoshli odam skeletida odatda 206 ta suyak bo‘ladi.</p><h3>Asosiy qismlari</h3><ul><li>Bosh skeleti — cranium</li><li>Umurtqa pog‘onasi — columna vertebralis</li><li>Ko‘krak qafasi — thorax</li><li>Yuqori va pastki qo‘l-oyoq suyaklari</li></ul><h3>Vazifalari</h3><p>Tayanch, himoya, harakatda ishtirok etish, mineral moddalarni saqlash va qon hujayralari hosil bo‘lishiga sharoit yaratish.</p>`},
+ {id:'muscular',icon:'💪',name:'Muskul tizimi',latin:'Systema musculare',desc:'Muskullar, ularning vazifalari va harakat.',
+ body:`<h3>Umumiy ma’lumot</h3><p>Muskul tizimi tana harakatlarini yuzaga keltiradi, gavda holatini saqlaydi va issiqlik hosil bo‘lishida qatnashadi.</p><h3>Muskul turlari</h3><ul><li>Skelet muskullari — musculi skeletales</li><li>Silliq muskullar — musculi non striati</li><li>Yurak muskuli — myocardium</li></ul><h3>Misollar</h3><p>Katta ko‘krak muskuli — musculus pectoralis major. Ikki boshli yelka muskuli — musculus biceps brachii. Deltasimon muskul — musculus deltoideus.</p>`},
+ {id:'cardio',icon:'❤️',name:'Yurak-qon tomir tizimi',latin:'Systema cardiovasculare',desc:'Yurak, arteriya, vena va qon aylanishi.',
+ body:`<h3>Yurak</h3><p>Yurak ko‘krak qafasida joylashgan muskulli a’zo bo‘lib, qonni tomirlar bo‘ylab harakatlantiradi. U to‘rtta kameradan: ikki bo‘lmacha va ikki qorinchadan tashkil topgan.</p><h3>Qon tomirlari</h3><ul><li>Arteriyalar — arteriae</li><li>Venalar — venae</li><li>Kapillyarlar — vasa capillaria</li></ul><h3>Qon aylanish doiralari</h3><p>Katta qon aylanish doirasi qonning yurakdan tana a’zolariga va qaytib yurakka harakatini ta’minlaydi. Kichik doira o‘pka bilan bog‘liq.</p>`},
+ {id:'respiratory',icon:'🫁',name:'Nafas olish tizimi',latin:'Systema respiratorium',desc:'Nafas yo‘llari va o‘pka anatomiyasi.',
+ body:`<h3>Asosiy a’zolar</h3><ul><li>Burun bo‘shlig‘i — cavitas nasi</li><li>Halqum — pharynx</li><li>Hiqildoq — larynx</li><li>Traxeya — trachea</li><li>Bronxlar — bronchi</li><li>O‘pka — pulmones</li></ul><h3>Vazifasi</h3><p>Nafas olish tizimi organizmga kislorod kirishini va karbonat angidrid chiqarilishini ta’minlaydi. Diafragma — diaphragma nafas olishda muhim muskul hisoblanadi.</p>`},
+ {id:'digestive',icon:'🍎',name:'Hazm qilish tizimi',latin:'Systema digestorium',desc:'Ovqat hazm qilish a’zolari.',
+ body:`<h3>Asosiy a’zolar</h3><ul><li>Og‘iz bo‘shlig‘i — cavitas oris</li><li>Qizilo‘ngach — oesophagus</li><li>Oshqozon — ventriculus</li><li>Ingichka ichak — intestinum tenue</li><li>Yo‘g‘on ichak — intestinum crassum</li><li>Jigar — hepar</li><li>Oshqozon osti bezi — pancreas</li></ul><h3>Vazifasi</h3><p>Ovqatni mexanik va kimyoviy qayta ishlash, oziq moddalarni so‘rish hamda qoldiqlarni chiqarishga tayyorlash.</p>`},
+ {id:'nervous',icon:'🧠',name:'Nerv tizimi',latin:'Systema nervosum',desc:'Bosh miya, orqa miya va nervlar.',
+ body:`<h3>Markaziy nerv tizimi</h3><ul><li>Bosh miya — encephalon</li><li>Orqa miya — medulla spinalis</li></ul><h3>Periferik nerv tizimi</h3><p>Bosh miya nervlari, orqa miya nervlari va nerv tugunlari bilan ifodalanadi.</p><h3>Vazifasi</h3><p>Organizm faoliyatini boshqarish, tashqi va ichki muhitdan axborot qabul qilish, qayta ishlash va javob reaksiyalarini tashkil etish.</p>`},
+ {id:'urinary',icon:'🫘',name:'Siydik ajratish tizimi',latin:'Systema urinarium',desc:'Buyraklar va siydik yo‘llari.',
+ body:`<h3>Asosiy a’zolar</h3><ul><li>Buyrak — ren</li><li>Siydik nayi — ureter</li><li>Siydik pufagi — vesica urinaria</li><li>Siydik chiqarish kanali — urethra</li></ul><h3>Vazifasi</h3><p>Qonni filtrlash, siydik hosil qilish, suv-tuz muvozanati va organizm ichki muhitining barqarorligini saqlashda qatnashish.</p>`},
+ {id:'endocrine',icon:'🧬',name:'Endokrin tizim',latin:'Systema endocrinum',desc:'Ichki sekretsiya bezlari va gormonlar.',
+ body:`<h3>Asosiy bezlar</h3><ul><li>Gipofiz — hypophysis</li><li>Qalqonsimon bez — glandula thyroidea</li><li>Qalqonoldi bezlari — glandulae parathyroideae</li><li>Buyrak usti bezlari — glandulae suprarenales</li></ul><h3>Vazifasi</h3><p>Gormonlar orqali o‘sish, moddalar almashinuvi, ko‘payish va boshqa fiziologik jarayonlarni boshqarishda ishtirok etadi.</p>`}
 ];
 
-let quizIndex=-1,quizScore=0,quizChosen=false;
+function renderAnatomy(){
+ $('anatomyList').innerHTML=systems.map(s=>`
+ <button class="system-card" onclick="showAnatomy('${s.id}')">
+  <span class="emoji">${s.icon}</span><b>${s.name}</b>
+  <small>${s.latin}</small><small>${s.desc}</small>
+ </button>`).join('');
+}
+function showAnatomy(id){
+ const s=systems.find(x=>x.id===id);if(!s)return;
+ $('anatomyDetail').classList.remove('hidden');
+ $('anatomyContent').innerHTML=`<div class="eyebrow">${s.latin}</div><div style="font-size:38px;margin-top:12px">${s.icon}</div><h2 class="detail-title">${s.name}</h2><div class="detail-body">${s.body}</div>`;
+ $('anatomyDetail').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function closeAnatomy(){$('anatomyDetail').classList.add('hidden');$('anatomyList').scrollIntoView({behavior:'smooth'})}
 
-function startQuiz(){
- quizIndex=0;
- quizScore=0;
- quizChosen=false;
- $('quizFinal').classList.add('hidden');
- $('quizRestart').classList.add('hidden');
- $('quizNext').classList.remove('hidden');
- showQuestion();
+/* INTERAKTIV DARSLAR */
+const lessons=[
+ {id:'cell',icon:'🔬',title:'Hujayra haqida tushuncha',time:'5 daqiqa',level:'Boshlang‘ich',text:`<h3>Hujayra nima?</h3><p>Hujayra tirik organizmlarning tuzilish va funksional birligidir. Ko‘pchilik hujayralar membrana, sitoplazma va genetik materialga ega.</p><h3>Asosiy qismlari</h3><ul><li>Hujayra membranasi — tashqi chegarani hosil qiladi.</li><li>Sitoplazma — hujayra ichki muhitidir.</li><li>Yadro — eukariot hujayrada genetik axborotni saqlaydi.</li></ul><h3>Organellalar</h3><p>Mitoxondriya energiya hosil qilishda, ribosomalar oqsil sintezida, endoplazmatik to‘r moddalarni tashish va sintezda qatnashadi.</p>`},
+ {id:'heart',icon:'❤️',title:'Yurak anatomiyasi',time:'7 daqiqa',level:'O‘rta',text:`<h3>Yurak tuzilishi</h3><p>Yurak ko‘krak qafasining o‘rta bo‘limida, asosan chap tomonga siljigan holda joylashadi.</p><h3>Kameralari</h3><ul><li>O‘ng bo‘lmacha — atrium dextrum</li><li>Chap bo‘lmacha — atrium sinistrum</li><li>O‘ng qorincha — ventriculus dexter</li><li>Chap qorincha — ventriculus sinister</li></ul><h3>Klapanlar</h3><p>Yurak klapanlari qonning bir yo‘nalishda oqishini ta’minlaydi.</p>`},
+ {id:'bones',icon:'🦴',title:'Skelet tizimi',time:'8 daqiqa',level:'O‘rta',text:`<h3>Skeletning vazifalari</h3><p>Skelet tayanch, himoya va harakat vazifalarini bajaradi.</p><h3>Bo‘limlari</h3><ul><li>Bosh skeleti — cranium</li><li>Gavda skeleti — skeletum trunci</li><li>Qo‘l-oyoq skeleti — skeleton appendiculare</li></ul><h3>Suyak turlari</h3><p>Naysimon, kalta, yassi va aralash suyaklar farqlanadi.</p>`},
+ {id:'muscles',icon:'💪',title:'Ko‘krak muskullari',time:'9 daqiqa',level:'O‘rta',text:`<h3>Ko‘krak muskullari</h3><p>Ko‘krak muskullari yuzaki va chuqur guruhlarga ajratiladi.</p><h3>Yuzaki muskullar</h3><ul><li>Katta ko‘krak muskuli — musculus pectoralis major</li><li>Kichik ko‘krak muskuli — musculus pectoralis minor</li><li>O‘mrov osti muskuli — musculus subclavius</li><li>Oldingi tishsimon muskul — musculus serratus anterior</li></ul><h3>Vazifasi</h3><p>Yelka kamari va qo‘l harakatlarida qatnashadi. Ayrim muskullar nafas olish mexanikasiga ham yordam beradi.</p>`},
+ {id:'lungs',icon:'🫁',title:'Nafas olish fiziologiyasi',time:'6 daqiqa',level:'Boshlang‘ich',text:`<h3>Nafas olish jarayoni</h3><p>Nafas olishda havo nafas yo‘llari orqali o‘pkaga yetib boradi. Alveolalarda gazlar almashinuvi sodir bo‘ladi.</p><h3>Inspiratsiya</h3><p>Diafragma qisqarib pastga tushadi, ko‘krak qafasi hajmi ortadi va havo o‘pkaga kiradi.</p><h3>Ekspiratsiya</h3><p>Tinch nafas chiqarishda nafas muskullari bo‘shashadi va o‘pka elastikligi tufayli havo tashqariga chiqadi.</p>`},
+ {id:'blood',icon:'🩸',title:'Qon va uning tarkibi',time:'7 daqiqa',level:'Boshlang‘ich',text:`<h3>Qon tarkibi</h3><p>Qon plazma va shaklli elementlardan tashkil topgan.</p><ul><li>Eritrotsitlar — kislorod tashishda qatnashadi.</li><li>Leykotsitlar — immun himoyada qatnashadi.</li><li>Trombotsitlar — qon ivishida ishtirok etadi.</li></ul><h3>Plazma</h3><p>Qon plazmasi suv, oqsillar, elektrolitlar va boshqa erigan moddalardan iborat.</p>`}
+];
+
+let currentLesson=null;
+function renderLessons(){
+ $('lessonList').innerHTML=lessons.map(l=>{
+  const done=state.lessons.includes(l.id);
+  return `<button class="lesson-card" onclick="showLesson('${l.id}')"><span class="emoji">${l.icon}</span><b>${l.title}</b><small>${l.time} · ${l.level}</small><div style="margin-top:10px">${done?'<span class="tag">✓ O‘TILGAN</span>':'<span class="tag">BOSHLASH →</span>'}</div></button>`;
+ }).join('');
+}
+function showLesson(id){
+ currentLesson=lessons.find(l=>l.id===id);if(!currentLesson)return;
+ $('lessonDetail').classList.remove('hidden');
+ $('lessonContent').innerHTML=`<div class="eyebrow">INTERAKTIV DARS · ${currentLesson.time}</div><div style="font-size:35px;margin-top:10px">${currentLesson.icon}</div><h2 class="detail-title">${currentLesson.title}</h2><div class="detail-body">${currentLesson.text}</div>`;
+ const done=state.lessons.includes(id);
+ $('completeLessonBtn').textContent=done?'✓ Bu dars o‘tilgan':'✓ Darsni tugatdim · +15 XP';
+ $('completeLessonBtn').disabled=done;
+ $('completeLessonBtn').style.opacity=done?'.5':'1';
+ $('lessonDetail').scrollIntoView({behavior:'smooth'});
+}
+function closeLesson(){$('lessonDetail').classList.add('hidden');renderLessons()}
+function completeLesson(){
+ if(!currentLesson||state.lessons.includes(currentLesson.id))return;
+ state.lessons.push(currentLesson.id);addXP(15);
+ $('completeLessonBtn').textContent='✓ Dars tugallandi';
+ $('completeLessonBtn').disabled=true;
+ renderLessons();
 }
 
-function showQuestion(){
- const q=questions[quizIndex];
- $('quizCounter').textContent=(quizIndex+1)+' / '+questions.length;
- $('quizBar').style.width=(quizIndex/questions.length*100)+'%';
- $('quizQuestion').textContent=q.q;
- $('quizOptions').innerHTML='';
- $('quizFeedback').classList.add('hidden');
- $('quizNext').disabled=true;
- quizChosen=false;
+/* TEST SAVOLLARI */
+const questionBank={
+ anatomy:[
+  {q:'Yurak nechta kameradan tashkil topgan?',o:['2 ta','3 ta','4 ta','5 ta'],a:2,e:'Yurak ikki bo‘lmacha va ikki qorinchadan iborat.'},
+  {q:'Katta ko‘krak muskulining lotincha nomi qaysi?',o:['Musculus pectoralis major','Musculus deltoideus','Musculus trapezius','Musculus biceps'],a:0,e:'Katta ko‘krak muskuli — musculus pectoralis major.'},
+  {q:'Kattalar skeletida odatda nechta suyak bo‘ladi?',o:['106','206','306','406'],a:1,e:'Katta yoshli inson skeletida odatda 206 ta suyak bo‘ladi.'},
+  {q:'O‘pkaning lotincha nomi qaysi?',o:['Cor','Hepar','Pulmo','Ren'],a:2,e:'Pulmo — o‘pka.'},
+  {q:'Diafragma qaysi jarayonda muhim qatnashadi?',o:['Ko‘rish','Nafas olish','Eshitish','Hazm qilish'],a:1,e:'Diafragma asosiy nafas muskuli hisoblanadi.'}
+ ],
+ general:[
+  {q:'Qonning kislorod tashuvchi hujayralari qaysi?',o:['Leykotsitlar','Trombotsitlar','Eritrotsitlar','Neyronlar'],a:2,e:'Eritrotsitlarda gemoglobin mavjud.'},
+  {q:'Buyrakning asosiy vazifalaridan biri nima?',o:['Qonni filtrlash','Ovoz chiqarish','Ovqatni chaynash','Ko‘rish'],a:0,e:'Buyraklar qonni filtrlashda qatnashadi.'},
+  {q:'Vitamin C ning nomi qaysi?',o:['Retinol','Askorbin kislota','Kalsiferol','Tokoferol'],a:1,e:'Vitamin C — askorbin kislota.'},
+  {q:'Puls nimani ifodalaydi?',o:['Nafas sonini','Arteriya devori tebranishini','Tana haroratini','Qon hajmini'],a:1,e:'Puls arteriya devoridagi ritmik tebranishdir.'},
+  {q:'Odam organizmida gazlar almashinuvi asosan qayerda sodir bo‘ladi?',o:['Alveolalarda','Qizilo‘ngachda','Oshqozonda','Buyrakda'],a:0,e:'O‘pka alveolalarida gazlar almashinuvi sodir bo‘ladi.'}
+ ],
+ latin:[
+  {q:'Cor so‘zining tarjimasi nima?',o:['Jigar','Yurak','Buyrak','O‘pka'],a:1,e:'Cor — yurak.'},
+  {q:'Os so‘zining ma’nosi qaysi?',o:['Suyak','Muskul','Nerv','Tomir'],a:0,e:'Os — suyak.'},
+  {q:'Pulmo nimani anglatadi?',o:['Oshqozon','O‘pka','Yurak','Jigar'],a:1,e:'Pulmo — o‘pka.'},
+  {q:'Musculus so‘zining tarjimasi?',o:['Suyak','Muskul','Bo‘g‘im','Teri'],a:1,e:'Musculus — muskul.'},
+  {q:'Hepar qaysi a’zo?',o:['Jigar','Buyrak','Yurak','O‘pka'],a:0,e:'Hepar — jigar.'}
+ ]
+};
+questionBank.mixed=[...questionBank.anatomy.slice(0,3),...questionBank.general.slice(0,2)];
 
+let activeQuestions=[],qIndex=0,qScore=0,qAnswered=false,qCategory='';
+function startQuiz(category){
+ qCategory=category;
+ activeQuestions=[...questionBank[category]].sort(()=>Math.random()-.5);
+ qIndex=0;qScore=0;qAnswered=false;
+ $('quizBox').classList.remove('hidden');
+ $('quizFinish').classList.add('hidden');
+ $('quizCategory').textContent=({anatomy:'ANATOMIYA',general:'UMUMIY TIBBIYOT',latin:'LOTIN TILI',mixed:'ARALASH TEST'})[category];
+ showQuizQuestion();
+ $('quizBox').scrollIntoView({behavior:'smooth'});
+}
+function showQuizQuestion(){
+ const q=activeQuestions[qIndex];
+ $('quizCount').textContent=(qIndex+1)+' / '+activeQuestions.length;
+ $('quizProgress').style.width=(qIndex/activeQuestions.length*100)+'%';
+ $('quizQuestion').textContent=q.q;
+ $('quizAnswers').innerHTML='';
+ $('quizFeedback').classList.add('hidden');
+ $('quizNext').classList.add('hidden');
+ qAnswered=false;
  q.o.forEach((option,i)=>{
   const b=document.createElement('button');
-  b.className='quiz-option';
+  b.className='answer-option';
   b.textContent=String.fromCharCode(65+i)+') '+option;
-  b.onclick=()=>chooseAnswer(i);
-  $('quizOptions').appendChild(b);
+  b.onclick=()=>answerQuiz(i);
+  $('quizAnswers').appendChild(b);
  });
 }
-
-function chooseAnswer(i){
- if(quizChosen)return;
- quizChosen=true;
-
- const q=questions[quizIndex];
- const buttons=$('quizOptions').querySelectorAll('button');
-
- buttons.forEach((b,index)=>{
+function answerQuiz(index){
+ if(qAnswered)return;
+ qAnswered=true;
+ const q=activeQuestions[qIndex];
+ const buttons=$('quizAnswers').querySelectorAll('button');
+ buttons.forEach((b,i)=>{
   b.disabled=true;
-  if(index===q.a)b.style.background='#d9f5e9';
-  if(index===i&&i!==q.a)b.style.background='#ffe5e8';
+  if(i===q.a)b.classList.add('correct');
+  if(i===index&&i!==q.a)b.classList.add('wrong');
  });
-
- if(i===q.a)quizScore++;
-
- $('quizFeedback').textContent=(i===q.a?'✓ To‘g‘ri! ':'✗ Noto‘g‘ri. ')+q.e;
+ if(index===q.a)qScore++;
+ $('quizFeedback').textContent=(index===q.a?'✓ To‘g‘ri javob! ':'✗ Noto‘g‘ri javob. ')+q.e;
  $('quizFeedback').classList.remove('hidden');
- $('quizNext').disabled=false;
+ $('quizNext').classList.remove('hidden');
+}
+function nextQuiz(){
+ if(!qAnswered)return;
+ qIndex++;
+ if(qIndex<activeQuestions.length){showQuizQuestion();return}
+ $('quizAnswers').innerHTML='';
+ $('quizFeedback').classList.add('hidden');
+ $('quizNext').classList.add('hidden');
+ $('quizProgress').style.width='100%';
+ state.tests++;
+ state.correct+=qScore;
+ state.quizHistory.unshift({category:qCategory,score:qScore,total:activeQuestions.length,date:new Date().toLocaleDateString('uz-UZ')});
+ addXP(qScore*10);
+ $('quizFinish').classList.remove('hidden');
+ $('quizFinish').innerHTML=`<div class="feedback"><div style="font-size:30px">🏆</div><h2>Test yakunlandi!</h2><div style="font-size:30px;font-weight:900">${qScore} / ${activeQuestions.length}</div><p>${qScore===5?'Ajoyib! Barcha javoblar to‘g‘ri.':'Yaxshi urinish! Yana mashq qiling.'}</p><p>+${qScore*10} XP qo‘lga kiritdingiz.</p><button class="primary-btn" onclick="startQuiz('${qCategory}')">Qayta ishlash</button><button class="outline-btn" style="margin-left:7px" onclick="navigate('progress')">Natijalarim</button></div>`;
+ saveState();
 }
 
-function nextQuestion(){
- if(!quizChosen)return;
- quizIndex++;
+/* LOTINCHA LUG'AT */
+const terms=[
+ ['Cor','Yurak'],['Pulmo','O‘pka'],['Hepar','Jigar'],['Ren','Buyrak'],
+ ['Cerebrum','Bosh miya'],['Medulla spinalis','Orqa miya'],['Os','Suyak'],
+ ['Musculus','Muskul'],['Articulatio','Bo‘g‘im'],['Arteria','Arteriya'],
+ ['Vena','Vena'],['Nervus','Nerv'],['Cutis','Teri'],['Oculus','Ko‘z'],
+ ['Aur is','Quloq'],['Ventriculus','Oshqozon'],['Intestinum','Ichak'],
+ ['Cranium','Bosh skeleti'],['Thorax','Ko‘krak qafasi'],
+ ['Diaphragma','Diafragma'],['Femur','Son suyagi'],
+ ['Humerus','Yelka suyagi'],['Patella','Tizza qopqog‘i'],
+ ['Clavicula','O‘mrov suyagi'],['Scapula','Kurak suyagi'],
+ ['Mandibula','Pastki jag‘'],['Maxilla','Yuqori jag‘'],
+ ['Pharynx','Halqum'],['Larynx','Hiqildoq'],['Trachea','Traxeya']
+];
+function renderTerms(){
+ const q=($('termSearch').value||'').toLowerCase().trim();
+ const filtered=terms.filter(t=>t.join(' ').toLowerCase().includes(q));
+ $('termList').innerHTML=filtered.length?filtered.map(t=>`<div class="term-card" style="margin-bottom:8px"><strong>${t[0]}</strong><small>${t[1]}</small></div>`).join(''):'<div class="empty">Bu so‘z topilmadi.</div>';
+}
 
- if(quizIndex>=questions.length){
-  $('quizQuestion').textContent='Test yakunlandi!';
-  $('quizOptions').innerHTML='';
-  $('quizFeedback').classList.add('hidden');
-  $('quizNext').classList.add('hidden');
-  $('quizBar').style.width='100%';
-  $('quizFinal').classList.remove('hidden');
+/* FLASHCARD */
+let flashIndex=0,flashRevealed=false;
+function renderFlash(){
+ const t=terms[flashIndex%terms.length];
+ $('flashTerm').textContent=t[0];
+ $('flashHint').textContent=flashRevealed?t[1]:'Tarjimasini eslang...';
+ $('flashCount').textContent=(flashIndex+1)+' / '+terms.length;
+ $('flashCard').style.borderColor=flashRevealed?'#35c995':'#3673a0';
+}
+function flipFlashcard(){flashRevealed=!flashRevealed;renderFlash()}
+function nextFlash(){flashIndex=(flashIndex+1)%terms.length;flashRevealed=false;renderFlash()}
+function previousFlash(){flashIndex=(flashIndex-1+terms.length)%terms.length;flashRevealed=false;renderFlash()}
 
-  $('quizFinal').innerHTML='<h3>Natijangiz: '+quizScore+' / '+questions.length+'</h3><p>'+ (quizScore>=8?'Ajoyib natija!':'Yaxshi urinish. Yana mashq qiling!')+'</p>';
-  $('quizRestart').classList.remove('hidden');
+/* YUTUQLAR */
+const ranks=[
+ {xp:0,name:'Yangi tadqiqotchi',desc:'Bilim sari ilk qadam.'},
+ {xp:100,name:'Tibbiyot talabasi',desc:'Dastlabki bilimlaringiz shakllanmoqda.'},
+ {xp:300,name:'Yosh mutaxassis',desc:'Bilimlaringiz tobora mustahkamlanmoqda.'},
+ {xp:600,name:'Anatomiya bilimdoni',desc:'Tibbiy bilimlaringiz yaxshi rivojlanmoqda.'},
+ {xp:1000,name:'Medical Expert',desc:'Siz akademiyada yuqori darajaga yetdingiz.'}
+];
+const badges=[
+ {icon:'📖',name:'Birinchi dars',ok:()=>state.lessons.length>=1},
+ {icon:'📚',name:'5 ta dars',ok:()=>state.lessons.length>=5},
+ {icon:'🧠',name:'Birinchi test',ok:()=>state.tests>=1},
+ {icon:'🎯',name:'10 ta to‘g‘ri javob',ok:()=>state.correct>=10},
+ {icon:'⚡',name:'100 XP',ok:()=>state.xp>=100},
+ {icon:'🏆',name:'500 XP',ok:()=>state.xp>=500}
+];
+function updateStats(){
+ $('topXP').textContent=state.xp;
+ $('homeXP').textContent=state.xp;
+ $('homeLessons').textContent=state.lessons.length;
+ $('homeTests').textContent=state.tests;
+ $('progressXP').textContent=state.xp+' XP';
+ $('statLessons').textContent=state.lessons.length;
+ $('statTests').textContent=state.tests;
+ $('statCorrect').textContent=state.correct;
+ const rank=[...ranks].reverse().find(r=>state.xp>=r.xp)||ranks[0];
+ const next=ranks.find(r=>r.xp>state.xp);
+ $('rankName').textContent=rank.name;
+ $('rankDescription').textContent=rank.desc;
+ const base=rank.xp;
+ const target=next?next.xp:rank.xp+500;
+ const pct=next?Math.min(100,(state.xp-base)/(target-base)*100):100;
+ $('rankProgress').style.width=pct+'%';
+ $('nextRank').textContent=next?`Keyingi daraja: ${next.name} · yana ${next.xp-state.xp} XP`:'Eng yuqori darajaga yetdingiz!';
+ $('badgeGrid').innerHTML=badges.map(b=>`<div class="badge-item ${b.ok()?'':'locked'}"><span>${b.icon}</span><small>${b.name}</small><div style="font-size:9px;margin-top:5px">${b.ok()?'OCHILDI':'YOPIQ'}</div></div>`).join('');
+}
 
-  const history=getData('jdpuQuiz');
-  history.unshift({score:quizScore,date:dateText()});
-  setData('jdpuQuiz',history.slice(0,20));
- }else{
-  showQuestion();
+/* SOG‘LIQ VOSITALARI */
+function dateKey(){return new Date().toLocaleDateString('sv-SE')}
+function waterKey(){return 'water_'+dateKey()}
+function renderWater(){
+ const d=store.get(waterKey(),{total:0});
+ $('waterTotal').textContent=d.total;
+ $('waterProgress').style.width=Math.min(100,d.total/2000*100)+'%';
+ $('waterLabel').textContent=`Kunlik maqsad: 2000 ml · ${Math.max(0,2000-d.total)} ml qoldi`;
+}
+function addWater(n){
+ const d=store.get(waterKey(),{total:0});
+ d.total=Math.min(20000,d.total+n);
+ store.set(waterKey(),d);renderWater();
+}
+function resetWater(){
+ if(confirm('Bugungi suv hisobini tozalaysizmi?')){
+  store.set(waterKey(),{total:0});renderWater();
  }
 }
-
-/* TARIX VA HISOBOT */
-function renderHistory(){
- const b=getData('jdpuBMI');
-
- $('bmiHistory').innerHTML=b.length?b.map(x=>
-  '<div class="history-item"><b>'+safe(x.name)+'</b><br>BMI: '+safe(x.bmi)+' · '+safe(x.status)+'<br>'+safe(x.date)+'</div>'
- ).join(''):'<p class="desc">BMI tarixi mavjud emas.</p>';
-
- const v=getData('jdpuVitals');
-
- $('historyVitals').innerHTML=v.length?v.slice(0,15).map(x=>
-  '<div class="history-item"><b>'+safe(x.sys)+' / '+safe(x.dia)+' mmHg</b><br>Puls: '+safe(x.pulse)+' · '+safe(x.date)+'</div>'
- ).join(''):'<p class="desc">Qaydlar mavjud emas.</p>';
+function calcBMI(){
+ const h=Number($('height').value),w=Number($('weight').value);
+ if(h<50||h>250||w<2||w>350){alert('Bo‘y va vaznni to‘g‘ri kiriting.');return}
+ const bmi=w/((h/100)**2);
+ $('bmiOutput').textContent='BMI: '+bmi.toFixed(1)+' · '+(bmi<18.5?'Past vazn diapazoni':bmi<25?'Me’yoriy diapazon':bmi<30?'Ortiqcha vazn diapazoni':'Semizlik diapazoni')+'. Bu tashxis emas.';
+ $('bmiOutput').classList.remove('hidden');
+}
+function savePressure(){
+ const s=Number($('systolic').value),d=Number($('diastolic').value),p=Number($('pulseValue').value);
+ if(!Number.isInteger(s)||s<50||s>260||!Number.isInteger(d)||d<30||d>160||!Number.isInteger(p)||p<20||p>250||s<=d){alert('Qiymatlarni tekshirib qayta kiriting.');return}
+ const list=store.get('pressure',[]);
+ list.unshift({s,d,p,date:new Date().toLocaleString('uz-UZ')});
+ store.set('pressure',list.slice(0,30));
+ $('systolic').value='';$('diastolic').value='';$('pulseValue').value='';
+ renderPressure();alert('O‘lchov saqlandi.');
+}
+function renderPressure(){
+ const list=store.get('pressure',[]);
+ $('pressureHistory').innerHTML=list.length?list.slice(0,8).map(x=>`<div class="list-item"><b>${x.s}/${x.d} mmHg · Puls ${x.p}</b><p>${x.date}</p></div>`).join(''):'<div class="empty">Hozircha o‘lchovlar yo‘q.</div>';
 }
 
+/* HISOBOT */
 function renderReport(){
- const b=getData('jdpuBMI');
- const v=getData('jdpuVitals');
- const w=waterData();
-
- $('reportContent').innerHTML=
-  '<div class="metric"><small>BUGUNGI SUV</small><strong>'+w.total+' / '+w.goal+' ml</strong></div>'+
-  '<div class="section-title">BMI tarixi</div>'+
-  (b.length?b.slice(0,10).map(x=>'<div class="record">'+safe(x.name)+' · BMI '+safe(x.bmi)+' · '+safe(x.date)+'</div>').join(''):'<p class="desc">BMI ma’lumoti yo‘q.</p>')+
-  '<div class="section-title">Qon bosimi va puls tarixi</div>'+
-  (v.length?v.slice(0,10).map(x=>'<div class="record">'+safe(x.sys)+'/'+safe(x.dia)+' mmHg · Puls '+safe(x.pulse)+' · '+safe(x.date)+'</div>').join(''):'<p class="desc">O‘lchovlar mavjud emas.</p>')+
-  '<p class="desc" style="margin-top:20px">Hisobot sanasi: '+dateText()+'</p>'+
-  '<div class="note">Ushbu hisobot foydalanuvchi kiritgan qaydlarni ko‘rsatadi. Tibbiy tashxis o‘rnini bosmaydi.</div>';
+ $('reportData').innerHTML=`
+ <h3>JDPU HEALTH · O‘quv hisoboti</h3>
+ <p class="small muted">Hisobot sanasi: ${new Date().toLocaleDateString('uz-UZ')}</p>
+ <div class="grid" style="margin-top:15px">
+  <div class="list-item"><b>${state.xp} XP</b><p>Jami tajriba ballari</p></div>
+  <div class="list-item"><b>${state.lessons.length}</b><p>O‘tilgan darslar</p></div>
+  <div class="list-item"><b>${state.tests}</b><p>Yechilgan testlar</p></div>
+  <div class="list-item"><b>${state.correct}</b><p>To‘g‘ri javoblar</p></div>
+ </div>
+ <h3 style="margin-top:20px">O‘tilgan darslar</h3>
+ ${state.lessons.length?state.lessons.map(id=>{const l=lessons.find(x=>x.id===id);return l?`<div class="list-item">${l.icon} ${l.title} ✓</div>`:''}).join(''):'<p class="small muted">Hozircha darslar tugallanmagan.</p>'}
+ <h3 style="margin-top:20px">Test natijalari</h3>
+ ${state.quizHistory.length?state.quizHistory.slice(0,10).map(x=>`<div class="list-item"><b>${x.category.toUpperCase()}</b><p>${x.score}/${x.total} · ${x.date}</p></div>`).join(''):'<p class="small muted">Test natijalari mavjud emas.</p>'}
+ <p class="small muted" style="margin-top:20px">Ma’lumotlar ushbu qurilmaning brauzerida saqlanadi.</p>`;
 }
 
-/* ISHGA TUSHISH */
-updateHomeWater();
+/* BOSHLANG‘ICH HOLAT */
+renderAnatomy();
+renderLessons();
+renderTerms();
+renderFlash();
+updateStats();
+renderWater();
+renderPressure();
+
+document.querySelectorAll('[data-page]').forEach(button=>{
+ button.addEventListener('click',()=>navigate(button.dataset.page));
+});
 </script>
 </body>
 </html>
