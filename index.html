@@ -1,13 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YOUNG LAB | Virtual laboratoriya</title>
+<meta name="theme-color" content="#f4f8ff">
+<title>YOUNG LAB — Virtual laboratoriya</title>
 
 <style>
-:root {
+:root{
   --blue:#2878f0;
   --cyan:#26b9c9;
   --purple:#7955e8;
@@ -15,13 +15,13 @@
   --ink:#17243b;
   --muted:#687891;
   --line:#e3ebf6;
-  --white:#fff;
+  --green:#159b75;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  background:var(--bg);
+  background:radial-gradient(circle at 10% 0%,#e4f2ff,transparent 30%),var(--bg);
   color:var(--ink);
   font-family:Arial,sans-serif;
 }
@@ -30,8 +30,11 @@ button{cursor:pointer}
 header{
   position:sticky;top:0;z-index:10;
   background:#ffffffed;
+  backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
-  padding:15px 6%;
+}
+.nav{
+  max-width:1150px;margin:auto;padding:14px 20px;
   display:flex;justify-content:space-between;
   align-items:center;gap:15px;flex-wrap:wrap;
 }
@@ -44,33 +47,34 @@ main{max-width:1150px;margin:auto;padding:25px 18px 60px}
   display:grid;grid-template-columns:1.1fr .9fr;
   gap:25px;align-items:center;padding:55px 0;
 }
-.hero h1{font-size:clamp(40px,6vw,68px);margin:15px 0}
+.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.05;margin:15px 0}
 .hero h1 span{
-  color:var(--blue);
+  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--purple));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.hero p{line-height:1.8;color:var(--muted)}
+.hero p{line-height:1.8;color:var(--muted);max-width:620px}
 .hero-art{
-  background:linear-gradient(140deg,#e3f2ff,#eee9ff);
-  border-radius:28px;padding:25px;text-align:center;
-  font-size:100px;
+  min-height:260px;border-radius:28px;
+  background:linear-gradient(135deg,#e1f2ff,#eee8ff);
+  display:grid;place-items:center;font-size:100px;
 }
 .btn{
   border:0;border-radius:12px;padding:12px 18px;
-  font-weight:bold;margin:4px 3px;
+  font-weight:bold;margin:5px 3px;transition:.2s;
 }
+.btn:hover{transform:translateY(-2px)}
 .primary{background:var(--blue);color:white}
 .soft{background:#eaf2ff;color:var(--blue)}
-.btn:hover{transform:translateY(-2px)}
-section{padding:35px 0}
+section{padding:35px 0;scroll-margin-top:85px}
 .heading{margin-bottom:20px}
 .heading h2{font-size:27px;margin-bottom:8px}
 .heading p{color:var(--muted);line-height:1.6}
-.grid{display:grid;grid-template-columns:1.3fr .7fr;gap:17px}
 .panel{
   background:white;border:1px solid var(--line);
   border-radius:20px;padding:20px;
-  box-shadow:0 8px 25px #193b6b0a;
+  box-shadow:0 8px 28px #193b6b0a;
 }
+.grid{display:grid;grid-template-columns:1.25fr .75fr;gap:17px}
 .stage{
   background:#f3f8ff;border-radius:16px;
   padding:12px;border:1px solid var(--line);
@@ -86,8 +90,7 @@ svg{width:100%;height:auto;display:block}
 }
 .control label{
   display:flex;justify-content:space-between;
-  font-size:12px;font-weight:bold;color:var(--muted);
-  gap:8px;
+  gap:8px;font-size:12px;font-weight:bold;color:var(--muted);
 }
 .control strong{color:var(--blue)}
 input[type=range]{width:100%;accent-color:var(--blue);margin-top:13px}
@@ -102,16 +105,30 @@ input[type=number],select{
 .metric span{font-size:11px;color:var(--muted);font-weight:bold}
 .metric strong{display:block;color:var(--blue);font-size:25px;margin-top:7px}
 .formula{
-  background:#f3efff;padding:16px;
-  border-radius:13px;text-align:center;
-  color:var(--purple);font-weight:bold;
+  background:#f3efff;padding:16px;border-radius:13px;
+  text-align:center;color:var(--purple);font-weight:bold;
 }
 .tip{
-  padding:13px;background:#fff8e9;
-  border-radius:12px;color:#765b2e;
-  font-size:13px;line-height:1.6;margin-top:12px;
+  padding:14px;border-radius:13px;background:#fff8e9;
+  color:#765b2e;font-size:13px;line-height:1.6;margin-top:12px;
 }
-.table-wrap{overflow-x:auto}
+.picker{display:none;padding:15px 0 25px}
+.picker.open{display:block;animation:appear .3s ease}
+@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.options{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.option{
+  background:white;border:1px solid var(--line);
+  border-radius:18px;padding:20px;text-align:left;
+  transition:.2s;min-height:155px;
+}
+.option:hover{
+  transform:translateY(-4px);border-color:var(--blue);
+  box-shadow:0 10px 25px #2878f01a;
+}
+.option small{color:var(--blue);font-weight:900}
+.option h3{margin:12px 0 8px}
+.option p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+.table-wrap{overflow-x:auto;margin-top:15px}
 table{width:100%;border-collapse:collapse;min-width:550px}
 th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left}
 th{font-size:12px;color:var(--muted);background:#f7faff}
@@ -122,14 +139,14 @@ td{font-size:13px}
   padding:14px;border-radius:12px;text-align:left;
 }
 .answer:hover{border-color:var(--blue)}
-.correct{background:#e5f8ef;border-color:#36b982}
-.wrong{background:#fff0ee;border-color:#e77}
+.answer.correct{background:#e5f8ef;border-color:#36b982}
+.answer.wrong{background:#fff0ee;border-color:#e77}
 footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
 @media(max-width:750px){
   .hero,.grid{grid-template-columns:1fr}
-  .hero-art{font-size:75px}
+  .options{grid-template-columns:1fr}
   .controls,.answers{grid-template-columns:1fr}
-  header{justify-content:center}
+  header .nav{justify-content:center}
   nav{justify-content:center}
 }
 </style>
@@ -138,13 +155,14 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
 <body>
 
 <header>
-  <div class="logo">⚡ YOUNG LAB</div>
-  <nav>
-    <a href="#egilish">Egilish</a>
-    <a href="#chozilish">Cho‘zilish</a>
-    <a href="#kundalik">Kundalik</a>
-    <a href="#test">Test</a>
-  </nav>
+  <div class="nav">
+    <div class="logo">⚡ YOUNG LAB</div>
+    <nav>
+      <a href="#tanlash">Tajribalar</a>
+      <a href="#kundalik">Kundalik</a>
+      <a href="#test">Test</a>
+    </nav>
+  </div>
 </header>
 
 <main>
@@ -157,16 +175,44 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
     </small>
     <h1>Fizikani <span>tajriba</span> orqali o‘rganing!</h1>
     <p>
-      Yung moduli, elastik deformatsiya va Guk qonunini
-      virtual laboratoriya yordamida o‘rganing.
-      Tajribalarni bajaring, natijalarni kuzating va bilimingizni sinang.
+      Laboratoriya jihozlari bo‘lmasa ham, tajriba qilish mumkin.
+      Uchta virtual tajriba orqali Yung moduli, elastik deformatsiya
+      va Guk qonunini amalda o‘rganing.
     </p>
-    <a href="#egilish">
-      <button class="btn primary">Tajribani boshlash →</button>
-    </a>
+    <button class="btn primary" id="openExperiments">
+      Tajribani boshlash →
+    </button>
   </div>
   <div class="hero-art">🧪 ⚖️</div>
 </div>
+
+<!-- 3 TA TAJRIBA TANLOVI -->
+<section class="picker" id="tanlash">
+  <div class="heading">
+    <h2>Qaysi tajribani bajaramiz?</h2>
+    <p>Quyidagi uchta tajribadan birini tanlang.</p>
+  </div>
+
+  <div class="options">
+    <button class="option" data-target="egilish">
+      <small>TAJRIBA 01</small>
+      <h3>⚖️ Sterjenning egilishi</h3>
+      <p>Yuk ta’sirida sterjen egilishini va Yung modulini kuzating.</p>
+    </button>
+
+    <button class="option" data-target="chozilish">
+      <small>TAJRIBA 02</small>
+      <h3>〰️ Simning cho‘zilishi</h3>
+      <p>Kuch, uzunlik va kesim yuzining uzayishga ta’sirini tekshiring.</p>
+    </button>
+
+    <button class="option" data-target="prujina">
+      <small>TAJRIBA 03</small>
+      <h3>🌀 Prujinaning cho‘zilishi</h3>
+      <p>Guk qonuni asosida kuch va prujina uzayishini o‘rganing.</p>
+    </button>
+  </div>
+</section>
 
 <!-- 1-TAJRIBA -->
 <section id="egilish">
@@ -182,8 +228,7 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
         <svg viewBox="0 0 650 280">
           <line x1="60" y1="200" x2="590" y2="200"
             stroke="#a9bdd7" stroke-width="3" stroke-dasharray="7 6"/>
-          <path d="M100 200 L70 245 L130 245 Z
-                   M550 200 L520 245 L580 245 Z"
+          <path d="M100 200 L70 245 L130 245 Z M550 200 L520 245 L580 245 Z"
             fill="#9bb4d2"/>
           <path id="beam" d="M100 200 Q325 200 550 200"
             fill="none" stroke="#d49a51" stroke-width="20"
@@ -192,9 +237,8 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
             <path d="M0 0 V35" stroke="#ed9b35" stroke-width="5"/>
             <rect x="-38" y="35" width="76" height="45"
               rx="8" fill="#ffd18a" stroke="#e5a342" stroke-width="3"/>
-            <text id="weightLabel" x="0" y="64"
-              text-anchor="middle" font-size="16"
-              font-weight="bold" fill="#80500d">1 kg</text>
+            <text id="weightLabel" x="0" y="64" text-anchor="middle"
+              font-size="16" font-weight="bold" fill="#80500d">1 kg</text>
           </g>
           <text x="325" y="25" text-anchor="middle"
             fill="#2878f0" font-weight="bold">P = m × g</text>
@@ -209,6 +253,7 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
           <input id="mass" type="range" min="0.5" max="2"
             step="0.5" value="1">
         </div>
+
         <div class="control">
           <label>Material</label>
           <select id="material">
@@ -217,14 +262,17 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
             <option value="0.002">Yumshoq to‘qima — 2 MPa</option>
           </select>
         </div>
+
         <div class="control">
           <label>Uzunlik (mm)</label>
           <input id="length" type="number" value="500" min="100" max="1000">
         </div>
+
         <div class="control">
           <label>Eni (mm)</label>
           <input id="width" type="number" value="20" min="2" max="100">
         </div>
+
         <div class="control">
           <label>Qalinligi (mm)</label>
           <input id="height" type="number" value="10" min="2" max="100">
@@ -250,11 +298,9 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
         <span>Yung moduli</span>
         <strong id="youngOut">10 GPa</strong>
       </div>
-      <div class="formula">
-        λ = (F × l³) / (4 × E × a × b³)
-      </div>
+      <div class="formula">λ = (F × l³) / (4 × E × a × b³)</div>
       <div class="tip">
-        💡 Kuzating: massa oshganda kuch va egilish ham ortadi.
+        💡 Massa oshganda kuch va egilish ham ortadi.
         Material qattiqligi oshganda egilish kamayadi.
       </div>
     </div>
@@ -277,7 +323,8 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
             stroke="#9db2cc" stroke-width="12"/>
           <rect id="wire" x="62" y="90" width="420" height="18"
             rx="8" fill="#2878f0"/>
-          <path d="M482 75 V125" stroke="#1b7bd1" stroke-width="4"/>
+          <path id="wireEnd" d="M482 75 V125"
+            stroke="#1b7bd1" stroke-width="4"/>
           <path d="M490 100 H545 M530 88 L545 100 L530 112"
             stroke="#ed9b35" stroke-width="4" fill="none"/>
           <text x="300" y="50" text-anchor="middle"
@@ -290,19 +337,21 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
       <div class="controls">
         <div class="control">
           <label>Kuch <strong id="forceText">2 N</strong></label>
-          <input id="stretchForce" type="range" min="0.5"
-            max="10" step="0.5" value="2">
+          <input id="stretchForce" type="range"
+            min="0.5" max="10" step="0.5" value="2">
         </div>
+
         <div class="control">
           <label>Uzunlik <strong id="lengthText">500 mm</strong></label>
-          <input id="stretchLength" type="range" min="200"
-            max="1000" step="50" value="500">
+          <input id="stretchLength" type="range"
+            min="200" max="1000" step="50" value="500">
         </div>
+
         <div class="control">
           <label>Kesim yuzi <strong id="areaText">4 mm²</strong></label>
-          <input id="area" type="range" min="1" max="10"
-            value="4">
+          <input id="area" type="range" min="1" max="10" value="4">
         </div>
+
         <div class="control">
           <label>Material</label>
           <select id="stretchMaterial">
@@ -312,6 +361,7 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
           </select>
         </div>
       </div>
+
       <button class="btn soft" id="resetStretch">↻ Qayta boshlash</button>
     </div>
 
@@ -338,11 +388,87 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
   </div>
 </section>
 
+<!-- 3-TAJRIBA -->
+<section id="prujina">
+  <div class="heading">
+    <h2>03. Prujinaning cho‘zilishi</h2>
+    <p>Massani va prujina bikrligini o‘zgartirib, Guk qonunini tekshiring.</p>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <h3>Prujina modeli</h3>
+      <div class="stage">
+        <svg viewBox="0 0 620 300">
+          <path d="M180 35 H440" stroke="#91a7c2" stroke-width="9"
+            stroke-linecap="round"/>
+          <path d="M310 44 V65" stroke="#91a7c2" stroke-width="5"/>
+          <path id="springCoil"
+            d="M310 65 L285 78 L335 91 L285 104 L335 117 L285 130 L335 143 L310 156"
+            fill="none" stroke="#2878f0" stroke-width="6"
+            stroke-linejoin="round"/>
+          <rect id="springWeight" x="278" y="156" width="64" height="48"
+            rx="9" fill="#ffd18a" stroke="#e5a342" stroke-width="3"/>
+          <text id="springMassLabel" x="310" y="185"
+            text-anchor="middle" fill="#80500d"
+            font-size="15" font-weight="bold">1 kg</text>
+          <path id="springMeasure"
+            d="M380 65 H400 M390 65 V156 M380 156 H400"
+            stroke="#27b9c8" stroke-width="2" fill="none"/>
+          <text id="springDeltaLabel" x="410" y="115"
+            fill="#168b99" font-size="14" font-weight="bold">x = 0.10 m</text>
+          <text x="310" y="250" text-anchor="middle"
+            fill="#687891" font-size="13">
+            Yuk ortishi bilan prujina ko‘proq cho‘ziladi
+          </text>
+        </svg>
+      </div>
+
+      <div class="controls">
+        <div class="control">
+          <label>Yuk massasi <strong id="springMassText">1 kg</strong></label>
+          <input id="springMass" type="range"
+            min="0.2" max="3" step="0.2" value="1">
+        </div>
+
+        <div class="control">
+          <label>Bikrlik <strong id="springKText">100 N/m</strong></label>
+          <input id="springK" type="range"
+            min="20" max="300" step="10" value="100">
+        </div>
+      </div>
+
+      <button class="btn soft" id="resetSpring">↻ Qayta boshlash</button>
+    </div>
+
+    <div class="panel">
+      <h3>Hisoblash natijasi</h3>
+      <div class="metric">
+        <span>Og‘irlik kuchi</span>
+        <strong id="springForceOut">9.80 N</strong>
+      </div>
+      <div class="metric">
+        <span>Uzayish</span>
+        <strong id="springExtensionOut">0.098 m</strong>
+      </div>
+      <div class="metric">
+        <span>Prujina bikrligi</span>
+        <strong id="springKOut">100 N/m</strong>
+      </div>
+      <div class="formula">F = k × x</div>
+      <div class="tip">
+        💡 Bikrlik katta bo‘lsa, bir xil kuch ta’sirida
+        prujina kamroq cho‘ziladi.
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TAJRIBA KUNDALIGI -->
 <section id="kundalik">
   <div class="heading">
-    <h2>03. Tajriba kundaligi</h2>
-    <p>O‘lchov natijalarini saqlang va taqqoslang.</p>
+    <h2>04. Tajriba kundaligi</h2>
+    <p>Birinchi tajriba natijalarini saqlang va taqqoslang.</p>
   </div>
 
   <div class="panel">
@@ -350,16 +476,12 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
     <button class="btn soft" id="downloadCSV">⬇ CSV yuklab olish</button>
     <button class="btn soft" id="clearResults">Tozalash</button>
 
-    <div class="table-wrap" style="margin-top:18px">
+    <div class="table-wrap">
       <table>
         <thead>
           <tr>
-            <th>№</th>
-            <th>Material</th>
-            <th>Massa</th>
-            <th>Kuch</th>
-            <th>Egilish</th>
-            <th>Yung moduli</th>
+            <th>№</th><th>Material</th><th>Massa</th>
+            <th>Kuch</th><th>Egilish</th><th>Yung moduli</th>
           </tr>
         </thead>
         <tbody id="results">
@@ -373,9 +495,10 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
 <!-- TEST -->
 <section id="test">
   <div class="heading">
-    <h2>04. Bilimingizni sinang</h2>
+    <h2>05. Bilimingizni sinang</h2>
     <p>5 ta savolga javob bering.</p>
   </div>
+
   <div class="panel">
     <div id="quizCount">1 / 5</div>
     <h3 id="question" style="margin:15px 0">Savol</h3>
@@ -384,7 +507,7 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
     <button class="btn primary" id="nextQuestion" disabled>
       Keyingi savol →
     </button>
-    <strong id="score" style="margin-left:12px">0 ball</strong>
+    <strong id="score">0 ball</strong>
   </div>
 </section>
 
@@ -398,49 +521,60 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
 <script>
 const $ = id => document.getElementById(id);
 
+/* TAJRIBA TANLASH */
+
+$('openExperiments').addEventListener('click',()=>{
+  const picker=$('tanlash');
+  picker.classList.toggle('open');
+  if(picker.classList.contains('open')){
+    picker.scrollIntoView({behavior:'smooth'});
+  }
+});
+
+document.querySelectorAll('.option').forEach(button=>{
+  button.addEventListener('click',()=>{
+    const target=$(button.dataset.target);
+    target.scrollIntoView({behavior:'smooth'});
+  });
+});
+
 /* 1-TAJRIBA: STERJEN EGILISHI */
 
 function updateBend(){
-  const m = Number($('mass').value);
-  const E = Number($('material').value) * 1e9;
-  const l = Number($('length').value) / 1000;
-  const a = Number($('width').value) / 1000;
-  const b = Number($('height').value) / 1000;
+  const m=Number($('mass').value);
+  const E=Number($('material').value)*1e9;
+  const l=Number($('length').value)/1000;
+  const a=Number($('width').value)/1000;
+  const b=Number($('height').value)/1000;
 
-  if(![l,a,b].every(Number.isFinite) || l<=0 || a<=0 || b<=0){
-    return;
-  }
+  if(![l,a,b].every(Number.isFinite)||l<=0||a<=0||b<=0)return;
 
-  const F = m * 9.8;
-  const bend = F * Math.pow(l,3) /
-    (4 * E * a * Math.pow(b,3)) * 1000;
+  const F=m*9.8;
+  const bend=F*Math.pow(l,3)/(4*E*a*Math.pow(b,3))*1000;
 
-  $('massText').textContent = m.toFixed(1) + ' kg';
-  $('weightLabel').textContent = m.toFixed(1) + ' kg';
-  $('forceOut').textContent = F.toFixed(2) + ' N';
-  $('bendOut').textContent = bend.toFixed(5) + ' mm';
+  $('massText').textContent=m.toFixed(1)+' kg';
+  $('weightLabel').textContent=m.toFixed(1)+' kg';
+  $('forceOut').textContent=F.toFixed(2)+' N';
+  $('bendOut').textContent=bend.toFixed(5)+' mm';
 
-  const eValue = Number($('material').value);
-  $('youngOut').textContent =
-    eValue < 1 ? (eValue*1000).toFixed(1)+' MPa' :
-    eValue.toFixed(1)+' GPa';
+  const value=Number($('material').value);
+  $('youngOut').textContent=
+    value<1?(value*1000).toFixed(1)+' MPa':value+' GPa';
 
-  const visual = Math.min(60,Math.max(1,bend*3));
-  const y = 200 + visual;
+  const visual=Math.min(60,Math.max(1,bend*3));
+  const y=200+visual;
 
-  $('beam').setAttribute('d',
-    `M100 200 Q325 ${y} 550 200`);
+  $('beam').setAttribute('d',`M100 200 Q325 ${y} 550 200`);
   $('weight').setAttribute('transform',
     `translate(325 ${Math.max(70,y-120)})`);
-  $('bendLabel').textContent =
-    'Egilish: '+bend.toFixed(5)+' mm';
+  $('bendLabel').textContent='Egilish: '+bend.toFixed(5)+' mm';
 }
 
 ['mass','material','length','width','height'].forEach(id=>{
   $(id).addEventListener('input',updateBend);
 });
 
-$('resetBend').onclick = ()=>{
+$('resetBend').onclick=()=>{
   $('mass').value=1;
   $('material').value=10;
   $('length').value=500;
@@ -449,8 +583,9 @@ $('resetBend').onclick = ()=>{
   updateBend();
 };
 
-let demoTimer = null;
-$('autoDemo').onclick = ()=>{
+let demoTimer=null;
+
+$('autoDemo').onclick=()=>{
   clearInterval(demoTimer);
   const values=[0.5,1,1.5,2];
   let i=0;
@@ -469,7 +604,7 @@ $('autoDemo').onclick = ()=>{
   },1200);
 };
 
-$('stopDemo').onclick = ()=>{
+$('stopDemo').onclick=()=>{
   clearInterval(demoTimer);
   demoTimer=null;
 };
@@ -495,15 +630,14 @@ function updateStretch(){
 
   $('extensionOut').textContent=mm.toFixed(6)+' mm';
   $('stressOut').textContent=stress.toFixed(3)+' MPa';
-  $('stretchYoungOut').textContent=
-    (E/1e9).toFixed(1)+' GPa';
+  $('stretchYoungOut').textContent=(E/1e9).toFixed(1)+' GPa';
 
   const visual=Math.min(35,mm*8000);
   $('wire').setAttribute('width',420+visual);
+  $('wireEnd').setAttribute('d',`M${482+visual} 75 V125`);
 }
 
-['stretchForce','stretchLength','area','stretchMaterial']
-.forEach(id=>{
+['stretchForce','stretchLength','area','stretchMaterial'].forEach(id=>{
   $(id).addEventListener('input',updateStretch);
 });
 
@@ -516,6 +650,53 @@ $('resetStretch').onclick=()=>{
 };
 
 updateStretch();
+
+/* 3-TAJRIBA: PRUJINA */
+
+function updateSpring(){
+  const m=Number($('springMass').value);
+  const k=Number($('springK').value);
+  const F=m*9.8;
+  const x=F/k;
+
+  const visual=Math.min(125,Math.max(18,x*90));
+  const bottom=65+visual;
+  const turns=7;
+  const step=(bottom-65)/(turns*2);
+
+  let d='M310 65';
+  for(let i=1;i<=turns*2;i++){
+    d+=` L${i%2===0?310:(i%4===1?285:335)} ${65+i*step}`;
+  }
+  d+=` L310 ${bottom}`;
+
+  $('springCoil').setAttribute('d',d);
+  $('springWeight').setAttribute('y',bottom);
+  $('springMassLabel').setAttribute('y',bottom+29);
+  $('springMeasure').setAttribute('d',
+    `M380 65 H400 M390 65 V${bottom} M380 ${bottom} H400`);
+  $('springDeltaLabel').setAttribute('y',(65+bottom)/2);
+  $('springDeltaLabel').textContent='x = '+x.toFixed(3)+' m';
+
+  $('springMassText').textContent=m.toFixed(1)+' kg';
+  $('springMassLabel').textContent=m.toFixed(1)+' kg';
+  $('springKText').textContent=k+' N/m';
+  $('springForceOut').textContent=F.toFixed(2)+' N';
+  $('springExtensionOut').textContent=x.toFixed(3)+' m';
+  $('springKOut').textContent=k+' N/m';
+}
+
+['springMass','springK'].forEach(id=>{
+  $(id).addEventListener('input',updateSpring);
+});
+
+$('resetSpring').onclick=()=>{
+  $('springMass').value=1;
+  $('springK').value=100;
+  updateSpring();
+};
+
+updateSpring();
 
 /* TAJRIBA KUNDALIGI */
 
@@ -532,12 +713,14 @@ function renderRecords(){
 
   records.forEach((r,i)=>{
     const tr=document.createElement('tr');
+
     [i+1,r.material,r.mass+' kg',r.force+' N',
       r.bend+' mm',r.young].forEach(value=>{
         const td=document.createElement('td');
         td.textContent=value;
         tr.appendChild(td);
       });
+
     body.appendChild(tr);
   });
 }
@@ -594,18 +777,17 @@ $('downloadCSV').onclick=()=>{
   ];
 
   const csv='\uFEFF'+rows.map(row=>
-    row.map(v=>'"'+v+'"').join(';')
+    row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')
   ).join('\n');
 
-  const blob=new Blob([csv],{
-    type:'text/csv;charset=utf-8;'
-  });
-
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
   const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url;
-  a.download='young-lab-natijalar.csv';
-  a.click();
+  const link=document.createElement('a');
+
+  link.href=url;
+  link.download='young-lab-natijalar.csv';
+  link.click();
+
   URL.revokeObjectURL(url);
 };
 
@@ -615,30 +797,30 @@ const questions=[
   {
     q:'Elastik deformatsiya nima?',
     a:[
-      'Kuch olinganda jism avvalgi holatiga qaytadi',
+      'Kuch olib tashlanganda jism avvalgi holatiga qaytadi',
       'Jism butunlay yemiriladi',
-      'Jism qiziydi',
-      'Jism massasi ortadi'
+      'Jism faqat qiziydi',
+      'Jismning massasi ortadi'
     ],
     c:0
   },
   {
-    q:'Yung modulining SI birligi qaysi?',
-    a:['Nyuton','Paskal','Joul','Metr'],
+    q:'Yung modulining SI dagi o‘lchov birligi qaysi?',
+    a:['Nyuton (N)','Paskal (Pa)','Joul (J)','Metr (m)'],
     c:1
   },
   {
-    q:'Mexanik kuchlanish formulasi qaysi?',
-    a:['F × S','S / F','F / S','m × g'],
+    q:'Mexanik kuchlanish qanday aniqlanadi?',
+    a:['σ = F · S','σ = S / F','σ = F / S','σ = m · g'],
     c:2
   },
   {
-    q:'Nisbiy deformatsiya formulasi qaysi?',
-    a:['Δl / l₀','F / S','m × g','l₀ / Δl'],
+    q:'Nisbiy deformatsiya formulasini toping.',
+    a:['ε = Δl / l₀','ε = F / S','ε = m · g','ε = l₀ / Δl'],
     c:0
   },
   {
-    q:'Elastik sohada kuch 2 marta oshsa, deformatsiya nima bo‘ladi?',
+    q:'Elastik sohada kuch 2 marta oshsa, deformatsiya qanday o‘zgaradi?',
     a:[
       'O‘zgarmaydi',
       '2 marta kamayadi',
@@ -657,11 +839,13 @@ function showQuestion(){
   answered=false;
   const q=questions[qIndex];
 
-  $('quizCount').textContent=
-    (qIndex+1)+' / '+questions.length;
+  $('quizCount').textContent=(qIndex+1)+' / '+questions.length;
   $('question').textContent=q.q;
-  $('feedback').textContent='Javobni tanlang.';
+  $('feedback').textContent='Javoblardan birini tanlang.';
   $('nextQuestion').disabled=true;
+  $('nextQuestion').textContent=
+    qIndex===questions.length-1?'Natijani ko‘rish ✓':'Keyingi savol →';
+
   $('answers').innerHTML='';
 
   q.a.forEach((answer,i)=>{
@@ -696,9 +880,8 @@ function showQuestion(){
 $('nextQuestion').onclick=()=>{
   if(!answered)return;
 
-  qIndex++;
-
-  if(qIndex<questions.length){
+  if(qIndex<questions.length-1){
+    qIndex++;
     showQuestion();
   }else{
     $('question').textContent=
@@ -707,14 +890,12 @@ $('nextQuestion').onclick=()=>{
     $('feedback').textContent=
       score===5?'Ajoyib! Barcha savollarga to‘g‘ri javob berdingiz!':
       'Yaxshi urinish! Mavzuni yana takrorlang.';
-    $('nextQuestion').textContent='Qayta boshlash';
-    $('nextQuestion').disabled=false;
 
+    $('nextQuestion').textContent='Qayta boshlash';
     $('nextQuestion').onclick=()=>{
       qIndex=0;
       score=0;
       $('score').textContent='0 ball';
-      $('nextQuestion').textContent='Keyingi savol →';
       $('nextQuestion').onclick=nextQuestionHandler;
       showQuestion();
     };
@@ -726,10 +907,10 @@ function nextQuestionHandler(){
   qIndex++;
   if(qIndex<questions.length)showQuestion();
 }
+
 $('nextQuestion').onclick=nextQuestionHandler;
-
 showQuestion();
-</script>
 
+</script>
 </body>
 </html>
