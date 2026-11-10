@@ -4,819 +4,769 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071a35">
-<title>JDPU HEALTH | Tibbiyot akademiyasi</title>
+<meta name="theme-color" content="#f4f8ff">
+<title>YOUNG LAB — Virtual laboratoriya</title>
 
 <style>
 :root{
- --bg:#071a35;
- --panel:#102747;
- --panel2:#153253;
- --blue:#398bff;
- --cyan:#39d5e8;
- --text:#edf5ff;
- --muted:#9bb0ca;
- --line:#254365;
- --green:#35c995;
- --gold:#ffc45c;
- --red:#ff7185;
+  --bg:#f4f8ff;
+  --surface:#fff;
+  --surface2:#f7faff;
+  --ink:#17243b;
+  --muted:#687891;
+  --blue:#2878f0;
+  --cyan:#26b9c9;
+  --purple:#8a6cf0;
+  --line:#e3ebf6;
+  --green:#159b75;
+  --orange:#ed9b35;
+  --shadow:0 14px 40px rgba(37,76,130,.09);
+  --radius:22px
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
- margin:0;background:var(--bg);color:var(--text);
- font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ margin:0;
+ background:radial-gradient(circle at 8% 0%,#e4f2ff 0,transparent 28%),
+ radial-gradient(circle at 95% 12%,#eeeaff 0,transparent 24%),var(--bg);
+ color:var(--ink);
+ font-family:Inter,system-ui,sans-serif
 }
-button,input,select{font:inherit}
+button,input{font:inherit}
 button{cursor:pointer}
-button:focus-visible,input:focus-visible,select:focus-visible{
- outline:2px solid var(--cyan);outline-offset:3px
-}
-.app{max-width:1200px;margin:auto;min-height:100vh}
 .topbar{
  position:sticky;top:0;z-index:20;
- display:flex;align-items:center;justify-content:space-between;
- gap:12px;padding:14px 22px;
- background:#071a35ed;backdrop-filter:blur(18px);
- border-bottom:1px solid var(--line);
+ background:rgba(255,255,255,.82);
+ backdrop-filter:blur(16px);
+ border-bottom:1px solid var(--line)
 }
-.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.5px}
-.brand-logo{
- width:42px;height:42px;border-radius:14px;
- display:grid;place-items:center;
- background:linear-gradient(135deg,#1674ed,#37d4e6);
- font-size:23px;box-shadow:0 5px 22px #1688ff45;
+.nav{
+ max-width:1180px;margin:auto;padding:14px 22px;
+ display:flex;align-items:center;justify-content:space-between;gap:16px
 }
-.brand small{display:block;font-size:9px;color:var(--muted);letter-spacing:2px;margin-top:3px}
-.top-actions{display:flex;align-items:center;gap:9px}
-.xp-chip{
- border:1px solid #345579;background:#102747;
- padding:9px 12px;border-radius:30px;
- color:var(--gold);font-size:12px;font-weight:800;
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.04em}
+.brandmark{
+ width:40px;height:40px;border-radius:13px;
+ background:linear-gradient(135deg,var(--blue),var(--cyan));
+ display:grid;place-items:center;color:white
 }
-.avatar{
- width:39px;height:39px;border-radius:50%;
- display:grid;place-items:center;background:#193d65;
- border:1px solid #3a638a;font-size:18px;
+.brand small{display:block;font-size:10px;letter-spacing:.16em;color:var(--muted)}
+.navlinks{display:flex;gap:8px;flex-wrap:wrap}
+.navlinks a{
+ color:var(--muted);text-decoration:none;font-size:13px;
+ font-weight:700;padding:9px 12px;border-radius:12px
 }
-.layout{display:grid;grid-template-columns:225px minmax(0,1fr);gap:22px;padding:22px}
-.sidebar{
- position:sticky;top:86px;align-self:start;
- background:#0d2341;border:1px solid var(--line);
- border-radius:20px;padding:13px;
+.navlinks a:hover{background:#edf5ff;color:var(--blue)}
+.sound-btn,.btn{
+ border:0;border-radius:13px;padding:11px 15px;
+ font-weight:800;transition:.2s
 }
-.side-label{
- color:#718ba9;font-size:9px;font-weight:900;
- letter-spacing:1.8px;padding:12px 10px 7px;
+.sound-btn{background:#eef5ff;color:var(--blue);border:1px solid #dceaff}
+.btn-primary{
+ background:linear-gradient(135deg,var(--blue),#4d9bff);
+ color:#fff;box-shadow:0 8px 20px #2878f033
 }
-.nav-btn{
- display:flex;align-items:center;gap:12px;width:100%;
- border:0;background:transparent;color:#b8c9dc;
- padding:12px 11px;border-radius:12px;
- text-align:left;font-size:12px;font-weight:700;margin:2px 0;
-}
-.nav-btn span{font-size:18px;width:23px;text-align:center}
-.nav-btn:hover,.nav-btn.active{background:#193d65;color:white}
-.nav-btn.active{box-shadow:inset 3px 0 var(--cyan)}
-.main{min-width:0}
-.page{display:none;animation:appear .25s ease}
-.page.active{display:block}
-@keyframes appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.btn-soft{background:#edf5ff;color:var(--blue);border:1px solid #dceaff}
+.btn:hover,.sound-btn:hover{transform:translateY(-2px)}
+main{max-width:1180px;margin:auto;padding:34px 22px 70px}
 .hero{
- position:relative;overflow:hidden;
- background:linear-gradient(120deg,#123c70,#1259a5 60%,#087eaa);
- border:1px solid #2b6595;border-radius:24px;
- padding:27px;margin-bottom:17px;
+ display:grid;grid-template-columns:1.12fr .88fr;
+ gap:24px;align-items:center;padding:28px 0 34px
 }
-.hero:after{
- content:"✚";position:absolute;right:35px;top:8px;
- font-size:145px;color:#ffffff0c;font-weight:900;
-}
-.hero-content{position:relative;z-index:1;max-width:600px}
-.eyebrow{font-size:10px;letter-spacing:2px;font-weight:900;color:var(--cyan)}
-.hero h1{font-size:clamp(25px,4vw,38px);line-height:1.15;margin:13px 0 9px}
-.hero p{font-size:13px;color:#d2e6fa;line-height:1.7;max-width:500px}
-.primary-btn,.outline-btn,.soft-btn{
- border:0;border-radius:12px;padding:12px 16px;
- font-size:12px;font-weight:800;transition:.2s;
-}
-.primary-btn{background:linear-gradient(110deg,#398bff,#27c7df);color:white}
-.primary-btn:hover{filter:brightness(1.1);transform:translateY(-2px)}
-.outline-btn{background:transparent;border:1px solid #45688e;color:#d7e9ff}
-.soft-btn{background:#193c62;color:#bfe0ff}
-.back-btn{
+.eyebrow{
  display:inline-flex;align-items:center;gap:8px;
- padding:10px 15px;margin-bottom:15px;
- color:#bfe3ff;background:#153656;border:1px solid #345b7e;
- border-radius:12px;font-size:12px;font-weight:800;
+ color:var(--blue);font-size:12px;font-weight:900;
+ letter-spacing:.13em;background:#e8f2ff;
+ padding:9px 13px;border-radius:99px
 }
-.back-btn:hover{background:#1b4a76}
+h1{font-size:clamp(42px,6vw,72px);line-height:.98;letter-spacing:-.055em;margin:18px 0}
+.gradient-text{
+ background:linear-gradient(90deg,var(--blue),var(--cyan),var(--purple));
+ -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:610px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.hero-art{
+ min-height:300px;border:1px solid #dce9fb;border-radius:30px;
+ background:linear-gradient(145deg,#fff,#edf6ff);
+ box-shadow:var(--shadow);position:relative;overflow:hidden;
+ display:grid;place-items:center
+}
+.hero-art:before,.hero-art:after{
+ content:"";position:absolute;border-radius:50%;filter:blur(2px)
+}
+.hero-art:before{width:220px;height:220px;background:#b9e7ff66;top:-60px;right:-30px}
+.hero-art:after{width:180px;height:180px;background:#d9ceff66;bottom:-70px;left:-40px}
+.hero-graphic{width:min(90%,440px);position:relative;z-index:1}
+.float-tag{
+ position:absolute;z-index:2;background:#fff;
+ border:1px solid var(--line);box-shadow:var(--shadow);
+ border-radius:14px;padding:10px 13px;font-size:12px;
+ font-weight:800;animation:float 4s ease-in-out infinite
+}
+.tag-a{top:18%;left:7%}
+.tag-b{bottom:15%;right:7%;animation-delay:-2s}
+@keyframes float{50%{transform:translateY(-9px)}}
 .section-head{
  display:flex;align-items:end;justify-content:space-between;
- gap:12px;margin:22px 0 12px;
+ gap:14px;margin:34px 0 17px
 }
-.section-head h2{font-size:19px;margin:0}
-.section-head p{font-size:11px;color:var(--muted);margin:5px 0 0}
-.muted{color:var(--muted)}
-.small{font-size:11px;line-height:1.6}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.card{
- background:linear-gradient(145deg,#102747,#0d213d);
- border:1px solid var(--line);border-radius:18px;padding:17px;
- min-width:0;
+.section-head h2{font-size:27px;letter-spacing:-.035em;margin:0}
+.section-head p{margin:6px 0 0;color:var(--muted);font-size:14px}
+.panel{
+ background:var(--surface);border:1px solid var(--line);
+ border-radius:var(--radius);box-shadow:var(--shadow)
 }
-.card h3{font-size:14px;margin:0 0 8px}
-.card p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
-.stat-card{display:flex;align-items:center;gap:12px}
-.stat-icon{
- width:43px;height:43px;flex-shrink:0;border-radius:14px;
- display:grid;place-items:center;background:#1b426d;font-size:21px;
+.lab-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}
+.lab-main{padding:22px}
+.panel-title{
+ display:flex;justify-content:space-between;
+ align-items:center;gap:12px;margin-bottom:14px
 }
-.stat-number{font-size:23px;font-weight:900}
-.stat-label{font-size:10px;color:var(--muted);margin-top:3px}
-.feature-card{
- text-align:left;width:100%;color:var(--text);
- background:linear-gradient(145deg,#153455,#102541);
- border:1px solid #294b6e;border-radius:18px;padding:17px;
- transition:.2s;min-height:145px;
+.panel-title h3{margin:0;font-size:17px}
+.status{
+ font-size:11px;font-weight:900;color:var(--green);
+ background:#e8f8f2;border-radius:99px;padding:7px 10px
 }
-.feature-card:hover{transform:translateY(-3px);border-color:#398bff;box-shadow:0 10px 25px #0002}
-.feature-icon{font-size:27px;margin-bottom:13px}
-.feature-card b{display:block;font-size:13px;margin-bottom:6px}
-.feature-card small{font-size:11px;line-height:1.5;color:var(--muted)}
-.tag{
- display:inline-flex;padding:5px 9px;border-radius:30px;
- background:#1a4268;color:#8edcf5;font-size:9px;font-weight:900;
+.sim-stage{
+ background:linear-gradient(180deg,#f4f9ff,#fbfdff);
+ border:1px solid #e4eef9;border-radius:18px;padding:14px;overflow:hidden
 }
-.progress{height:8px;background:#203a59;border-radius:30px;overflow:hidden;margin:10px 0}
-.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#398bff,#39d5e8);border-radius:30px;transition:.3s}
-input,select{
- width:100%;padding:12px 13px;color:var(--text);
- background:#091d37;border:1px solid #2c4969;border-radius:11px;
- outline:none;font-size:13px;
+.sim-stage svg{width:100%;height:auto;display:block}
+.sim-controls{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:17px}
+.control{
+ background:var(--surface2);border:1px solid var(--line);
+ border-radius:15px;padding:13px
 }
-label{display:block;font-size:11px;font-weight:800;color:#c6d8ec;margin:13px 0 7px}
-input::placeholder{color:#7188a5}
-.search{margin-bottom:13px}
-.list-item{
- padding:13px;background:#122c4b;border:1px solid #274767;
- border-radius:13px;margin-top:9px;
+.control label{
+ font-size:12px;color:var(--muted);font-weight:800;
+ display:flex;justify-content:space-between;gap:8px
 }
-.list-item b{font-size:12px}
-.list-item p{font-size:11px;color:var(--muted);line-height:1.6;margin:5px 0 0}
-.lesson-card,.term-card,.system-card{
- width:100%;text-align:left;color:var(--text);
- background:#102747;border:1px solid var(--line);
- border-radius:15px;padding:15px;
+.control strong{color:var(--blue);font-size:14px}
+input[type=range]{width:100%;accent-color:var(--blue);margin:13px 0 3px}
+input[type=number]{
+ width:100%;border:1px solid #dce6f3;border-radius:10px;
+ padding:10px;color:var(--ink);background:#fff
 }
-.lesson-card:hover,.term-card:hover,.system-card:hover{border-color:var(--cyan)}
-.lesson-card .emoji,.system-card .emoji{font-size:25px;display:block;margin-bottom:9px}
-.lesson-card b,.system-card b{font-size:12px;display:block}
-.lesson-card small,.system-card small{font-size:10px;color:var(--muted);display:block;margin-top:5px;line-height:1.5}
-.detail-title{font-size:25px;margin:10px 0}
-.detail-body{font-size:13px;line-height:1.8;color:#c2d4e8}
-.detail-body h3{color:white;margin-top:20px}
-.detail-body ul{padding-left:20px}
-.term-card{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.term-card strong{font-size:14px;color:#7edaf0}
-.term-card small{font-size:11px;color:var(--muted);text-align:right}
-.flashcard{
- min-height:220px;display:grid;place-items:center;text-align:center;
- background:radial-gradient(circle at top,#1d5383,#102747 70%);
- border:1px solid #3673a0;border-radius:22px;padding:25px;
+.control small{font-size:11px;color:var(--muted)}
+.side-panel{padding:20px;display:flex;flex-direction:column;gap:14px}
+.metric{
+ padding:16px;border-radius:17px;
+ background:linear-gradient(135deg,#f0f7ff,#f7faff);
+ border:1px solid #e2edfb
 }
-.flashcard strong{font-size:clamp(23px,5vw,34px)}
-.flashcard p{color:#a8c4e0;font-size:13px}
-.answer-option{
- width:100%;text-align:left;margin-top:8px;
- background:#183554;border:1px solid #2b4e70;
- border-radius:12px;padding:13px;color:#e7f3ff;font-size:12px;
+.metric span{
+ font-size:11px;color:var(--muted);font-weight:800;
+ text-transform:uppercase;letter-spacing:.08em
 }
-.answer-option:disabled{opacity:1}
-.answer-option.correct{background:#15513f;border-color:#35c995}
-.answer-option.wrong{background:#5a2b3a;border-color:#ff7185}
-.feedback{
- margin-top:12px;padding:13px;border-radius:12px;
- background:#183c5b;color:#cdeaff;font-size:12px;line-height:1.6;
+.metric strong{display:block;font-size:27px;margin:5px 0;color:var(--blue)}
+.metric small{color:var(--muted)}
+.formula{
+ background:#f6f3ff;border:1px solid #e7e0ff;
+ border-radius:16px;padding:15px;text-align:center
 }
-.badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.badge-item{
- background:#142f4f;border:1px solid #2b4b6b;
- border-radius:13px;padding:12px 5px;text-align:center;
+.formula .eq{font-size:21px;font-weight:900;color:#654bd0;margin:5px}
+.formula p{font-size:11px;color:#756b9a;line-height:1.5}
+.note{
+ font-size:12px;line-height:1.55;color:var(--muted);
+ background:#fff9ed;border:1px solid #f7e8c8;
+ padding:12px;border-radius:13px
 }
-.badge-item span{font-size:25px;display:block;margin-bottom:6px}
-.badge-item small{font-size:9px;color:var(--muted)}
-.badge-item.locked{opacity:.35;filter:grayscale(1)}
-.empty{
- text-align:center;padding:28px 12px;color:var(--muted);
- font-size:12px;line-height:1.7;
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.info-card{padding:21px}
+.info-card h3{margin:0 0 7px}
+.info-card p{color:var(--muted);font-size:14px;line-height:1.65}
+.demo-row{display:flex;gap:12px;align-items:center;margin-top:15px}
+.demo-object{
+ height:68px;flex:1;border-radius:14px;background:#f1f7ff;
+ border:1px solid var(--line);display:grid;place-items:center;overflow:hidden
 }
-.footer{text-align:center;padding:25px;color:#6f88a5;font-size:10px}
-.mobile-nav{display:none}
-.hidden{display:none!important}
-@media(max-width:800px){
- .layout{grid-template-columns:1fr;padding:15px}
- .sidebar{display:none}
- .mobile-nav{
-  display:flex;position:fixed;bottom:0;left:0;right:0;z-index:30;
-  background:#091d37f5;backdrop-filter:blur(15px);
-  border-top:1px solid var(--line);justify-content:space-around;
-  padding:8px 4px calc(8px + env(safe-area-inset-bottom));
- }
- .mobile-nav button{
-  border:0;background:none;color:#91a8c3;
-  display:flex;flex-direction:column;align-items:center;gap:3px;
-  font-size:9px;font-weight:700;padding:5px;
- }
- .mobile-nav button span{font-size:19px}
- .mobile-nav button.active{color:var(--cyan)}
- body{padding-bottom:70px}
- .topbar{padding:11px 15px}
+.demo-object svg{width:100%;height:100%}
+.pill{font-size:11px;font-weight:900;border-radius:99px;padding:7px 10px}
+.pill-green{background:#e7f8f1;color:#138461}
+.pill-orange{background:#fff3e2;color:#bb7418}
+.tissue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tissue{padding:18px;text-align:center}
+.tissue .emoji{font-size:36px}
+.tissue h3{font-size:15px;margin:9px 0 5px}
+.tissue p{font-size:12px;line-height:1.55;color:var(--muted)}
+.quiz{padding:22px}
+.quiz-question{font-size:18px;font-weight:850;line-height:1.45;margin:10px 0 16px}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.answer{
+ border:1px solid var(--line);background:#fbfdff;
+ padding:13px;border-radius:13px;text-align:left;
+ color:var(--ink);font-weight:700
 }
-@media(max-width:470px){
- .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
- .grid{grid-template-columns:1fr 1fr}
- .hero{padding:21px}
- .hero:after{right:10px;font-size:105px}
- .card{padding:14px}
- .feature-card{padding:13px;min-height:135px}
+.answer:hover{border-color:#9fc7ff;background:#f1f7ff}
+.answer.correct{border-color:#83d5b8;background:#eaf9f2;color:#087c59}
+.answer.wrong{border-color:#ffc1b8;background:#fff0ee;color:#bd4538}
+.feedback{min-height:25px;margin:13px 0;color:var(--muted);font-size:13px;font-weight:700}
+.quiz-footer{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.progress{height:7px;background:#edf2f9;border-radius:99px;overflow:hidden;flex:1}
+.progress span{
+ display:block;height:100%;width:0;
+ background:linear-gradient(90deg,var(--blue),var(--cyan));transition:.3s
 }
-@media print{
- body{background:white;color:#111}
- .topbar,.sidebar,.mobile-nav,.back-btn,.no-print,.footer{display:none!important}
- .layout{display:block;padding:0}
- .page{display:none!important}
- #page-report{display:block!important}
- .card{background:white;color:#111;border:1px solid #ddd}
+.footer{margin-top:38px;text-align:center;color:var(--muted);font-size:12px}
+.toast{
+ position:fixed;bottom:20px;left:50%;
+ transform:translate(-50%,20px);opacity:0;pointer-events:none;
+ background:#17243b;color:white;padding:12px 17px;
+ border-radius:13px;font-size:13px;z-index:40;transition:.25s
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.pulse{animation:pulse .55s ease}
+@keyframes pulse{50%{filter:drop-shadow(0 0 10px #2995ff)}}
+@media(max-width:850px){
+ .hero,.lab-grid{grid-template-columns:1fr}
+ .hero-art{min-height:250px}
+ .navlinks{display:none}
+}
+@media(max-width:600px){
+ main{padding:20px 14px 50px}
+ .nav{padding:12px 14px}
+ .hero p{font-size:15px}
+ .sim-controls,.two-col{grid-template-columns:1fr}
+ .tissue-grid{grid-template-columns:1fr}
+ .answers{grid-template-columns:1fr}
+ .section-head{align-items:start;flex-direction:column}
+ .lab-main,.side-panel,.info-card,.quiz{padding:16px}
 }
 </style>
 </head>
 
 <body>
-<div class="app">
 
 <header class="topbar">
- <div class="brand">
-  <div class="brand-logo">✚</div>
-  <div>JDPU HEALTH<small>MEDICAL ACADEMY</small></div>
- </div>
- <div class="top-actions">
-  <div class="xp-chip">⚡ <span id="topXP">0</span> XP</div>
-  <div class="avatar">🩺</div>
- </div>
+<nav class="nav">
+  <div class="brand">
+    <div class="brandmark">Y</div>
+    <div>YOUNG LAB<small>VIRTUAL PHYSICS LAB</small></div>
+  </div>
+  <div class="navlinks">
+    <a href="#experiment">Tajriba</a>
+    <a href="#deformation">Deformatsiya</a>
+    <a href="#medicine">Tibbiyot</a>
+    <a href="#quiz">Test</a>
+  </div>
+  <button class="sound-btn" id="soundToggle">🔊 Ovoz: yoqilgan</button>
+</nav>
 </header>
 
-<div class="layout">
+<main>
 
-<aside class="sidebar">
- <div class="side-label">ASOSIY</div>
- <button class="nav-btn active" data-page="home"><span>⌂</span>Bosh sahifa</button>
- <button class="nav-btn" data-page="anatomy"><span>🫀</span>Anatomiya</button>
- <button class="nav-btn" data-page="lessons"><span>📚</span>Interaktiv darslar</button>
- <button class="nav-btn" data-page="quiz"><span>🧠</span>Test markazi</button>
- <button class="nav-btn" data-page="dictionary"><span>🔤</span>Lotincha lug‘at</button>
- <button class="nav-btn" data-page="flashcards"><span>🃏</span>Flashcard</button>
- <div class="side-label">SHAXSIY</div>
- <button class="nav-btn" data-page="progress"><span>🏆</span>Yutuqlarim</button>
- <button class="nav-btn" data-page="health"><span>❤️</span>Sog‘liq vositalari</button>
- <button class="nav-btn" data-page="report"><span>📄</span>Hisobot</button>
- <div class="side-label">LOYIHA</div>
- <div class="small muted" style="padding:10px">JDPU HEALTH — tibbiyot bilimlarini o‘rganish uchun ta’limiy platforma.</div>
-</aside>
-
-<main class="main">
-
-<!-- BOSH SAHIFA -->
-<section class="page active" id="page-home">
- <div class="hero">
-  <div class="hero-content">
-   <div class="eyebrow">WELCOME TO MEDICAL ACADEMY</div>
-   <h1>Tibbiyot bilimlarini<br>yangi bosqichda o‘rganing.</h1>
-   <p>Anatomiya, fiziologiya, lotincha atamalar va tibbiy testlar. O‘rganing, mashq qiling va o‘z natijalaringizni kuzating.</p>
-   <button class="primary-btn" onclick="navigate('anatomy')">Akademiyani boshlash →</button>
+<section class="hero">
+  <div>
+    <div class="eyebrow">✦ Tibbiy va biologik fizika · 01-laboratoriya</div>
+    <h1>Kuchni ko‘r.<br>
+      <span class="gradient-text">Elastiklikni his qil.</span>
+    </h1>
+    <p>
+      Laboratoriya jihozlari bo‘lmasa ham, tajriba qilish mumkin.
+      Yukni o‘zgartir, sterjenning egilishini kuzat va Yung
+      modulining ma’nosini amalda tushun.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#experiment" style="text-decoration:none">
+        Tajribani boshlash ↗
+      </a>
+      <button class="btn btn-soft" id="introBtn">▶ Qisqa tanishtiruv</button>
+    </div>
   </div>
- </div>
 
- <div class="grid3">
-  <div class="card stat-card"><div class="stat-icon">⚡</div><div><div class="stat-number" id="homeXP">0</div><div class="stat-label">Yig‘ilgan XP</div></div></div>
-  <div class="card stat-card"><div class="stat-icon">📚</div><div><div class="stat-number" id="homeLessons">0</div><div class="stat-label">O‘tilgan darslar</div></div></div>
-  <div class="card stat-card"><div class="stat-icon">🎯</div><div><div class="stat-number" id="homeTests">0</div><div class="stat-label">Yechilgan testlar</div></div></div>
- </div>
-
- <div class="section-head"><div><h2>Akademiya bo‘limlari</h2><p>O‘zingizga kerakli yo‘nalishni tanlang</p></div></div>
- <div class="grid">
-  <button class="feature-card" onclick="navigate('anatomy')"><div class="feature-icon">🫀</div><b>Anatomiya akademiyasi</b><small>Inson tanasi, organlar va tizimlar haqida o‘rganing.</small></button>
-  <button class="feature-card" onclick="navigate('lessons')"><div class="feature-icon">📖</div><b>Interaktiv darslar</b><small>Mavzularni ketma-ket o‘zlashtiring.</small></button>
-  <button class="feature-card" onclick="navigate('quiz')"><div class="feature-icon">🧠</div><b>Tibbiy testlar</b><small>Bilimingizni savollar orqali tekshiring.</small></button>
-  <button class="feature-card" onclick="navigate('dictionary')"><div class="feature-icon">🔤</div><b>Lotincha lug‘at</b><small>Atamalarni o‘rganing va qidiring.</small></button>
-  <button class="feature-card" onclick="navigate('flashcards')"><div class="feature-icon">🃏</div><b>Yodlash kartalari</b><small>Atamalarni takrorlash orqali yodlang.</small></button>
-  <button class="feature-card" onclick="navigate('progress')"><div class="feature-icon">🏆</div><b>Yutuqlar va statistika</b><small>O‘sishingizni kuzating va nishonlarni oching.</small></button>
- </div>
-
- <div class="section-head"><div><h2>Bugungi vazifa</h2><p>Har kuni oz-ozdan o‘rganing</p></div><span class="tag">DAILY MISSION</span></div>
- <div class="card">
-  <div class="row" style="display:flex;justify-content:space-between;align-items:center;gap:10px">
-   <div><b style="font-size:13px">🧠 5 ta tibbiy savolga javob bering</b><p class="small muted" style="margin-top:5px">Vazifani bajaring va 20 XP oling.</p></div>
-   <button class="primary-btn" onclick="navigate('quiz')">Boshlash</button>
+  <div class="hero-art">
+    <span class="float-tag tag-a">⚖️ Kuch → deformatsiya</span>
+    <svg class="hero-graphic" viewBox="0 0 500 300">
+      <defs>
+        <linearGradient id="beam" x1="0" x2="1">
+          <stop stop-color="#2878f0"/>
+          <stop offset="1" stop-color="#26b9c9"/>
+        </linearGradient>
+      </defs>
+      <path d="M70 206 L430 206" stroke="#a9bdd7" stroke-width="5"/>
+      <path d="M95 206 L75 245 L115 245 Z M405 206 L385 245 L425 245 Z" fill="#9bb4d2"/>
+      <path d="M95 184 Q250 184 405 184" stroke="url(#beam)" stroke-width="15" fill="none"/>
+      <path d="M250 100 V160" stroke="#ed9b35" stroke-width="5"/>
+      <path d="M238 148 L250 165 L262 148" fill="none" stroke="#ed9b35" stroke-width="5"/>
+      <rect x="221" y="72" width="58" height="30" rx="8" fill="#ffcf83"/>
+      <text x="250" y="92" font-size="13" text-anchor="middle" fill="#80500d">YUK</text>
+      <circle cx="95" cy="184" r="7" fill="#fff" stroke="#2878f0" stroke-width="4"/>
+      <circle cx="405" cy="184" r="7" fill="#fff" stroke="#2878f0" stroke-width="4"/>
+      <text x="250" y="275" font-size="15" text-anchor="middle" fill="#687891">
+        Yuk ortadi → egilish ham ortadi
+      </text>
+    </svg>
+    <span class="float-tag tag-b">📐 Yung moduli · E</span>
   </div>
- </div>
 </section>
 
-<!-- ANATOMIYA -->
-<section class="page" id="page-anatomy">
- <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
- <div class="section-head"><div><div class="eyebrow">HUMAN ANATOMY</div><h2>Anatomiya akademiyasi</h2><p>Inson organizmining asosiy tizimlarini o‘rganing.</p></div></div>
- <div id="anatomyList" class="grid"></div>
- <div id="anatomyDetail" class="card hidden" style="margin-top:14px">
-  <button class="back-btn" onclick="closeAnatomy()">← Tizimlarga qaytish</button>
-  <div id="anatomyContent"></div>
- </div>
+<section id="experiment">
+  <div class="section-head">
+    <div>
+      <h2>01. Virtual tajriba</h2>
+      <p>Yukni o‘zgartiring va sterjenning egilishini kuzating.</p>
+    </div>
+    <span class="pill pill-green">● Simulyatsiya faol</span>
+  </div>
+
+  <div class="lab-grid">
+    <div class="panel lab-main">
+      <div class="panel-title">
+        <h3>Yog‘och sterjenning egilishi</h3>
+        <span class="status">LIVE SIMULATION</span>
+      </div>
+
+      <div class="sim-stage">
+        <svg id="beamSvg" viewBox="0 0 700 310">
+          <defs>
+            <linearGradient id="wood" x1="0" x2="1">
+              <stop stop-color="#e7a95d"/>
+              <stop offset=".5" stop-color="#c9863c"/>
+              <stop offset="1" stop-color="#e9b66f"/>
+            </linearGradient>
+          </defs>
+          <line x1="80" y1="220" x2="620" y2="220"
+            stroke="#b6c7dc" stroke-width="3" stroke-dasharray="7 7"/>
+          <path d="M100 220 L72 270 L128 270 Z M600 220 L572 270 L628 270 Z"
+            fill="#a8bad0"/>
+          <path id="beamPath" d="M100 220 Q350 220 600 220"
+            fill="none" stroke="url(#wood)" stroke-width="22" stroke-linecap="round"/>
+          <path id="centerGuide" d="M350 95 V200"
+            stroke="#e99a2f" stroke-width="3" stroke-dasharray="6 6"/>
+          <g id="weightGroup" transform="translate(350 80)">
+            <path d="M0 0 V26" stroke="#e99a2f" stroke-width="4"/>
+            <rect x="-35" y="26" width="70" height="42" rx="8"
+              fill="#ffd18a" stroke="#e5a342" stroke-width="3"/>
+            <text id="weightText" x="0" y="52" text-anchor="middle"
+              font-size="16" font-weight="900" fill="#80500d">1.0 kg</text>
+            <path d="M-11 68 V82 M11 68 V82" stroke="#e5a342" stroke-width="4"/>
+          </g>
+          <text x="100" y="295" text-anchor="middle" font-size="14" fill="#687891">A tayanch</text>
+          <text x="600" y="295" text-anchor="middle" font-size="14" fill="#687891">B tayanch</text>
+          <text x="350" y="28" text-anchor="middle" font-size="14"
+            font-weight="800" fill="#2878f0">P = m · g</text>
+          <text id="deflectionLabel" x="370" y="205" font-size="13"
+            fill="#2878f0" font-weight="800">λ = 0.00 mm</text>
+        </svg>
+      </div>
+
+      <div class="sim-controls">
+        <div class="control">
+          <label for="massRange">Yuk massasi <strong id="massValue">1.0 kg</strong></label>
+          <input id="massRange" type="range" min="0.5" max="2" step="0.5" value="1">
+          <small>0,5 kg dan 2 kg gacha</small>
+        </div>
+
+        <div class="control">
+          <label for="materialSelect">Namuna materiali</label>
+          <select id="materialSelect" style="width:100%;margin:10px 0 4px;padding:10px;border:1px solid #dce6f3;border-radius:10px;background:white;color:var(--ink)">
+            <option value="10">Yog‘och · shartli E = 10 GPa</option>
+            <option value="2">Yumshoq to‘qima · shartli E = 2 MPa</option>
+            <option value="50">Qattiq material · shartli E = 50 GPa</option>
+          </select>
+          <small>Taqqoslash uchun namunaviy qiymat</small>
+        </div>
+
+        <div class="control">
+          <label for="lengthInput">Tayanchlar oralig‘i, l (mm)</label>
+          <input id="lengthInput" type="number" min="100" max="1000" value="500">
+          <small>Masalan: 500 mm</small>
+        </div>
+
+        <div class="control">
+          <label for="widthInput">Sterjen eni, a (mm)</label>
+          <input id="widthInput" type="number" min="2" max="100" value="20">
+          <small>To‘g‘ri to‘rtburchak kesim</small>
+        </div>
+
+        <div class="control">
+          <label for="heightInput">Sterjen qalinligi, b (mm)</label>
+          <input id="heightInput" type="number" min="2" max="100" value="10">
+          <small>Qalinlik kub darajada ta’sir qiladi</small>
+        </div>
+
+        <div class="control">
+          <label>Harakat</label>
+          <button class="btn btn-primary" id="resetBtn" style="width:100%;margin-top:8px">
+            ↻ Boshlang‘ich holat
+          </button>
+          <small>Qiymatlar o‘zgarsa hisob qayta bajariladi</small>
+        </div>
+      </div>
+    </div>
+
+    <aside class="panel side-panel">
+      <div class="panel-title">
+        <h3>Hisoblash natijasi</h3>
+        <span class="pill pill-green">AUTO</span>
+      </div>
+      <div class="metric">
+        <span>Yuk kuchi · P</span>
+        <strong id="forceOut">9.80 N</strong>
+        <small>Og‘irlik kuchi: P = m × g</small>
+      </div>
+      <div class="metric">
+        <span>Taxminiy egilish · λ</span>
+        <strong id="bendOut">— mm</strong>
+        <small>Elastik model bo‘yicha hisoblandi</small>
+      </div>
+      <div class="metric">
+        <span>Yung moduli · E</span>
+        <strong id="youngOut">10.0 GPa</strong>
+        <small>Tanlangan material qiymati</small>
+      </div>
+      <div class="formula">
+        <div class="eq">E = mg l³ / 4λab³</div>
+        <p>Yung modulini egilish orqali aniqlash formulasi</p>
+      </div>
+      <div class="note">
+        💡 <b>Kuzating:</b> massa ortganda kuch va egilish ortadi.
+        Bu simulyatsiya o‘quv modeli; biologik to‘qimalar murakkab,
+        viskoelastik xususiyatlarga ega.
+      </div>
+    </aside>
+  </div>
 </section>
 
-<!-- DARSLAR -->
-<section class="page" id="page-lessons">
- <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
- <div class="eyebrow">LEARNING CENTER</div>
- <h2>Interaktiv darslar</h2>
- <p class="small muted">Mavzuni tanlang, matnni o‘qing va o‘zlashtirganingizni belgilang.</p>
- <div id="lessonList" class="grid" style="margin-top:15px"></div>
- <div id="lessonDetail" class="card hidden" style="margin-top:14px">
-  <button class="back-btn" onclick="closeLesson()">← Darslarga qaytish</button>
-  <div id="lessonContent"></div>
-  <button class="primary-btn" id="completeLessonBtn" onclick="completeLesson()">✓ Darsni tugatdim · +15 XP</button>
- </div>
+<section id="deformation">
+  <div class="section-head">
+    <div>
+      <h2>02. Deformatsiya qanday ishlaydi?</h2>
+      <p>Kuch olib tashlanganda nima sodir bo‘lishini solishtiring.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <article class="panel info-card">
+      <span class="pill pill-green">ELASTIK</span>
+      <h3>Avvalgi holatiga qaytadi</h3>
+      <p>Tashqi kuch olib tashlanganda jism dastlabki shakli va o‘lchamini tiklaydi.</p>
+      <div class="demo-row">
+        <div class="demo-object">
+          <svg viewBox="0 0 300 70">
+            <path d="M25 35 H55 L68 17 L90 53 L112 17 L134 53 L156 17 L178 53 L191 35 H275"
+              fill="none" stroke="#159b75" stroke-width="5"/>
+          </svg>
+        </div>
+        <span class="pill pill-green">↩ Qaytadi</span>
+      </div>
+    </article>
+
+    <article class="panel info-card">
+      <span class="pill pill-orange">PLASTIK</span>
+      <h3>O‘zgarish saqlanib qoladi</h3>
+      <p>Kuch olib tashlangandan keyin jism avvalgi shakli va o‘lchamini to‘liq tiklay olmaydi.</p>
+      <div class="demo-row">
+        <div class="demo-object">
+          <svg viewBox="0 0 300 70">
+            <path d="M25 35 H75 Q100 35 112 18 L137 18 Q157 18 174 48 L193 48 H275"
+              fill="none" stroke="#ed9b35" stroke-width="5"/>
+          </svg>
+        </div>
+        <span class="pill pill-orange">✦ Qoladi</span>
+      </div>
+    </article>
+  </div>
 </section>
 
-<!-- TEST -->
-<section class="page" id="page-quiz">
- <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
- <div class="eyebrow">KNOWLEDGE TEST</div>
- <h2>Tibbiy test markazi</h2>
- <p class="small muted">Savolga javob bering. Har bir to‘g‘ri javob uchun 10 XP.</p>
- <div class="grid" style="margin-top:15px">
-  <button class="feature-card" onclick="startQuiz('anatomy')"><div class="feature-icon">🫀</div><b>Anatomiya testi</b><small>Organlar, suyaklar va muskullar</small></button>
-  <button class="feature-card" onclick="startQuiz('general')"><div class="feature-icon">🩺</div><b>Umumiy tibbiyot</b><small>Organizm va fiziologiya</small></button>
-  <button class="feature-card" onclick="startQuiz('latin')"><div class="feature-icon">🔤</div><b>Lotin tili testi</b><small>Anatomik terminlar</small></button>
-  <button class="feature-card" onclick="startQuiz('mixed')"><div class="feature-icon">🎓</div><b>Aralash test</b><small>Turli mavzulardan savollar</small></button>
- </div>
- <div id="quizBox" class="card hidden" style="margin-top:15px">
-  <div class="row" style="display:flex;justify-content:space-between">
-   <span class="tag" id="quizCategory">TEST</span>
-   <b class="small" id="quizCount">1 / 5</b>
+<section id="medicine">
+  <div class="section-head">
+    <div>
+      <h2>03. Fizika — inson tanasida</h2>
+      <p>Biologik to‘qimalar ham kuch ta’sirida deformatsiyalanadi.</p>
+    </div>
   </div>
-  <div class="progress"><div class="progress-fill" id="quizProgress"></div></div>
-  <h3 id="quizQuestion" style="font-size:17px;line-height:1.5;margin-top:20px">Savol</h3>
-  <div id="quizAnswers"></div>
-  <div id="quizFeedback" class="feedback hidden"></div>
-  <button class="primary-btn hidden" id="quizNext" style="width:100%;margin-top:15px" onclick="nextQuiz()">Keyingi savol →</button>
-  <div id="quizFinish" class="hidden"></div>
- </div>
+
+  <div class="tissue-grid">
+    <article class="panel tissue">
+      <div class="emoji">🦴</div>
+      <h3>Suyak</h3>
+      <p>Mineral tuzlar suyakni qattiq va puxta qiladi, biriktiruvchi asos esa elastiklik beradi.</p>
+    </article>
+    <article class="panel tissue">
+      <div class="emoji">🪢</div>
+      <h3>Pay</h3>
+      <p>Mushak kuchini suyakka uzatadi va tortilish kuchlariga qarshilik ko‘rsatadi.</p>
+    </article>
+    <article class="panel tissue">
+      <div class="emoji">💪</div>
+      <h3>Mushak</h3>
+      <p>Yumshoq to‘qima bo‘lib, mexanik xususiyatlari tarkibi va fiziologik holatiga bog‘liq.</p>
+    </article>
+  </div>
 </section>
 
-<!-- LUG'AT -->
-<section class="page" id="page-dictionary">
- <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
- <div class="eyebrow">MEDICAL LATIN</div>
- <h2>Lotincha anatomik lug‘at</h2>
- <p class="small muted">Lotincha yoki o‘zbekcha atamani qidirishingiz mumkin.</p>
- <input class="search" id="termSearch" placeholder="🔍 Masalan: Cor, yurak, musculus..." oninput="renderTerms()">
- <div id="termList"></div>
+<section id="quiz">
+  <div class="section-head">
+    <div>
+      <h2>04. Bilimingni sinab ko‘r</h2>
+      <p>Javobni tanla. To‘g‘ri javob uchun ball olasan!</p>
+    </div>
+  </div>
+
+  <div class="panel quiz">
+    <div class="quiz-footer">
+      <span class="pill pill-green" id="quizCount">1 / 5</span>
+      <div class="progress"><span id="progressBar"></span></div>
+      <b id="score">0 ball</b>
+    </div>
+    <div class="quiz-question" id="question">Elastik deformatsiya nima?</div>
+    <div class="answers" id="answers"></div>
+    <div class="feedback" id="feedback">Javoblardan birini tanlang.</div>
+    <div class="quiz-footer">
+      <small>Har bir to‘g‘ri javob — 1 ball</small>
+      <button class="btn btn-primary" id="nextBtn" disabled>Keyingi savol →</button>
+    </div>
+  </div>
 </section>
 
-<!-- FLASHCARD -->
-<section class="page" id="page-flashcards">
- <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
- <div class="eyebrow">MEMORY TRAINING</div>
- <h2>Yodlash kartalari</h2>
- <p class="small muted">Atamani eslang, kartani bosing va tarjimasini tekshiring.</p>
- <div class="card" style="margin-top:15px">
-  <div class="row" style="display:flex;justify-content:space-between">
-   <span class="tag">FLASHCARD</span>
-   <span class="small muted" id="flashCount">1 / 10</span>
-  </div>
-  <div class="flashcard" id="flashCard" onclick="flipFlashcard()" style="margin-top:14px">
-   <div><div class="eyebrow">LOTINCHA ATAMA</div><strong id="flashTerm">Cor</strong><p id="flashHint">Tarjimasini eslang...</p></div>
-  </div>
-  <div class="grid" style="margin-top:12px">
-   <button class="soft-btn" onclick="previousFlash()">← Oldingi</button>
-   <button class="primary-btn" onclick="nextFlash()">Keyingi →</button>
-  </div>
-  <button class="outline-btn" style="width:100%;margin-top:10px" onclick="flipFlashcard()">Javobni ko‘rsatish</button>
- </div>
-</section>
-
-<!-- YUTUQLAR -->
-<section class="page" id="page-progress">
- <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
- <div class="eyebrow">YOUR PERFORMANCE</div>
- <h2>Yutuqlarim</h2>
- <div class="card" style="margin-top:14px">
-  <div class="row" style="display:flex;align-items:center;gap:14px">
-   <div style="font-size:42px">🎓</div>
-   <div style="flex:1">
-    <b id="rankName">Yangi tadqiqotchi</b>
-    <p class="small muted" id="rankDescription">Bilim sari ilk qadam.</p>
-   </div>
-   <div class="stat-number" style="color:var(--gold)" id="progressXP">0 XP</div>
-  </div>
-  <div class="progress"><div class="progress-fill" id="rankProgress"></div></div>
-  <p class="small muted" id="nextRank">Keyingi darajaga 100 XP qoldi.</p>
- </div>
- <div class="section-head"><div><h2>Faollik statistikasi</h2></div></div>
- <div class="grid3">
-  <div class="card"><div class="stat-number" id="statLessons">0</div><div class="stat-label">Darslar</div></div>
-  <div class="card"><div class="stat-number" id="statTests">0</div><div class="stat-label">Testlar</div></div>
-  <div class="card"><div class="stat-number" id="statCorrect">0</div><div class="stat-label">To‘g‘ri javoblar</div></div>
- </div>
- <div class="section-head"><div><h2>Mukofot nishonlari</h2><p>Yutuqlaringizni oching</p></div></div>
- <div class="badge-grid" id="badgeGrid"></div>
-</section>
-
-<!-- SOG'LIQ VOSITALARI -->
-<section class="page" id="page-health">
- <button class="back-btn" onclick="navigate('home')">← Bosh sahifa</button>
- <div class="eyebrow">PERSONAL HEALTH</div>
- <h2>Sog‘liq vositalari</h2>
- <p class="small muted">Shaxsiy ko‘rsatkichlaringizni qayd etish uchun yordamchi vositalar.</p>
-
- <div class="card" style="margin-top:14px">
-  <h3>⚖️ BMI hisoblash</h3>
-  <div class="grid">
-   <div><label>Bo‘y (sm)</label><input id="height" type="number" placeholder="175"></div>
-   <div><label>Vazn (kg)</label><input id="weight" type="number" placeholder="70"></div>
-  </div>
-  <button class="primary-btn" style="margin-top:13px" onclick="calcBMI()">Hisoblash</button>
-  <div id="bmiOutput" class="feedback hidden"></div>
- </div>
-
- <div class="card" style="margin-top:12px">
-  <h3>💧 Suv nazorati</h3>
-  <div class="stat-number"><span id="waterTotal">0</span> ml</div>
-  <div class="progress"><div class="progress-fill" id="waterProgress"></div></div>
-  <p class="small muted" id="waterLabel">Kunlik maqsad: 2000 ml</p>
-  <div class="grid3" style="margin-top:12px">
-   <button class="soft-btn" onclick="addWater(200)">+200</button>
-   <button class="soft-btn" onclick="addWater(250)">+250</button>
-   <button class="soft-btn" onclick="addWater(500)">+500</button>
-  </div>
-  <button class="outline-btn" style="margin-top:10px;width:100%" onclick="resetWater()">Hisobni tozalash</button>
- </div>
-
- <div class="card" style="margin-top:12px">
-  <h3>❤️ Qon bosimi va puls qaydi</h3>
-  <div class="grid">
-   <div><label>Yuqori bosim</label><input id="systolic" type="number" placeholder="120"></div>
-   <div><label>Pastki bosim</label><input id="diastolic" type="number" placeholder="80"></div>
-  </div>
-  <label>Puls / daqiqa</label><input id="pulseValue" type="number" placeholder="72">
-  <button class="primary-btn" style="margin-top:13px" onclick="savePressure()">Saqlash</button>
-  <div id="pressureHistory"></div>
-  <p class="small muted" style="margin-top:12px">Bu vosita qaydlarni saqlaydi, tashxis qo‘ymaydi. Natijalarni tibbiyot mutaxassisi bilan muhokama qiling.</p>
- </div>
-</section>
-
-<!-- HISOBOT -->
-<section class="page" id="page-report">
- <button class="back-btn no-print" onclick="navigate('home')">← Bosh sahifa</button>
- <div class="eyebrow">ACADEMY REPORT</div>
- <h2>Shaxsiy o‘quv hisoboti</h2>
- <div class="card" style="margin-top:14px" id="reportData"></div>
- <button class="primary-btn no-print" style="margin-top:14px;width:100%" onclick="window.print()">PDF / Chop etish</button>
-</section>
-
-</main>
+<div class="footer">
+  YOUNG LAB · Tibbiy va biologik fizika uchun o‘quv simulyatsiyasi<br>
+  Hisoblashlar ideal elastik sterjen modeli asosida ko‘rsatiladi.
 </div>
 
-<nav class="mobile-nav">
- <button class="active" data-page="home"><span>⌂</span>Bosh sahifa</button>
- <button data-page="anatomy"><span>🫀</span>Anatomiya</button>
- <button data-page="lessons"><span>📚</span>Darslar</button>
- <button data-page="quiz"><span>🧠</span>Testlar</button>
- <button data-page="progress"><span>🏆</span>Yutuqlar</button>
-</nav>
-
-<div class="footer">JDPU HEALTH · MEDICAL ACADEMY · Ta’limiy platforma</div>
+</main>
+<div class="toast" id="toast"></div>
 
 <script>
-const $=id=>document.getElementById(id);
-const store={
- get(key,fallback){try{return JSON.parse(localStorage.getItem('jdpuAcademy_'+key))??fallback}catch(e){return fallback}},
- set(key,value){try{localStorage.setItem('jdpuAcademy_'+key,JSON.stringify(value))}catch(e){alert('Brauzer xotirasiga saqlab bo‘lmadi.')}}
-};
+(() => {
+  const $ = id => document.getElementById(id);
+  let soundOn = true;
+  let audioCtx = null;
 
-let state=store.get('state',{xp:0,lessons:[],tests:0,correct:0,quizHistory:[]});
-function saveState(){store.set('state',state);updateStats()}
-function addXP(n){state.xp+=n;saveState()}
+  function tone(freq=520,duration=.12,type='sine'){
+    if(!soundOn) return;
+    try{
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      const osc=audioCtx.createOscillator();
+      const gain=audioCtx.createGain();
+      osc.type=type;
+      osc.frequency.value=freq;
+      gain.gain.setValueAtTime(.0001,audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(.08,audioCtx.currentTime+.015);
+      gain.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime+duration);
+    }catch(e){}
+  }
 
-const pages=['home','anatomy','lessons','quiz','dictionary','flashcards','progress','health','report'];
-function navigate(name){
- pages.forEach(p=>$('page-'+p).classList.toggle('active',p===name));
- document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
- window.scrollTo({top:0,behavior:'smooth'});
- if(name==='progress')updateStats();
- if(name==='report')renderReport();
- if(name==='health'){renderWater();renderPressure()}
- if(name==='dictionary')renderTerms();
-}
+  function toast(message){
+    $('toast').textContent=message;
+    $('toast').classList.add('show');
+    setTimeout(()=>$('toast').classList.remove('show'),2300);
+  }
 
-/* ANATOMIYA MA'LUMOTLARI */
-const systems=[
- {id:'skeletal',icon:'🦴',name:'Skelet tizimi',latin:'Systema skeletale',desc:'Suyaklar, bo‘g‘imlar va skelet tuzilishi.',
- body:`<h3>Umumiy ma’lumot</h3><p>Odam skeleti tanaga tayanch beradi, ichki a’zolarni himoya qiladi va harakatda qatnashadi. Katta yoshli odam skeletida odatda 206 ta suyak bo‘ladi.</p><h3>Asosiy qismlari</h3><ul><li>Bosh skeleti — cranium</li><li>Umurtqa pog‘onasi — columna vertebralis</li><li>Ko‘krak qafasi — thorax</li><li>Yuqori va pastki qo‘l-oyoq suyaklari</li></ul><h3>Vazifalari</h3><p>Tayanch, himoya, harakatda ishtirok etish, mineral moddalarni saqlash va qon hujayralari hosil bo‘lishiga sharoit yaratish.</p>`},
- {id:'muscular',icon:'💪',name:'Muskul tizimi',latin:'Systema musculare',desc:'Muskullar, ularning vazifalari va harakat.',
- body:`<h3>Umumiy ma’lumot</h3><p>Muskul tizimi tana harakatlarini yuzaga keltiradi, gavda holatini saqlaydi va issiqlik hosil bo‘lishida qatnashadi.</p><h3>Muskul turlari</h3><ul><li>Skelet muskullari — musculi skeletales</li><li>Silliq muskullar — musculi non striati</li><li>Yurak muskuli — myocardium</li></ul><h3>Misollar</h3><p>Katta ko‘krak muskuli — musculus pectoralis major. Ikki boshli yelka muskuli — musculus biceps brachii. Deltasimon muskul — musculus deltoideus.</p>`},
- {id:'cardio',icon:'❤️',name:'Yurak-qon tomir tizimi',latin:'Systema cardiovasculare',desc:'Yurak, arteriya, vena va qon aylanishi.',
- body:`<h3>Yurak</h3><p>Yurak ko‘krak qafasida joylashgan muskulli a’zo bo‘lib, qonni tomirlar bo‘ylab harakatlantiradi. U to‘rtta kameradan: ikki bo‘lmacha va ikki qorinchadan tashkil topgan.</p><h3>Qon tomirlari</h3><ul><li>Arteriyalar — arteriae</li><li>Venalar — venae</li><li>Kapillyarlar — vasa capillaria</li></ul><h3>Qon aylanish doiralari</h3><p>Katta qon aylanish doirasi qonning yurakdan tana a’zolariga va qaytib yurakka harakatini ta’minlaydi. Kichik doira o‘pka bilan bog‘liq.</p>`},
- {id:'respiratory',icon:'🫁',name:'Nafas olish tizimi',latin:'Systema respiratorium',desc:'Nafas yo‘llari va o‘pka anatomiyasi.',
- body:`<h3>Asosiy a’zolar</h3><ul><li>Burun bo‘shlig‘i — cavitas nasi</li><li>Halqum — pharynx</li><li>Hiqildoq — larynx</li><li>Traxeya — trachea</li><li>Bronxlar — bronchi</li><li>O‘pka — pulmones</li></ul><h3>Vazifasi</h3><p>Nafas olish tizimi organizmga kislorod kirishini va karbonat angidrid chiqarilishini ta’minlaydi. Diafragma — diaphragma nafas olishda muhim muskul hisoblanadi.</p>`},
- {id:'digestive',icon:'🍎',name:'Hazm qilish tizimi',latin:'Systema digestorium',desc:'Ovqat hazm qilish a’zolari.',
- body:`<h3>Asosiy a’zolar</h3><ul><li>Og‘iz bo‘shlig‘i — cavitas oris</li><li>Qizilo‘ngach — oesophagus</li><li>Oshqozon — ventriculus</li><li>Ingichka ichak — intestinum tenue</li><li>Yo‘g‘on ichak — intestinum crassum</li><li>Jigar — hepar</li><li>Oshqozon osti bezi — pancreas</li></ul><h3>Vazifasi</h3><p>Ovqatni mexanik va kimyoviy qayta ishlash, oziq moddalarni so‘rish hamda qoldiqlarni chiqarishga tayyorlash.</p>`},
- {id:'nervous',icon:'🧠',name:'Nerv tizimi',latin:'Systema nervosum',desc:'Bosh miya, orqa miya va nervlar.',
- body:`<h3>Markaziy nerv tizimi</h3><ul><li>Bosh miya — encephalon</li><li>Orqa miya — medulla spinalis</li></ul><h3>Periferik nerv tizimi</h3><p>Bosh miya nervlari, orqa miya nervlari va nerv tugunlari bilan ifodalanadi.</p><h3>Vazifasi</h3><p>Organizm faoliyatini boshqarish, tashqi va ichki muhitdan axborot qabul qilish, qayta ishlash va javob reaksiyalarini tashkil etish.</p>`},
- {id:'urinary',icon:'🫘',name:'Siydik ajratish tizimi',latin:'Systema urinarium',desc:'Buyraklar va siydik yo‘llari.',
- body:`<h3>Asosiy a’zolar</h3><ul><li>Buyrak — ren</li><li>Siydik nayi — ureter</li><li>Siydik pufagi — vesica urinaria</li><li>Siydik chiqarish kanali — urethra</li></ul><h3>Vazifasi</h3><p>Qonni filtrlash, siydik hosil qilish, suv-tuz muvozanati va organizm ichki muhitining barqarorligini saqlashda qatnashish.</p>`},
- {id:'endocrine',icon:'🧬',name:'Endokrin tizim',latin:'Systema endocrinum',desc:'Ichki sekretsiya bezlari va gormonlar.',
- body:`<h3>Asosiy bezlar</h3><ul><li>Gipofiz — hypophysis</li><li>Qalqonsimon bez — glandula thyroidea</li><li>Qalqonoldi bezlari — glandulae parathyroideae</li><li>Buyrak usti bezlari — glandulae suprarenales</li></ul><h3>Vazifasi</h3><p>Gormonlar orqali o‘sish, moddalar almashinuvi, ko‘payish va boshqa fiziologik jarayonlarni boshqarishda ishtirok etadi.</p>`}
-];
+  $('soundToggle').addEventListener('click',()=>{
+    soundOn=!soundOn;
+    $('soundToggle').textContent=soundOn?'🔊 Ovoz: yoqilgan':'🔇 Ovoz: o‘chirilgan';
+    if(soundOn)tone(660,.1);
+  });
 
-function renderAnatomy(){
- $('anatomyList').innerHTML=systems.map(s=>`
- <button class="system-card" onclick="showAnatomy('${s.id}')">
-  <span class="emoji">${s.icon}</span><b>${s.name}</b>
-  <small>${s.latin}</small><small>${s.desc}</small>
- </button>`).join('');
-}
-function showAnatomy(id){
- const s=systems.find(x=>x.id===id);if(!s)return;
- $('anatomyDetail').classList.remove('hidden');
- $('anatomyContent').innerHTML=`<div class="eyebrow">${s.latin}</div><div style="font-size:38px;margin-top:12px">${s.icon}</div><h2 class="detail-title">${s.name}</h2><div class="detail-body">${s.body}</div>`;
- $('anatomyDetail').scrollIntoView({behavior:'smooth',block:'start'});
-}
-function closeAnatomy(){$('anatomyDetail').classList.add('hidden');$('anatomyList').scrollIntoView({behavior:'smooth'})}
+  $('introBtn').addEventListener('click',()=>{
+    tone(440,.12);
+    setTimeout(()=>tone(554,.12),130);
+    setTimeout(()=>tone(659,.18),260);
+    toast('Xush kelibsiz! Yukni o‘zgartirib, sterjen egilishini kuzating.');
+  });
 
-/* INTERAKTIV DARSLAR */
-const lessons=[
- {id:'cell',icon:'🔬',title:'Hujayra haqida tushuncha',time:'5 daqiqa',level:'Boshlang‘ich',text:`<h3>Hujayra nima?</h3><p>Hujayra tirik organizmlarning tuzilish va funksional birligidir. Ko‘pchilik hujayralar membrana, sitoplazma va genetik materialga ega.</p><h3>Asosiy qismlari</h3><ul><li>Hujayra membranasi — tashqi chegarani hosil qiladi.</li><li>Sitoplazma — hujayra ichki muhitidir.</li><li>Yadro — eukariot hujayrada genetik axborotni saqlaydi.</li></ul><h3>Organellalar</h3><p>Mitoxondriya energiya hosil qilishda, ribosomalar oqsil sintezida, endoplazmatik to‘r moddalarni tashish va sintezda qatnashadi.</p>`},
- {id:'heart',icon:'❤️',title:'Yurak anatomiyasi',time:'7 daqiqa',level:'O‘rta',text:`<h3>Yurak tuzilishi</h3><p>Yurak ko‘krak qafasining o‘rta bo‘limida, asosan chap tomonga siljigan holda joylashadi.</p><h3>Kameralari</h3><ul><li>O‘ng bo‘lmacha — atrium dextrum</li><li>Chap bo‘lmacha — atrium sinistrum</li><li>O‘ng qorincha — ventriculus dexter</li><li>Chap qorincha — ventriculus sinister</li></ul><h3>Klapanlar</h3><p>Yurak klapanlari qonning bir yo‘nalishda oqishini ta’minlaydi.</p>`},
- {id:'bones',icon:'🦴',title:'Skelet tizimi',time:'8 daqiqa',level:'O‘rta',text:`<h3>Skeletning vazifalari</h3><p>Skelet tayanch, himoya va harakat vazifalarini bajaradi.</p><h3>Bo‘limlari</h3><ul><li>Bosh skeleti — cranium</li><li>Gavda skeleti — skeletum trunci</li><li>Qo‘l-oyoq skeleti — skeleton appendiculare</li></ul><h3>Suyak turlari</h3><p>Naysimon, kalta, yassi va aralash suyaklar farqlanadi.</p>`},
- {id:'muscles',icon:'💪',title:'Ko‘krak muskullari',time:'9 daqiqa',level:'O‘rta',text:`<h3>Ko‘krak muskullari</h3><p>Ko‘krak muskullari yuzaki va chuqur guruhlarga ajratiladi.</p><h3>Yuzaki muskullar</h3><ul><li>Katta ko‘krak muskuli — musculus pectoralis major</li><li>Kichik ko‘krak muskuli — musculus pectoralis minor</li><li>O‘mrov osti muskuli — musculus subclavius</li><li>Oldingi tishsimon muskul — musculus serratus anterior</li></ul><h3>Vazifasi</h3><p>Yelka kamari va qo‘l harakatlarida qatnashadi. Ayrim muskullar nafas olish mexanikasiga ham yordam beradi.</p>`},
- {id:'lungs',icon:'🫁',title:'Nafas olish fiziologiyasi',time:'6 daqiqa',level:'Boshlang‘ich',text:`<h3>Nafas olish jarayoni</h3><p>Nafas olishda havo nafas yo‘llari orqali o‘pkaga yetib boradi. Alveolalarda gazlar almashinuvi sodir bo‘ladi.</p><h3>Inspiratsiya</h3><p>Diafragma qisqarib pastga tushadi, ko‘krak qafasi hajmi ortadi va havo o‘pkaga kiradi.</p><h3>Ekspiratsiya</h3><p>Tinch nafas chiqarishda nafas muskullari bo‘shashadi va o‘pka elastikligi tufayli havo tashqariga chiqadi.</p>`},
- {id:'blood',icon:'🩸',title:'Qon va uning tarkibi',time:'7 daqiqa',level:'Boshlang‘ich',text:`<h3>Qon tarkibi</h3><p>Qon plazma va shaklli elementlardan tashkil topgan.</p><ul><li>Eritrotsitlar — kislorod tashishda qatnashadi.</li><li>Leykotsitlar — immun himoyada qatnashadi.</li><li>Trombotsitlar — qon ivishida ishtirok etadi.</li></ul><h3>Plazma</h3><p>Qon plazmasi suv, oqsillar, elektrolitlar va boshqa erigan moddalardan iborat.</p>`}
-];
+  const inputs=['massRange','materialSelect','lengthInput','widthInput','heightInput'];
 
-let currentLesson=null;
-function renderLessons(){
- $('lessonList').innerHTML=lessons.map(l=>{
-  const done=state.lessons.includes(l.id);
-  return `<button class="lesson-card" onclick="showLesson('${l.id}')"><span class="emoji">${l.icon}</span><b>${l.title}</b><small>${l.time} · ${l.level}</small><div style="margin-top:10px">${done?'<span class="tag">✓ O‘TILGAN</span>':'<span class="tag">BOSHLASH →</span>'}</div></button>`;
- }).join('');
-}
-function showLesson(id){
- currentLesson=lessons.find(l=>l.id===id);if(!currentLesson)return;
- $('lessonDetail').classList.remove('hidden');
- $('lessonContent').innerHTML=`<div class="eyebrow">INTERAKTIV DARS · ${currentLesson.time}</div><div style="font-size:35px;margin-top:10px">${currentLesson.icon}</div><h2 class="detail-title">${currentLesson.title}</h2><div class="detail-body">${currentLesson.text}</div>`;
- const done=state.lessons.includes(id);
- $('completeLessonBtn').textContent=done?'✓ Bu dars o‘tilgan':'✓ Darsni tugatdim · +15 XP';
- $('completeLessonBtn').disabled=done;
- $('completeLessonBtn').style.opacity=done?'.5':'1';
- $('lessonDetail').scrollIntoView({behavior:'smooth'});
-}
-function closeLesson(){$('lessonDetail').classList.add('hidden');renderLessons()}
-function completeLesson(){
- if(!currentLesson||state.lessons.includes(currentLesson.id))return;
- state.lessons.push(currentLesson.id);addXP(15);
- $('completeLessonBtn').textContent='✓ Dars tugallandi';
- $('completeLessonBtn').disabled=true;
- renderLessons();
-}
+  function validNumber(id,min,max){
+    const el=$(id),v=Number(el.value);
+    if(!Number.isFinite(v)||v<min||v>max){
+      el.setCustomValidity(`Qiymat ${min}–${max} oralig‘ida bo‘lishi kerak`);
+      el.reportValidity();
+      el.setCustomValidity('');
+      return null;
+    }
+    return v;
+  }
 
-/* TEST SAVOLLARI */
-const questionBank={
- anatomy:[
-  {q:'Yurak nechta kameradan tashkil topgan?',o:['2 ta','3 ta','4 ta','5 ta'],a:2,e:'Yurak ikki bo‘lmacha va ikki qorinchadan iborat.'},
-  {q:'Katta ko‘krak muskulining lotincha nomi qaysi?',o:['Musculus pectoralis major','Musculus deltoideus','Musculus trapezius','Musculus biceps'],a:0,e:'Katta ko‘krak muskuli — musculus pectoralis major.'},
-  {q:'Kattalar skeletida odatda nechta suyak bo‘ladi?',o:['106','206','306','406'],a:1,e:'Katta yoshli inson skeletida odatda 206 ta suyak bo‘ladi.'},
-  {q:'O‘pkaning lotincha nomi qaysi?',o:['Cor','Hepar','Pulmo','Ren'],a:2,e:'Pulmo — o‘pka.'},
-  {q:'Diafragma qaysi jarayonda muhim qatnashadi?',o:['Ko‘rish','Nafas olish','Eshitish','Hazm qilish'],a:1,e:'Diafragma asosiy nafas muskuli hisoblanadi.'}
- ],
- general:[
-  {q:'Qonning kislorod tashuvchi hujayralari qaysi?',o:['Leykotsitlar','Trombotsitlar','Eritrotsitlar','Neyronlar'],a:2,e:'Eritrotsitlarda gemoglobin mavjud.'},
-  {q:'Buyrakning asosiy vazifalaridan biri nima?',o:['Qonni filtrlash','Ovoz chiqarish','Ovqatni chaynash','Ko‘rish'],a:0,e:'Buyraklar qonni filtrlashda qatnashadi.'},
-  {q:'Vitamin C ning nomi qaysi?',o:['Retinol','Askorbin kislota','Kalsiferol','Tokoferol'],a:1,e:'Vitamin C — askorbin kislota.'},
-  {q:'Puls nimani ifodalaydi?',o:['Nafas sonini','Arteriya devori tebranishini','Tana haroratini','Qon hajmini'],a:1,e:'Puls arteriya devoridagi ritmik tebranishdir.'},
-  {q:'Odam organizmida gazlar almashinuvi asosan qayerda sodir bo‘ladi?',o:['Alveolalarda','Qizilo‘ngachda','Oshqozonda','Buyrakda'],a:0,e:'O‘pka alveolalarida gazlar almashinuvi sodir bo‘ladi.'}
- ],
- latin:[
-  {q:'Cor so‘zining tarjimasi nima?',o:['Jigar','Yurak','Buyrak','O‘pka'],a:1,e:'Cor — yurak.'},
-  {q:'Os so‘zining ma’nosi qaysi?',o:['Suyak','Muskul','Nerv','Tomir'],a:0,e:'Os — suyak.'},
-  {q:'Pulmo nimani anglatadi?',o:['Oshqozon','O‘pka','Yurak','Jigar'],a:1,e:'Pulmo — o‘pka.'},
-  {q:'Musculus so‘zining tarjimasi?',o:['Suyak','Muskul','Bo‘g‘im','Teri'],a:1,e:'Musculus — muskul.'},
-  {q:'Hepar qaysi a’zo?',o:['Jigar','Buyrak','Yurak','O‘pka'],a:0,e:'Hepar — jigar.'}
- ]
-};
-questionBank.mixed=[...questionBank.anatomy.slice(0,3),...questionBank.general.slice(0,2)];
+  function updateLab(){
+    const m=Number($('massRange').value);
+    const materialValue=Number($('materialSelect').value);
+    const Evalue=materialValue===2?2e6:materialValue*1e9;
 
-let activeQuestions=[],qIndex=0,qScore=0,qAnswered=false,qCategory='';
-function startQuiz(category){
- qCategory=category;
- activeQuestions=[...questionBank[category]].sort(()=>Math.random()-.5);
- qIndex=0;qScore=0;qAnswered=false;
- $('quizBox').classList.remove('hidden');
- $('quizFinish').classList.add('hidden');
- $('quizCategory').textContent=({anatomy:'ANATOMIYA',general:'UMUMIY TIBBIYOT',latin:'LOTIN TILI',mixed:'ARALASH TEST'})[category];
- showQuizQuestion();
- $('quizBox').scrollIntoView({behavior:'smooth'});
-}
-function showQuizQuestion(){
- const q=activeQuestions[qIndex];
- $('quizCount').textContent=(qIndex+1)+' / '+activeQuestions.length;
- $('quizProgress').style.width=(qIndex/activeQuestions.length*100)+'%';
- $('quizQuestion').textContent=q.q;
- $('quizAnswers').innerHTML='';
- $('quizFeedback').classList.add('hidden');
- $('quizNext').classList.add('hidden');
- qAnswered=false;
- q.o.forEach((option,i)=>{
-  const b=document.createElement('button');
-  b.className='answer-option';
-  b.textContent=String.fromCharCode(65+i)+') '+option;
-  b.onclick=()=>answerQuiz(i);
-  $('quizAnswers').appendChild(b);
- });
-}
-function answerQuiz(index){
- if(qAnswered)return;
- qAnswered=true;
- const q=activeQuestions[qIndex];
- const buttons=$('quizAnswers').querySelectorAll('button');
- buttons.forEach((b,i)=>{
-  b.disabled=true;
-  if(i===q.a)b.classList.add('correct');
-  if(i===index&&i!==q.a)b.classList.add('wrong');
- });
- if(index===q.a)qScore++;
- $('quizFeedback').textContent=(index===q.a?'✓ To‘g‘ri javob! ':'✗ Noto‘g‘ri javob. ')+q.e;
- $('quizFeedback').classList.remove('hidden');
- $('quizNext').classList.remove('hidden');
-}
-function nextQuiz(){
- if(!qAnswered)return;
- qIndex++;
- if(qIndex<activeQuestions.length){showQuizQuestion();return}
- $('quizAnswers').innerHTML='';
- $('quizFeedback').classList.add('hidden');
- $('quizNext').classList.add('hidden');
- $('quizProgress').style.width='100%';
- state.tests++;
- state.correct+=qScore;
- state.quizHistory.unshift({category:qCategory,score:qScore,total:activeQuestions.length,date:new Date().toLocaleDateString('uz-UZ')});
- addXP(qScore*10);
- $('quizFinish').classList.remove('hidden');
- $('quizFinish').innerHTML=`<div class="feedback"><div style="font-size:30px">🏆</div><h2>Test yakunlandi!</h2><div style="font-size:30px;font-weight:900">${qScore} / ${activeQuestions.length}</div><p>${qScore===5?'Ajoyib! Barcha javoblar to‘g‘ri.':'Yaxshi urinish! Yana mashq qiling.'}</p><p>+${qScore*10} XP qo‘lga kiritdingiz.</p><button class="primary-btn" onclick="startQuiz('${qCategory}')">Qayta ishlash</button><button class="outline-btn" style="margin-left:7px" onclick="navigate('progress')">Natijalarim</button></div>`;
- saveState();
-}
+    const lmm=validNumber('lengthInput',100,1000);
+    const amm=validNumber('widthInput',2,100);
+    const bmm=validNumber('heightInput',2,100);
 
-/* LOTINCHA LUG'AT */
-const terms=[
- ['Cor','Yurak'],['Pulmo','O‘pka'],['Hepar','Jigar'],['Ren','Buyrak'],
- ['Cerebrum','Bosh miya'],['Medulla spinalis','Orqa miya'],['Os','Suyak'],
- ['Musculus','Muskul'],['Articulatio','Bo‘g‘im'],['Arteria','Arteriya'],
- ['Vena','Vena'],['Nervus','Nerv'],['Cutis','Teri'],['Oculus','Ko‘z'],
- ['Aur is','Quloq'],['Ventriculus','Oshqozon'],['Intestinum','Ichak'],
- ['Cranium','Bosh skeleti'],['Thorax','Ko‘krak qafasi'],
- ['Diaphragma','Diafragma'],['Femur','Son suyagi'],
- ['Humerus','Yelka suyagi'],['Patella','Tizza qopqog‘i'],
- ['Clavicula','O‘mrov suyagi'],['Scapula','Kurak suyagi'],
- ['Mandibula','Pastki jag‘'],['Maxilla','Yuqori jag‘'],
- ['Pharynx','Halqum'],['Larynx','Hiqildoq'],['Trachea','Traxeya']
-];
-function renderTerms(){
- const q=($('termSearch').value||'').toLowerCase().trim();
- const filtered=terms.filter(t=>t.join(' ').toLowerCase().includes(q));
- $('termList').innerHTML=filtered.length?filtered.map(t=>`<div class="term-card" style="margin-bottom:8px"><strong>${t[0]}</strong><small>${t[1]}</small></div>`).join(''):'<div class="empty">Bu so‘z topilmadi.</div>';
-}
+    if([lmm,amm,bmm].some(v=>v===null))return;
 
-/* FLASHCARD */
-let flashIndex=0,flashRevealed=false;
-function renderFlash(){
- const t=terms[flashIndex%terms.length];
- $('flashTerm').textContent=t[0];
- $('flashHint').textContent=flashRevealed?t[1]:'Tarjimasini eslang...';
- $('flashCount').textContent=(flashIndex+1)+' / '+terms.length;
- $('flashCard').style.borderColor=flashRevealed?'#35c995':'#3673a0';
-}
-function flipFlashcard(){flashRevealed=!flashRevealed;renderFlash()}
-function nextFlash(){flashIndex=(flashIndex+1)%terms.length;flashRevealed=false;renderFlash()}
-function previousFlash(){flashIndex=(flashIndex-1+terms.length)%terms.length;flashRevealed=false;renderFlash()}
+    const g=9.8;
+    const l=lmm/1000;
+    const a=amm/1000;
+    const b=bmm/1000;
+    const force=m*g;
 
-/* YUTUQLAR */
-const ranks=[
- {xp:0,name:'Yangi tadqiqotchi',desc:'Bilim sari ilk qadam.'},
- {xp:100,name:'Tibbiyot talabasi',desc:'Dastlabki bilimlaringiz shakllanmoqda.'},
- {xp:300,name:'Yosh mutaxassis',desc:'Bilimlaringiz tobora mustahkamlanmoqda.'},
- {xp:600,name:'Anatomiya bilimdoni',desc:'Tibbiy bilimlaringiz yaxshi rivojlanmoqda.'},
- {xp:1000,name:'Medical Expert',desc:'Siz akademiyada yuqori darajaga yetdingiz.'}
-];
-const badges=[
- {icon:'📖',name:'Birinchi dars',ok:()=>state.lessons.length>=1},
- {icon:'📚',name:'5 ta dars',ok:()=>state.lessons.length>=5},
- {icon:'🧠',name:'Birinchi test',ok:()=>state.tests>=1},
- {icon:'🎯',name:'10 ta to‘g‘ri javob',ok:()=>state.correct>=10},
- {icon:'⚡',name:'100 XP',ok:()=>state.xp>=100},
- {icon:'🏆',name:'500 XP',ok:()=>state.xp>=500}
-];
-function updateStats(){
- $('topXP').textContent=state.xp;
- $('homeXP').textContent=state.xp;
- $('homeLessons').textContent=state.lessons.length;
- $('homeTests').textContent=state.tests;
- $('progressXP').textContent=state.xp+' XP';
- $('statLessons').textContent=state.lessons.length;
- $('statTests').textContent=state.tests;
- $('statCorrect').textContent=state.correct;
- const rank=[...ranks].reverse().find(r=>state.xp>=r.xp)||ranks[0];
- const next=ranks.find(r=>r.xp>state.xp);
- $('rankName').textContent=rank.name;
- $('rankDescription').textContent=rank.desc;
- const base=rank.xp;
- const target=next?next.xp:rank.xp+500;
- const pct=next?Math.min(100,(state.xp-base)/(target-base)*100):100;
- $('rankProgress').style.width=pct+'%';
- $('nextRank').textContent=next?`Keyingi daraja: ${next.name} · yana ${next.xp-state.xp} XP`:'Eng yuqori darajaga yetdingiz!';
- $('badgeGrid').innerHTML=badges.map(b=>`<div class="badge-item ${b.ok()?'':'locked'}"><span>${b.icon}</span><small>${b.name}</small><div style="font-size:9px;margin-top:5px">${b.ok()?'OCHILDI':'YOPIQ'}</div></div>`).join('');
-}
+    // λ = mg l³ / (4 E a b³)
+    const bendM=(force*Math.pow(l,3))/(4*Evalue*a*Math.pow(b,3));
+    const bendMM=bendM*1000;
 
-/* SOG‘LIQ VOSITALARI */
-function dateKey(){return new Date().toLocaleDateString('sv-SE')}
-function waterKey(){return 'water_'+dateKey()}
-function renderWater(){
- const d=store.get(waterKey(),{total:0});
- $('waterTotal').textContent=d.total;
- $('waterProgress').style.width=Math.min(100,d.total/2000*100)+'%';
- $('waterLabel').textContent=`Kunlik maqsad: 2000 ml · ${Math.max(0,2000-d.total)} ml qoldi`;
-}
-function addWater(n){
- const d=store.get(waterKey(),{total:0});
- d.total=Math.min(20000,d.total+n);
- store.set(waterKey(),d);renderWater();
-}
-function resetWater(){
- if(confirm('Bugungi suv hisobini tozalaysizmi?')){
-  store.set(waterKey(),{total:0});renderWater();
- }
-}
-function calcBMI(){
- const h=Number($('height').value),w=Number($('weight').value);
- if(h<50||h>250||w<2||w>350){alert('Bo‘y va vaznni to‘g‘ri kiriting.');return}
- const bmi=w/((h/100)**2);
- $('bmiOutput').textContent='BMI: '+bmi.toFixed(1)+' · '+(bmi<18.5?'Past vazn diapazoni':bmi<25?'Me’yoriy diapazon':bmi<30?'Ortiqcha vazn diapazoni':'Semizlik diapazoni')+'. Bu tashxis emas.';
- $('bmiOutput').classList.remove('hidden');
-}
-function savePressure(){
- const s=Number($('systolic').value),d=Number($('diastolic').value),p=Number($('pulseValue').value);
- if(!Number.isInteger(s)||s<50||s>260||!Number.isInteger(d)||d<30||d>160||!Number.isInteger(p)||p<20||p>250||s<=d){alert('Qiymatlarni tekshirib qayta kiriting.');return}
- const list=store.get('pressure',[]);
- list.unshift({s,d,p,date:new Date().toLocaleString('uz-UZ')});
- store.set('pressure',list.slice(0,30));
- $('systolic').value='';$('diastolic').value='';$('pulseValue').value='';
- renderPressure();alert('O‘lchov saqlandi.');
-}
-function renderPressure(){
- const list=store.get('pressure',[]);
- $('pressureHistory').innerHTML=list.length?list.slice(0,8).map(x=>`<div class="list-item"><b>${x.s}/${x.d} mmHg · Puls ${x.p}</b><p>${x.date}</p></div>`).join(''):'<div class="empty">Hozircha o‘lchovlar yo‘q.</div>';
-}
+    $('massValue').textContent=m.toFixed(1)+' kg';
+    $('weightText').textContent=m.toFixed(1)+' kg';
+    $('forceOut').textContent=force.toFixed(2)+' N';
+    $('bendOut').textContent=bendMM<1000
+      ?bendMM.toFixed(3)+' mm'
+      :(bendMM/1000).toFixed(2)+' m';
 
-/* HISOBOT */
-function renderReport(){
- $('reportData').innerHTML=`
- <h3>JDPU HEALTH · O‘quv hisoboti</h3>
- <p class="small muted">Hisobot sanasi: ${new Date().toLocaleDateString('uz-UZ')}</p>
- <div class="grid" style="margin-top:15px">
-  <div class="list-item"><b>${state.xp} XP</b><p>Jami tajriba ballari</p></div>
-  <div class="list-item"><b>${state.lessons.length}</b><p>O‘tilgan darslar</p></div>
-  <div class="list-item"><b>${state.tests}</b><p>Yechilgan testlar</p></div>
-  <div class="list-item"><b>${state.correct}</b><p>To‘g‘ri javoblar</p></div>
- </div>
- <h3 style="margin-top:20px">O‘tilgan darslar</h3>
- ${state.lessons.length?state.lessons.map(id=>{const l=lessons.find(x=>x.id===id);return l?`<div class="list-item">${l.icon} ${l.title} ✓</div>`:''}).join(''):'<p class="small muted">Hozircha darslar tugallanmagan.</p>'}
- <h3 style="margin-top:20px">Test natijalari</h3>
- ${state.quizHistory.length?state.quizHistory.slice(0,10).map(x=>`<div class="list-item"><b>${x.category.toUpperCase()}</b><p>${x.score}/${x.total} · ${x.date}</p></div>`).join(''):'<p class="small muted">Test natijalari mavjud emas.</p>'}
- <p class="small muted" style="margin-top:20px">Ma’lumotlar ushbu qurilmaning brauzerida saqlanadi.</p>`;
-}
+    $('youngOut').textContent=Evalue>=1e9
+      ?(Evalue/1e9).toFixed(1)+' GPa'
+      :(Evalue/1e6).toFixed(1)+' MPa';
 
-/* BOSHLANG‘ICH HOLAT */
-renderAnatomy();
-renderLessons();
-renderTerms();
-renderFlash();
-updateStats();
-renderWater();
-renderPressure();
+    const visualBend=Math.min(58,Math.max(1,bendMM*3.5));
+    const y=220+visualBend;
 
-document.querySelectorAll('[data-page]').forEach(button=>{
- button.addEventListener('click',()=>navigate(button.dataset.page));
-});
+    $('beamPath').setAttribute('d',`M100 220 Q350 ${y} 600 220`);
+    $('centerGuide').setAttribute('d',`M350 95 V${y-14}`);
+    $('weightGroup').setAttribute('transform',`translate(350 ${Math.max(70,y-115)})`);
+    $('deflectionLabel').setAttribute('y',Math.min(295,y+22));
+    $('deflectionLabel').textContent='λ = '+bendMM.toFixed(3)+' mm';
+
+    $('beamSvg').classList.remove('pulse');
+    void $('beamSvg').offsetWidth;
+    $('beamSvg').classList.add('pulse');
+  }
+
+  inputs.forEach(id=>$(id).addEventListener('input',updateLab));
+
+  $('resetBtn').addEventListener('click',()=>{
+    $('massRange').value=1;
+    $('materialSelect').value='10';
+    $('lengthInput').value=500;
+    $('widthInput').value=20;
+    $('heightInput').value=10;
+    updateLab();
+    tone(520,.1);
+    toast('Tajriba boshlang‘ich holatga qaytdi.');
+  });
+
+  updateLab();
+
+  const questions=[
+    {
+      q:'Elastik deformatsiya nima?',
+      a:[
+        'Kuch olib tashlanganda jism avvalgi holatiga qaytadi',
+        'Jism butunlay yemiriladi',
+        'Jism faqat qiziydi',
+        'Jismning massasi ortadi'
+      ],
+      c:0,
+      why:'To‘g‘ri! Elastik deformatsiyada jism dastlabki shakli va o‘lchamini tiklaydi.'
+    },
+    {
+      q:'Yung modulining SI dagi o‘lchov birligi qaysi?',
+      a:['Nyuton (N)','Paskal (Pa)','Joul (J)','Metr (m)'],
+      c:1,
+      why:'Ajoyib! Yung moduli paskalda o‘lchanadi.'
+    },
+    {
+      q:'Mexanik kuchlanish qanday aniqlanadi?',
+      a:['σ = F · S','σ = S / F','σ = F / S','σ = m · g'],
+      c:2,
+      why:'To‘g‘ri! Mexanik kuchlanish kuchning ko‘ndalang kesim yuzasiga nisbatidir.'
+    },
+    {
+      q:'Nisbiy deformatsiya formulasini toping.',
+      a:['ε = Δl / l₀','ε = F / S','ε = m · g','ε = l₀ / Δl'],
+      c:0,
+      why:'To‘g‘ri! Nisbiy deformatsiya uzayishning boshlang‘ich uzunlikka nisbatidir.'
+    },
+    {
+      q:'Elastik sohada kuch 2 marta oshsa, deformatsiya qanday o‘zgaradi?',
+      a:['O‘zgarmaydi','2 marta kamayadi','2 marta ortadi','4 marta ortadi'],
+      c:2,
+      why:'Barakalla! Bu Guk qonuniga mos.'
+    }
+  ];
+
+  let qIndex=0;
+  let score=0;
+  let answered=false;
+
+  function renderQuestion(){
+    answered=false;
+    const q=questions[qIndex];
+
+    $('quizCount').textContent=(qIndex+1)+' / '+questions.length;
+    $('question').textContent=q.q;
+    $('feedback').textContent='Javoblardan birini tanlang.';
+    $('nextBtn').disabled=true;
+    $('nextBtn').textContent=qIndex===questions.length-1
+      ?'Natijani ko‘rish ✓':'Keyingi savol →';
+
+    $('progressBar').style.width=(qIndex/questions.length*100)+'%';
+    $('answers').innerHTML='';
+
+    q.a.forEach((answer,i)=>{
+      const btn=document.createElement('button');
+      btn.className='answer';
+      btn.textContent=String.fromCharCode(65+i)+') '+answer;
+
+      btn.addEventListener('click',()=>{
+        if(answered)return;
+        answered=true;
+
+        const buttons=[...$('answers').children];
+        buttons[q.c].classList.add('correct');
+
+        if(i===q.c){
+          score++;
+          $('feedback').textContent=q.why;
+          tone(740,.18);
+        }else{
+          btn.classList.add('wrong');
+          $('feedback').textContent='Bu safar emas. To‘g‘ri javob: '+q.a[q.c];
+          tone(190,.2,'triangle');
+        }
+
+        $('score').textContent=score+' ball';
+        $('nextBtn').disabled=false;
+      });
+
+      $('answers').appendChild(btn);
+    });
+  }
+
+  $('nextBtn').addEventListener('click',()=>{
+    if(!answered)return;
+
+    if(qIndex<questions.length-1){
+      qIndex++;
+      renderQuestion();
+      tone(500,.08);
+    }else{
+      $('question').textContent=`Natija: ${score} / ${questions.length} ball`;
+      $('answers').innerHTML='';
+
+      $('feedback').textContent=score===5
+        ?'Mukammal! Sen YOUNG LAB laboratoriyasini a’lo darajada yakunlading.'
+        :score>=3
+        ?'Yaxshi natija! Mavzuni yana bir bor takrorlab ko‘r.'
+        :'Mashq qilishda davom et!';
+
+      $('nextBtn').textContent='Qayta boshlash ↻';
+      $('nextBtn').disabled=false;
+      $('progressBar').style.width='100%';
+      tone(660,.2);
+
+      $('nextBtn').onclick=()=>{
+        qIndex=0;
+        score=0;
+        $('score').textContent='0 ball';
+        $('nextBtn').onclick=null;
+        renderQuestion();
+      };
+    }
+  });
+
+  renderQuestion();
+})();
 </script>
+
 </body>
 </html>
