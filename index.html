@@ -4,806 +4,732 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f4f8ff">
-<title>YOUNG LAB — Virtual laboratoriya</title>
+<title>YOUNG LAB | Virtual laboratoriya</title>
 
 <style>
-:root{
-  --bg:#f4f8ff;
-  --surface:#fff;
-  --surface2:#f7faff;
-  --ink:#17243b;
-  --muted:#687891;
+:root {
   --blue:#2878f0;
   --cyan:#26b9c9;
-  --purple:#8a6cf0;
+  --purple:#7955e8;
+  --bg:#f4f8ff;
+  --ink:#17243b;
+  --muted:#687891;
   --line:#e3ebf6;
-  --green:#159b75;
-  --orange:#ed9b35;
-  --shadow:0 14px 40px rgba(37,76,130,.09);
-  --radius:22px
+  --white:#fff;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
- margin:0;
- background:radial-gradient(circle at 8% 0%,#e4f2ff 0,transparent 28%),
- radial-gradient(circle at 95% 12%,#eeeaff 0,transparent 24%),var(--bg);
- color:var(--ink);
- font-family:Inter,system-ui,sans-serif
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Arial,sans-serif;
 }
-button,input{font:inherit}
+button,input,select{font:inherit}
 button{cursor:pointer}
-.topbar{
- position:sticky;top:0;z-index:20;
- background:rgba(255,255,255,.82);
- backdrop-filter:blur(16px);
- border-bottom:1px solid var(--line)
+header{
+  position:sticky;top:0;z-index:10;
+  background:#ffffffed;
+  border-bottom:1px solid var(--line);
+  padding:15px 6%;
+  display:flex;justify-content:space-between;
+  align-items:center;gap:15px;flex-wrap:wrap;
 }
-.nav{
- max-width:1180px;margin:auto;padding:14px 22px;
- display:flex;align-items:center;justify-content:space-between;gap:16px
-}
-.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.04em}
-.brandmark{
- width:40px;height:40px;border-radius:13px;
- background:linear-gradient(135deg,var(--blue),var(--cyan));
- display:grid;place-items:center;color:white
-}
-.brand small{display:block;font-size:10px;letter-spacing:.16em;color:var(--muted)}
-.navlinks{display:flex;gap:8px;flex-wrap:wrap}
-.navlinks a{
- color:var(--muted);text-decoration:none;font-size:13px;
- font-weight:700;padding:9px 12px;border-radius:12px
-}
-.navlinks a:hover{background:#edf5ff;color:var(--blue)}
-.sound-btn,.btn{
- border:0;border-radius:13px;padding:11px 15px;
- font-weight:800;transition:.2s
-}
-.sound-btn{background:#eef5ff;color:var(--blue);border:1px solid #dceaff}
-.btn-primary{
- background:linear-gradient(135deg,var(--blue),#4d9bff);
- color:#fff;box-shadow:0 8px 20px #2878f033
-}
-.btn-soft{background:#edf5ff;color:var(--blue);border:1px solid #dceaff}
-.btn:hover,.sound-btn:hover{transform:translateY(-2px)}
-main{max-width:1180px;margin:auto;padding:34px 22px 70px}
+.logo{font-size:23px;font-weight:900;color:var(--blue)}
+nav{display:flex;gap:15px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:bold}
+nav a:hover{color:var(--blue)}
+main{max-width:1150px;margin:auto;padding:25px 18px 60px}
 .hero{
- display:grid;grid-template-columns:1.12fr .88fr;
- gap:24px;align-items:center;padding:28px 0 34px
+  display:grid;grid-template-columns:1.1fr .9fr;
+  gap:25px;align-items:center;padding:55px 0;
 }
-.eyebrow{
- display:inline-flex;align-items:center;gap:8px;
- color:var(--blue);font-size:12px;font-weight:900;
- letter-spacing:.13em;background:#e8f2ff;
- padding:9px 13px;border-radius:99px
+.hero h1{font-size:clamp(40px,6vw,68px);margin:15px 0}
+.hero h1 span{
+  color:var(--blue);
 }
-h1{font-size:clamp(42px,6vw,72px);line-height:.98;letter-spacing:-.055em;margin:18px 0}
-.gradient-text{
- background:linear-gradient(90deg,var(--blue),var(--cyan),var(--purple));
- -webkit-background-clip:text;background-clip:text;color:transparent
-}
-.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:610px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.hero p{line-height:1.8;color:var(--muted)}
 .hero-art{
- min-height:300px;border:1px solid #dce9fb;border-radius:30px;
- background:linear-gradient(145deg,#fff,#edf6ff);
- box-shadow:var(--shadow);position:relative;overflow:hidden;
- display:grid;place-items:center
+  background:linear-gradient(140deg,#e3f2ff,#eee9ff);
+  border-radius:28px;padding:25px;text-align:center;
+  font-size:100px;
 }
-.hero-art:before,.hero-art:after{
- content:"";position:absolute;border-radius:50%;filter:blur(2px)
+.btn{
+  border:0;border-radius:12px;padding:12px 18px;
+  font-weight:bold;margin:4px 3px;
 }
-.hero-art:before{width:220px;height:220px;background:#b9e7ff66;top:-60px;right:-30px}
-.hero-art:after{width:180px;height:180px;background:#d9ceff66;bottom:-70px;left:-40px}
-.hero-graphic{width:min(90%,440px);position:relative;z-index:1}
-.float-tag{
- position:absolute;z-index:2;background:#fff;
- border:1px solid var(--line);box-shadow:var(--shadow);
- border-radius:14px;padding:10px 13px;font-size:12px;
- font-weight:800;animation:float 4s ease-in-out infinite
-}
-.tag-a{top:18%;left:7%}
-.tag-b{bottom:15%;right:7%;animation-delay:-2s}
-@keyframes float{50%{transform:translateY(-9px)}}
-.section-head{
- display:flex;align-items:end;justify-content:space-between;
- gap:14px;margin:34px 0 17px
-}
-.section-head h2{font-size:27px;letter-spacing:-.035em;margin:0}
-.section-head p{margin:6px 0 0;color:var(--muted);font-size:14px}
+.primary{background:var(--blue);color:white}
+.soft{background:#eaf2ff;color:var(--blue)}
+.btn:hover{transform:translateY(-2px)}
+section{padding:35px 0}
+.heading{margin-bottom:20px}
+.heading h2{font-size:27px;margin-bottom:8px}
+.heading p{color:var(--muted);line-height:1.6}
+.grid{display:grid;grid-template-columns:1.3fr .7fr;gap:17px}
 .panel{
- background:var(--surface);border:1px solid var(--line);
- border-radius:var(--radius);box-shadow:var(--shadow)
+  background:white;border:1px solid var(--line);
+  border-radius:20px;padding:20px;
+  box-shadow:0 8px 25px #193b6b0a;
 }
-.lab-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}
-.lab-main{padding:22px}
-.panel-title{
- display:flex;justify-content:space-between;
- align-items:center;gap:12px;margin-bottom:14px
+.stage{
+  background:#f3f8ff;border-radius:16px;
+  padding:12px;border:1px solid var(--line);
 }
-.panel-title h3{margin:0;font-size:17px}
-.status{
- font-size:11px;font-weight:900;color:var(--green);
- background:#e8f8f2;border-radius:99px;padding:7px 10px
+svg{width:100%;height:auto;display:block}
+.controls{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:12px;margin-top:15px;
 }
-.sim-stage{
- background:linear-gradient(180deg,#f4f9ff,#fbfdff);
- border:1px solid #e4eef9;border-radius:18px;padding:14px;overflow:hidden
-}
-.sim-stage svg{width:100%;height:auto;display:block}
-.sim-controls{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:17px}
 .control{
- background:var(--surface2);border:1px solid var(--line);
- border-radius:15px;padding:13px
+  padding:13px;background:#f7faff;
+  border:1px solid var(--line);border-radius:13px;
 }
 .control label{
- font-size:12px;color:var(--muted);font-weight:800;
- display:flex;justify-content:space-between;gap:8px
+  display:flex;justify-content:space-between;
+  font-size:12px;font-weight:bold;color:var(--muted);
+  gap:8px;
 }
-.control strong{color:var(--blue);font-size:14px}
-input[type=range]{width:100%;accent-color:var(--blue);margin:13px 0 3px}
-input[type=number]{
- width:100%;border:1px solid #dce6f3;border-radius:10px;
- padding:10px;color:var(--ink);background:#fff
+.control strong{color:var(--blue)}
+input[type=range]{width:100%;accent-color:var(--blue);margin-top:13px}
+input[type=number],select{
+  width:100%;padding:10px;border:1px solid var(--line);
+  border-radius:9px;background:white;margin-top:8px;
 }
-.control small{font-size:11px;color:var(--muted)}
-.side-panel{padding:20px;display:flex;flex-direction:column;gap:14px}
 .metric{
- padding:16px;border-radius:17px;
- background:linear-gradient(135deg,#f0f7ff,#f7faff);
- border:1px solid #e2edfb
+  padding:15px;background:#f0f7ff;
+  border-radius:14px;margin-bottom:12px;
 }
-.metric span{
- font-size:11px;color:var(--muted);font-weight:800;
- text-transform:uppercase;letter-spacing:.08em
-}
-.metric strong{display:block;font-size:27px;margin:5px 0;color:var(--blue)}
-.metric small{color:var(--muted)}
+.metric span{font-size:11px;color:var(--muted);font-weight:bold}
+.metric strong{display:block;color:var(--blue);font-size:25px;margin-top:7px}
 .formula{
- background:#f6f3ff;border:1px solid #e7e0ff;
- border-radius:16px;padding:15px;text-align:center
+  background:#f3efff;padding:16px;
+  border-radius:13px;text-align:center;
+  color:var(--purple);font-weight:bold;
 }
-.formula .eq{font-size:21px;font-weight:900;color:#654bd0;margin:5px}
-.formula p{font-size:11px;color:#756b9a;line-height:1.5}
-.note{
- font-size:12px;line-height:1.55;color:var(--muted);
- background:#fff9ed;border:1px solid #f7e8c8;
- padding:12px;border-radius:13px
+.tip{
+  padding:13px;background:#fff8e9;
+  border-radius:12px;color:#765b2e;
+  font-size:13px;line-height:1.6;margin-top:12px;
 }
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.info-card{padding:21px}
-.info-card h3{margin:0 0 7px}
-.info-card p{color:var(--muted);font-size:14px;line-height:1.65}
-.demo-row{display:flex;gap:12px;align-items:center;margin-top:15px}
-.demo-object{
- height:68px;flex:1;border-radius:14px;background:#f1f7ff;
- border:1px solid var(--line);display:grid;place-items:center;overflow:hidden
-}
-.demo-object svg{width:100%;height:100%}
-.pill{font-size:11px;font-weight:900;border-radius:99px;padding:7px 10px}
-.pill-green{background:#e7f8f1;color:#138461}
-.pill-orange{background:#fff3e2;color:#bb7418}
-.tissue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.tissue{padding:18px;text-align:center}
-.tissue .emoji{font-size:36px}
-.tissue h3{font-size:15px;margin:9px 0 5px}
-.tissue p{font-size:12px;line-height:1.55;color:var(--muted)}
-.quiz{padding:22px}
-.quiz-question{font-size:18px;font-weight:850;line-height:1.45;margin:10px 0 16px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:550px}
+th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left}
+th{font-size:12px;color:var(--muted);background:#f7faff}
+td{font-size:13px}
 .answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .answer{
- border:1px solid var(--line);background:#fbfdff;
- padding:13px;border-radius:13px;text-align:left;
- color:var(--ink);font-weight:700
+  background:#f6f9ff;border:1px solid var(--line);
+  padding:14px;border-radius:12px;text-align:left;
 }
-.answer:hover{border-color:#9fc7ff;background:#f1f7ff}
-.answer.correct{border-color:#83d5b8;background:#eaf9f2;color:#087c59}
-.answer.wrong{border-color:#ffc1b8;background:#fff0ee;color:#bd4538}
-.feedback{min-height:25px;margin:13px 0;color:var(--muted);font-size:13px;font-weight:700}
-.quiz-footer{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.progress{height:7px;background:#edf2f9;border-radius:99px;overflow:hidden;flex:1}
-.progress span{
- display:block;height:100%;width:0;
- background:linear-gradient(90deg,var(--blue),var(--cyan));transition:.3s
-}
-.footer{margin-top:38px;text-align:center;color:var(--muted);font-size:12px}
-.toast{
- position:fixed;bottom:20px;left:50%;
- transform:translate(-50%,20px);opacity:0;pointer-events:none;
- background:#17243b;color:white;padding:12px 17px;
- border-radius:13px;font-size:13px;z-index:40;transition:.25s
-}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-.pulse{animation:pulse .55s ease}
-@keyframes pulse{50%{filter:drop-shadow(0 0 10px #2995ff)}}
-@media(max-width:850px){
- .hero,.lab-grid{grid-template-columns:1fr}
- .hero-art{min-height:250px}
- .navlinks{display:none}
-}
-@media(max-width:600px){
- main{padding:20px 14px 50px}
- .nav{padding:12px 14px}
- .hero p{font-size:15px}
- .sim-controls,.two-col{grid-template-columns:1fr}
- .tissue-grid{grid-template-columns:1fr}
- .answers{grid-template-columns:1fr}
- .section-head{align-items:start;flex-direction:column}
- .lab-main,.side-panel,.info-card,.quiz{padding:16px}
+.answer:hover{border-color:var(--blue)}
+.correct{background:#e5f8ef;border-color:#36b982}
+.wrong{background:#fff0ee;border-color:#e77}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:13px}
+@media(max-width:750px){
+  .hero,.grid{grid-template-columns:1fr}
+  .hero-art{font-size:75px}
+  .controls,.answers{grid-template-columns:1fr}
+  header{justify-content:center}
+  nav{justify-content:center}
 }
 </style>
 </head>
 
 <body>
 
-<header class="topbar">
-<nav class="nav">
-  <div class="brand">
-    <div class="brandmark">Y</div>
-    <div>YOUNG LAB<small>VIRTUAL PHYSICS LAB</small></div>
-  </div>
-  <div class="navlinks">
-    <a href="#experiment">Tajriba</a>
-    <a href="#deformation">Deformatsiya</a>
-    <a href="#medicine">Tibbiyot</a>
-    <a href="#quiz">Test</a>
-  </div>
-  <button class="sound-btn" id="soundToggle">🔊 Ovoz: yoqilgan</button>
-</nav>
+<header>
+  <div class="logo">⚡ YOUNG LAB</div>
+  <nav>
+    <a href="#egilish">Egilish</a>
+    <a href="#chozilish">Cho‘zilish</a>
+    <a href="#kundalik">Kundalik</a>
+    <a href="#test">Test</a>
+  </nav>
 </header>
 
 <main>
 
-<section class="hero">
+<!-- BOSH SAHIFA -->
+<div class="hero">
   <div>
-    <div class="eyebrow">✦ Tibbiy va biologik fizika · 01-laboratoriya</div>
-    <h1>Kuchni ko‘r.<br>
-      <span class="gradient-text">Elastiklikni his qil.</span>
-    </h1>
+    <small style="color:#2878f0;font-weight:bold">
+      VIRTUAL FIZIKA LABORATORIYASI
+    </small>
+    <h1>Fizikani <span>tajriba</span> orqali o‘rganing!</h1>
     <p>
-      Laboratoriya jihozlari bo‘lmasa ham, tajriba qilish mumkin.
-      Yukni o‘zgartir, sterjenning egilishini kuzat va Yung
-      modulining ma’nosini amalda tushun.
+      Yung moduli, elastik deformatsiya va Guk qonunini
+      virtual laboratoriya yordamida o‘rganing.
+      Tajribalarni bajaring, natijalarni kuzating va bilimingizni sinang.
     </p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#experiment" style="text-decoration:none">
-        Tajribani boshlash ↗
-      </a>
-      <button class="btn btn-soft" id="introBtn">▶ Qisqa tanishtiruv</button>
-    </div>
+    <a href="#egilish">
+      <button class="btn primary">Tajribani boshlash →</button>
+    </a>
+  </div>
+  <div class="hero-art">🧪 ⚖️</div>
+</div>
+
+<!-- 1-TAJRIBA -->
+<section id="egilish">
+  <div class="heading">
+    <h2>01. Sterjenning egilishi</h2>
+    <p>Yuk ta’sirida sterjen qanday egilishini kuzating.</p>
   </div>
 
-  <div class="hero-art">
-    <span class="float-tag tag-a">⚖️ Kuch → deformatsiya</span>
-    <svg class="hero-graphic" viewBox="0 0 500 300">
-      <defs>
-        <linearGradient id="beam" x1="0" x2="1">
-          <stop stop-color="#2878f0"/>
-          <stop offset="1" stop-color="#26b9c9"/>
-        </linearGradient>
-      </defs>
-      <path d="M70 206 L430 206" stroke="#a9bdd7" stroke-width="5"/>
-      <path d="M95 206 L75 245 L115 245 Z M405 206 L385 245 L425 245 Z" fill="#9bb4d2"/>
-      <path d="M95 184 Q250 184 405 184" stroke="url(#beam)" stroke-width="15" fill="none"/>
-      <path d="M250 100 V160" stroke="#ed9b35" stroke-width="5"/>
-      <path d="M238 148 L250 165 L262 148" fill="none" stroke="#ed9b35" stroke-width="5"/>
-      <rect x="221" y="72" width="58" height="30" rx="8" fill="#ffcf83"/>
-      <text x="250" y="92" font-size="13" text-anchor="middle" fill="#80500d">YUK</text>
-      <circle cx="95" cy="184" r="7" fill="#fff" stroke="#2878f0" stroke-width="4"/>
-      <circle cx="405" cy="184" r="7" fill="#fff" stroke="#2878f0" stroke-width="4"/>
-      <text x="250" y="275" font-size="15" text-anchor="middle" fill="#687891">
-        Yuk ortadi → egilish ham ortadi
-      </text>
-    </svg>
-    <span class="float-tag tag-b">📐 Yung moduli · E</span>
-  </div>
-</section>
-
-<section id="experiment">
-  <div class="section-head">
-    <div>
-      <h2>01. Virtual tajriba</h2>
-      <p>Yukni o‘zgartiring va sterjenning egilishini kuzating.</p>
-    </div>
-    <span class="pill pill-green">● Simulyatsiya faol</span>
-  </div>
-
-  <div class="lab-grid">
-    <div class="panel lab-main">
-      <div class="panel-title">
-        <h3>Yog‘och sterjenning egilishi</h3>
-        <span class="status">LIVE SIMULATION</span>
-      </div>
-
-      <div class="sim-stage">
-        <svg id="beamSvg" viewBox="0 0 700 310">
-          <defs>
-            <linearGradient id="wood" x1="0" x2="1">
-              <stop stop-color="#e7a95d"/>
-              <stop offset=".5" stop-color="#c9863c"/>
-              <stop offset="1" stop-color="#e9b66f"/>
-            </linearGradient>
-          </defs>
-          <line x1="80" y1="220" x2="620" y2="220"
-            stroke="#b6c7dc" stroke-width="3" stroke-dasharray="7 7"/>
-          <path d="M100 220 L72 270 L128 270 Z M600 220 L572 270 L628 270 Z"
-            fill="#a8bad0"/>
-          <path id="beamPath" d="M100 220 Q350 220 600 220"
-            fill="none" stroke="url(#wood)" stroke-width="22" stroke-linecap="round"/>
-          <path id="centerGuide" d="M350 95 V200"
-            stroke="#e99a2f" stroke-width="3" stroke-dasharray="6 6"/>
-          <g id="weightGroup" transform="translate(350 80)">
-            <path d="M0 0 V26" stroke="#e99a2f" stroke-width="4"/>
-            <rect x="-35" y="26" width="70" height="42" rx="8"
-              fill="#ffd18a" stroke="#e5a342" stroke-width="3"/>
-            <text id="weightText" x="0" y="52" text-anchor="middle"
-              font-size="16" font-weight="900" fill="#80500d">1.0 kg</text>
-            <path d="M-11 68 V82 M11 68 V82" stroke="#e5a342" stroke-width="4"/>
+  <div class="grid">
+    <div class="panel">
+      <h3>Virtual tajriba modeli</h3>
+      <div class="stage">
+        <svg viewBox="0 0 650 280">
+          <line x1="60" y1="200" x2="590" y2="200"
+            stroke="#a9bdd7" stroke-width="3" stroke-dasharray="7 6"/>
+          <path d="M100 200 L70 245 L130 245 Z
+                   M550 200 L520 245 L580 245 Z"
+            fill="#9bb4d2"/>
+          <path id="beam" d="M100 200 Q325 200 550 200"
+            fill="none" stroke="#d49a51" stroke-width="20"
+            stroke-linecap="round"/>
+          <g id="weight" transform="translate(325 80)">
+            <path d="M0 0 V35" stroke="#ed9b35" stroke-width="5"/>
+            <rect x="-38" y="35" width="76" height="45"
+              rx="8" fill="#ffd18a" stroke="#e5a342" stroke-width="3"/>
+            <text id="weightLabel" x="0" y="64"
+              text-anchor="middle" font-size="16"
+              font-weight="bold" fill="#80500d">1 kg</text>
           </g>
-          <text x="100" y="295" text-anchor="middle" font-size="14" fill="#687891">A tayanch</text>
-          <text x="600" y="295" text-anchor="middle" font-size="14" fill="#687891">B tayanch</text>
-          <text x="350" y="28" text-anchor="middle" font-size="14"
-            font-weight="800" fill="#2878f0">P = m · g</text>
-          <text id="deflectionLabel" x="370" y="205" font-size="13"
-            fill="#2878f0" font-weight="800">λ = 0.00 mm</text>
+          <text x="325" y="25" text-anchor="middle"
+            fill="#2878f0" font-weight="bold">P = m × g</text>
+          <text id="bendLabel" x="350" y="255"
+            fill="#2878f0" font-weight="bold">Egilish: 0 mm</text>
         </svg>
       </div>
 
-      <div class="sim-controls">
+      <div class="controls">
         <div class="control">
-          <label for="massRange">Yuk massasi <strong id="massValue">1.0 kg</strong></label>
-          <input id="massRange" type="range" min="0.5" max="2" step="0.5" value="1">
-          <small>0,5 kg dan 2 kg gacha</small>
+          <label>Yuk massasi <strong id="massText">1 kg</strong></label>
+          <input id="mass" type="range" min="0.5" max="2"
+            step="0.5" value="1">
         </div>
-
         <div class="control">
-          <label for="materialSelect">Namuna materiali</label>
-          <select id="materialSelect" style="width:100%;margin:10px 0 4px;padding:10px;border:1px solid #dce6f3;border-radius:10px;background:white;color:var(--ink)">
-            <option value="10">Yog‘och · shartli E = 10 GPa</option>
-            <option value="2">Yumshoq to‘qima · shartli E = 2 MPa</option>
-            <option value="50">Qattiq material · shartli E = 50 GPa</option>
+          <label>Material</label>
+          <select id="material">
+            <option value="10">Yog‘och — 10 GPa</option>
+            <option value="50">Qattiq material — 50 GPa</option>
+            <option value="0.002">Yumshoq to‘qima — 2 MPa</option>
           </select>
-          <small>Taqqoslash uchun namunaviy qiymat</small>
         </div>
-
         <div class="control">
-          <label for="lengthInput">Tayanchlar oralig‘i, l (mm)</label>
-          <input id="lengthInput" type="number" min="100" max="1000" value="500">
-          <small>Masalan: 500 mm</small>
+          <label>Uzunlik (mm)</label>
+          <input id="length" type="number" value="500" min="100" max="1000">
         </div>
-
         <div class="control">
-          <label for="widthInput">Sterjen eni, a (mm)</label>
-          <input id="widthInput" type="number" min="2" max="100" value="20">
-          <small>To‘g‘ri to‘rtburchak kesim</small>
+          <label>Eni (mm)</label>
+          <input id="width" type="number" value="20" min="2" max="100">
         </div>
-
         <div class="control">
-          <label for="heightInput">Sterjen qalinligi, b (mm)</label>
-          <input id="heightInput" type="number" min="2" max="100" value="10">
-          <small>Qalinlik kub darajada ta’sir qiladi</small>
-        </div>
-
-        <div class="control">
-          <label>Harakat</label>
-          <button class="btn btn-primary" id="resetBtn" style="width:100%;margin-top:8px">
-            ↻ Boshlang‘ich holat
-          </button>
-          <small>Qiymatlar o‘zgarsa hisob qayta bajariladi</small>
+          <label>Qalinligi (mm)</label>
+          <input id="height" type="number" value="10" min="2" max="100">
         </div>
       </div>
+
+      <button class="btn primary" id="autoDemo">▶ Avtomatik tajriba</button>
+      <button class="btn soft" id="stopDemo">■ To‘xtatish</button>
+      <button class="btn soft" id="resetBend">↻ Qayta boshlash</button>
     </div>
 
-    <aside class="panel side-panel">
-      <div class="panel-title">
-        <h3>Hisoblash natijasi</h3>
-        <span class="pill pill-green">AUTO</span>
-      </div>
+    <div class="panel">
+      <h3>Hisoblash natijalari</h3>
       <div class="metric">
-        <span>Yuk kuchi · P</span>
+        <span>Yuk kuchi</span>
         <strong id="forceOut">9.80 N</strong>
-        <small>Og‘irlik kuchi: P = m × g</small>
       </div>
       <div class="metric">
-        <span>Taxminiy egilish · λ</span>
-        <strong id="bendOut">— mm</strong>
-        <small>Elastik model bo‘yicha hisoblandi</small>
+        <span>Sterjen egilishi</span>
+        <strong id="bendOut">0 mm</strong>
       </div>
       <div class="metric">
-        <span>Yung moduli · E</span>
-        <strong id="youngOut">10.0 GPa</strong>
-        <small>Tanlangan material qiymati</small>
+        <span>Yung moduli</span>
+        <strong id="youngOut">10 GPa</strong>
       </div>
       <div class="formula">
-        <div class="eq">E = mg l³ / 4λab³</div>
-        <p>Yung modulini egilish orqali aniqlash formulasi</p>
+        λ = (F × l³) / (4 × E × a × b³)
       </div>
-      <div class="note">
-        💡 <b>Kuzating:</b> massa ortganda kuch va egilish ortadi.
-        Bu simulyatsiya o‘quv modeli; biologik to‘qimalar murakkab,
-        viskoelastik xususiyatlarga ega.
+      <div class="tip">
+        💡 Kuzating: massa oshganda kuch va egilish ham ortadi.
+        Material qattiqligi oshganda egilish kamayadi.
       </div>
-    </aside>
+    </div>
   </div>
 </section>
 
-<section id="deformation">
-  <div class="section-head">
-    <div>
-      <h2>02. Deformatsiya qanday ishlaydi?</h2>
-      <p>Kuch olib tashlanganda nima sodir bo‘lishini solishtiring.</p>
-    </div>
+<!-- 2-TAJRIBA -->
+<section id="chozilish">
+  <div class="heading">
+    <h2>02. Simning cho‘zilishi</h2>
+    <p>Kuch ta’sirida simning uzunligi qanday o‘zgarishini tekshiring.</p>
   </div>
 
-  <div class="two-col">
-    <article class="panel info-card">
-      <span class="pill pill-green">ELASTIK</span>
-      <h3>Avvalgi holatiga qaytadi</h3>
-      <p>Tashqi kuch olib tashlanganda jism dastlabki shakli va o‘lchamini tiklaydi.</p>
-      <div class="demo-row">
-        <div class="demo-object">
-          <svg viewBox="0 0 300 70">
-            <path d="M25 35 H55 L68 17 L90 53 L112 17 L134 53 L156 17 L178 53 L191 35 H275"
-              fill="none" stroke="#159b75" stroke-width="5"/>
-          </svg>
+  <div class="grid">
+    <div class="panel">
+      <h3>Cho‘zilish modeli</h3>
+      <div class="stage">
+        <svg viewBox="0 0 600 200">
+          <path d="M50 40 V160 M550 40 V160"
+            stroke="#9db2cc" stroke-width="12"/>
+          <rect id="wire" x="62" y="90" width="420" height="18"
+            rx="8" fill="#2878f0"/>
+          <path d="M482 75 V125" stroke="#1b7bd1" stroke-width="4"/>
+          <path d="M490 100 H545 M530 88 L545 100 L530 112"
+            stroke="#ed9b35" stroke-width="4" fill="none"/>
+          <text x="300" y="50" text-anchor="middle"
+            fill="#2878f0" font-weight="bold">Δl — uzayish</text>
+          <text id="wireForceText" x="530" y="75"
+            text-anchor="end" fill="#bb7418">F = 2 N</text>
+        </svg>
+      </div>
+
+      <div class="controls">
+        <div class="control">
+          <label>Kuch <strong id="forceText">2 N</strong></label>
+          <input id="stretchForce" type="range" min="0.5"
+            max="10" step="0.5" value="2">
         </div>
-        <span class="pill pill-green">↩ Qaytadi</span>
-      </div>
-    </article>
-
-    <article class="panel info-card">
-      <span class="pill pill-orange">PLASTIK</span>
-      <h3>O‘zgarish saqlanib qoladi</h3>
-      <p>Kuch olib tashlangandan keyin jism avvalgi shakli va o‘lchamini to‘liq tiklay olmaydi.</p>
-      <div class="demo-row">
-        <div class="demo-object">
-          <svg viewBox="0 0 300 70">
-            <path d="M25 35 H75 Q100 35 112 18 L137 18 Q157 18 174 48 L193 48 H275"
-              fill="none" stroke="#ed9b35" stroke-width="5"/>
-          </svg>
+        <div class="control">
+          <label>Uzunlik <strong id="lengthText">500 mm</strong></label>
+          <input id="stretchLength" type="range" min="200"
+            max="1000" step="50" value="500">
         </div>
-        <span class="pill pill-orange">✦ Qoladi</span>
+        <div class="control">
+          <label>Kesim yuzi <strong id="areaText">4 mm²</strong></label>
+          <input id="area" type="range" min="1" max="10"
+            value="4">
+        </div>
+        <div class="control">
+          <label>Material</label>
+          <select id="stretchMaterial">
+            <option value="200">Po‘lat — 200 GPa</option>
+            <option value="70">Alyuminiy — 70 GPa</option>
+            <option value="2">Polimer — 2 GPa</option>
+          </select>
+        </div>
       </div>
-    </article>
+      <button class="btn soft" id="resetStretch">↻ Qayta boshlash</button>
+    </div>
+
+    <div class="panel">
+      <h3>Natijalar</h3>
+      <div class="metric">
+        <span>Simning uzayishi</span>
+        <strong id="extensionOut">0 mm</strong>
+      </div>
+      <div class="metric">
+        <span>Mexanik kuchlanish</span>
+        <strong id="stressOut">0 MPa</strong>
+      </div>
+      <div class="metric">
+        <span>Yung moduli</span>
+        <strong id="stretchYoungOut">200 GPa</strong>
+      </div>
+      <div class="formula">Δl = (F × l) / (E × S)</div>
+      <div class="tip">
+        💡 Kuchni oshiring — sim ko‘proq uzayadi.
+        Kesim yuzini kattalashtiring — uzayish kamayadi.
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="medicine">
-  <div class="section-head">
-    <div>
-      <h2>03. Fizika — inson tanasida</h2>
-      <p>Biologik to‘qimalar ham kuch ta’sirida deformatsiyalanadi.</p>
-    </div>
+<!-- TAJRIBA KUNDALIGI -->
+<section id="kundalik">
+  <div class="heading">
+    <h2>03. Tajriba kundaligi</h2>
+    <p>O‘lchov natijalarini saqlang va taqqoslang.</p>
   </div>
 
-  <div class="tissue-grid">
-    <article class="panel tissue">
-      <div class="emoji">🦴</div>
-      <h3>Suyak</h3>
-      <p>Mineral tuzlar suyakni qattiq va puxta qiladi, biriktiruvchi asos esa elastiklik beradi.</p>
-    </article>
-    <article class="panel tissue">
-      <div class="emoji">🪢</div>
-      <h3>Pay</h3>
-      <p>Mushak kuchini suyakka uzatadi va tortilish kuchlariga qarshilik ko‘rsatadi.</p>
-    </article>
-    <article class="panel tissue">
-      <div class="emoji">💪</div>
-      <h3>Mushak</h3>
-      <p>Yumshoq to‘qima bo‘lib, mexanik xususiyatlari tarkibi va fiziologik holatiga bog‘liq.</p>
-    </article>
+  <div class="panel">
+    <button class="btn primary" id="saveResult">＋ Natijani saqlash</button>
+    <button class="btn soft" id="downloadCSV">⬇ CSV yuklab olish</button>
+    <button class="btn soft" id="clearResults">Tozalash</button>
+
+    <div class="table-wrap" style="margin-top:18px">
+      <table>
+        <thead>
+          <tr>
+            <th>№</th>
+            <th>Material</th>
+            <th>Massa</th>
+            <th>Kuch</th>
+            <th>Egilish</th>
+            <th>Yung moduli</th>
+          </tr>
+        </thead>
+        <tbody id="results">
+          <tr><td colspan="6">Hozircha natijalar yo‘q.</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
-<section id="quiz">
-  <div class="section-head">
-    <div>
-      <h2>04. Bilimingni sinab ko‘r</h2>
-      <p>Javobni tanla. To‘g‘ri javob uchun ball olasan!</p>
-    </div>
+<!-- TEST -->
+<section id="test">
+  <div class="heading">
+    <h2>04. Bilimingizni sinang</h2>
+    <p>5 ta savolga javob bering.</p>
   </div>
-
-  <div class="panel quiz">
-    <div class="quiz-footer">
-      <span class="pill pill-green" id="quizCount">1 / 5</span>
-      <div class="progress"><span id="progressBar"></span></div>
-      <b id="score">0 ball</b>
-    </div>
-    <div class="quiz-question" id="question">Elastik deformatsiya nima?</div>
+  <div class="panel">
+    <div id="quizCount">1 / 5</div>
+    <h3 id="question" style="margin:15px 0">Savol</h3>
     <div class="answers" id="answers"></div>
-    <div class="feedback" id="feedback">Javoblardan birini tanlang.</div>
-    <div class="quiz-footer">
-      <small>Har bir to‘g‘ri javob — 1 ball</small>
-      <button class="btn btn-primary" id="nextBtn" disabled>Keyingi savol →</button>
-    </div>
+    <p id="feedback" style="margin:15px 0;color:#687891"></p>
+    <button class="btn primary" id="nextQuestion" disabled>
+      Keyingi savol →
+    </button>
+    <strong id="score" style="margin-left:12px">0 ball</strong>
   </div>
 </section>
-
-<div class="footer">
-  YOUNG LAB · Tibbiy va biologik fizika uchun o‘quv simulyatsiyasi<br>
-  Hisoblashlar ideal elastik sterjen modeli asosida ko‘rsatiladi.
-</div>
 
 </main>
-<div class="toast" id="toast"></div>
+
+<footer>
+  <b>YOUNG LAB</b> — Virtual laboratoriya
+  <p>Fizikani tajriba orqali o‘rganing!</p>
+</footer>
 
 <script>
-(() => {
-  const $ = id => document.getElementById(id);
-  let soundOn = true;
-  let audioCtx = null;
+const $ = id => document.getElementById(id);
 
-  function tone(freq=520,duration=.12,type='sine'){
-    if(!soundOn) return;
-    try{
-      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
-      const osc=audioCtx.createOscillator();
-      const gain=audioCtx.createGain();
-      osc.type=type;
-      osc.frequency.value=freq;
-      gain.gain.setValueAtTime(.0001,audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(.08,audioCtx.currentTime+.015);
-      gain.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+duration);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      osc.stop(audioCtx.currentTime+duration);
-    }catch(e){}
+/* 1-TAJRIBA: STERJEN EGILISHI */
+
+function updateBend(){
+  const m = Number($('mass').value);
+  const E = Number($('material').value) * 1e9;
+  const l = Number($('length').value) / 1000;
+  const a = Number($('width').value) / 1000;
+  const b = Number($('height').value) / 1000;
+
+  if(![l,a,b].every(Number.isFinite) || l<=0 || a<=0 || b<=0){
+    return;
   }
 
-  function toast(message){
-    $('toast').textContent=message;
-    $('toast').classList.add('show');
-    setTimeout(()=>$('toast').classList.remove('show'),2300);
-  }
+  const F = m * 9.8;
+  const bend = F * Math.pow(l,3) /
+    (4 * E * a * Math.pow(b,3)) * 1000;
 
-  $('soundToggle').addEventListener('click',()=>{
-    soundOn=!soundOn;
-    $('soundToggle').textContent=soundOn?'🔊 Ovoz: yoqilgan':'🔇 Ovoz: o‘chirilgan';
-    if(soundOn)tone(660,.1);
-  });
+  $('massText').textContent = m.toFixed(1) + ' kg';
+  $('weightLabel').textContent = m.toFixed(1) + ' kg';
+  $('forceOut').textContent = F.toFixed(2) + ' N';
+  $('bendOut').textContent = bend.toFixed(5) + ' mm';
 
-  $('introBtn').addEventListener('click',()=>{
-    tone(440,.12);
-    setTimeout(()=>tone(554,.12),130);
-    setTimeout(()=>tone(659,.18),260);
-    toast('Xush kelibsiz! Yukni o‘zgartirib, sterjen egilishini kuzating.');
-  });
+  const eValue = Number($('material').value);
+  $('youngOut').textContent =
+    eValue < 1 ? (eValue*1000).toFixed(1)+' MPa' :
+    eValue.toFixed(1)+' GPa';
 
-  const inputs=['massRange','materialSelect','lengthInput','widthInput','heightInput'];
+  const visual = Math.min(60,Math.max(1,bend*3));
+  const y = 200 + visual;
 
-  function validNumber(id,min,max){
-    const el=$(id),v=Number(el.value);
-    if(!Number.isFinite(v)||v<min||v>max){
-      el.setCustomValidity(`Qiymat ${min}–${max} oralig‘ida bo‘lishi kerak`);
-      el.reportValidity();
-      el.setCustomValidity('');
-      return null;
+  $('beam').setAttribute('d',
+    `M100 200 Q325 ${y} 550 200`);
+  $('weight').setAttribute('transform',
+    `translate(325 ${Math.max(70,y-120)})`);
+  $('bendLabel').textContent =
+    'Egilish: '+bend.toFixed(5)+' mm';
+}
+
+['mass','material','length','width','height'].forEach(id=>{
+  $(id).addEventListener('input',updateBend);
+});
+
+$('resetBend').onclick = ()=>{
+  $('mass').value=1;
+  $('material').value=10;
+  $('length').value=500;
+  $('width').value=20;
+  $('height').value=10;
+  updateBend();
+};
+
+let demoTimer = null;
+$('autoDemo').onclick = ()=>{
+  clearInterval(demoTimer);
+  const values=[0.5,1,1.5,2];
+  let i=0;
+  $('mass').value=values[i];
+  updateBend();
+
+  demoTimer=setInterval(()=>{
+    i++;
+    if(i>=values.length){
+      clearInterval(demoTimer);
+      demoTimer=null;
+      return;
     }
-    return v;
+    $('mass').value=values[i];
+    updateBend();
+  },1200);
+};
+
+$('stopDemo').onclick = ()=>{
+  clearInterval(demoTimer);
+  demoTimer=null;
+};
+
+updateBend();
+
+/* 2-TAJRIBA: SIM CHO‘ZILISHI */
+
+function updateStretch(){
+  const F=Number($('stretchForce').value);
+  const L=Number($('stretchLength').value)/1000;
+  const S=Number($('area').value)*1e-6;
+  const E=Number($('stretchMaterial').value)*1e9;
+
+  const extension=F*L/(E*S);
+  const stress=F/S/1e6;
+  const mm=extension*1000;
+
+  $('forceText').textContent=F+' N';
+  $('lengthText').textContent=(L*1000)+' mm';
+  $('areaText').textContent=(S*1e6)+' mm²';
+  $('wireForceText').textContent='F = '+F+' N';
+
+  $('extensionOut').textContent=mm.toFixed(6)+' mm';
+  $('stressOut').textContent=stress.toFixed(3)+' MPa';
+  $('stretchYoungOut').textContent=
+    (E/1e9).toFixed(1)+' GPa';
+
+  const visual=Math.min(35,mm*8000);
+  $('wire').setAttribute('width',420+visual);
+}
+
+['stretchForce','stretchLength','area','stretchMaterial']
+.forEach(id=>{
+  $(id).addEventListener('input',updateStretch);
+});
+
+$('resetStretch').onclick=()=>{
+  $('stretchForce').value=2;
+  $('stretchLength').value=500;
+  $('area').value=4;
+  $('stretchMaterial').value=200;
+  updateStretch();
+};
+
+updateStretch();
+
+/* TAJRIBA KUNDALIGI */
+
+let records=[];
+
+function renderRecords(){
+  const body=$('results');
+  body.innerHTML='';
+
+  if(records.length===0){
+    body.innerHTML='<tr><td colspan="6">Hozircha natijalar yo‘q.</td></tr>';
+    return;
   }
 
-  function updateLab(){
-    const m=Number($('massRange').value);
-    const materialValue=Number($('materialSelect').value);
-    const Evalue=materialValue===2?2e6:materialValue*1e9;
+  records.forEach((r,i)=>{
+    const tr=document.createElement('tr');
+    [i+1,r.material,r.mass+' kg',r.force+' N',
+      r.bend+' mm',r.young].forEach(value=>{
+        const td=document.createElement('td');
+        td.textContent=value;
+        tr.appendChild(td);
+      });
+    body.appendChild(tr);
+  });
+}
 
-    const lmm=validNumber('lengthInput',100,1000);
-    const amm=validNumber('widthInput',2,100);
-    const bmm=validNumber('heightInput',2,100);
+$('saveResult').onclick=()=>{
+  const m=Number($('mass').value);
+  const E=Number($('material').value);
+  const l=Number($('length').value)/1000;
+  const a=Number($('width').value)/1000;
+  const b=Number($('height').value)/1000;
 
-    if([lmm,amm,bmm].some(v=>v===null))return;
-
-    const g=9.8;
-    const l=lmm/1000;
-    const a=amm/1000;
-    const b=bmm/1000;
-    const force=m*g;
-
-    // λ = mg l³ / (4 E a b³)
-    const bendM=(force*Math.pow(l,3))/(4*Evalue*a*Math.pow(b,3));
-    const bendMM=bendM*1000;
-
-    $('massValue').textContent=m.toFixed(1)+' kg';
-    $('weightText').textContent=m.toFixed(1)+' kg';
-    $('forceOut').textContent=force.toFixed(2)+' N';
-    $('bendOut').textContent=bendMM<1000
-      ?bendMM.toFixed(3)+' mm'
-      :(bendMM/1000).toFixed(2)+' m';
-
-    $('youngOut').textContent=Evalue>=1e9
-      ?(Evalue/1e9).toFixed(1)+' GPa'
-      :(Evalue/1e6).toFixed(1)+' MPa';
-
-    const visualBend=Math.min(58,Math.max(1,bendMM*3.5));
-    const y=220+visualBend;
-
-    $('beamPath').setAttribute('d',`M100 220 Q350 ${y} 600 220`);
-    $('centerGuide').setAttribute('d',`M350 95 V${y-14}`);
-    $('weightGroup').setAttribute('transform',`translate(350 ${Math.max(70,y-115)})`);
-    $('deflectionLabel').setAttribute('y',Math.min(295,y+22));
-    $('deflectionLabel').textContent='λ = '+bendMM.toFixed(3)+' mm';
-
-    $('beamSvg').classList.remove('pulse');
-    void $('beamSvg').offsetWidth;
-    $('beamSvg').classList.add('pulse');
+  if(![l,a,b].every(v=>Number.isFinite(v)&&v>0)){
+    alert('O‘lchamlarni tekshiring!');
+    return;
   }
 
-  inputs.forEach(id=>$(id).addEventListener('input',updateLab));
+  const F=m*9.8;
+  const bend=F*Math.pow(l,3)/
+    (4*(E*1e9)*a*Math.pow(b,3))*1000;
 
-  $('resetBtn').addEventListener('click',()=>{
-    $('massRange').value=1;
-    $('materialSelect').value='10';
-    $('lengthInput').value=500;
-    $('widthInput').value=20;
-    $('heightInput').value=10;
-    updateLab();
-    tone(520,.1);
-    toast('Tajriba boshlang‘ich holatga qaytdi.');
+  const names={
+    10:'Yog‘och',
+    50:'Qattiq material',
+    0.002:'Yumshoq to‘qima'
+  };
+
+  records.push({
+    material:names[E]||'Material',
+    mass:m.toFixed(1),
+    force:F.toFixed(2),
+    bend:bend.toFixed(5),
+    young:E<1?(E*1000)+' MPa':E+' GPa'
   });
 
-  updateLab();
+  renderRecords();
+};
 
-  const questions=[
-    {
-      q:'Elastik deformatsiya nima?',
-      a:[
-        'Kuch olib tashlanganda jism avvalgi holatiga qaytadi',
-        'Jism butunlay yemiriladi',
-        'Jism faqat qiziydi',
-        'Jismning massasi ortadi'
-      ],
-      c:0,
-      why:'To‘g‘ri! Elastik deformatsiyada jism dastlabki shakli va o‘lchamini tiklaydi.'
-    },
-    {
-      q:'Yung modulining SI dagi o‘lchov birligi qaysi?',
-      a:['Nyuton (N)','Paskal (Pa)','Joul (J)','Metr (m)'],
-      c:1,
-      why:'Ajoyib! Yung moduli paskalda o‘lchanadi.'
-    },
-    {
-      q:'Mexanik kuchlanish qanday aniqlanadi?',
-      a:['σ = F · S','σ = S / F','σ = F / S','σ = m · g'],
-      c:2,
-      why:'To‘g‘ri! Mexanik kuchlanish kuchning ko‘ndalang kesim yuzasiga nisbatidir.'
-    },
-    {
-      q:'Nisbiy deformatsiya formulasini toping.',
-      a:['ε = Δl / l₀','ε = F / S','ε = m · g','ε = l₀ / Δl'],
-      c:0,
-      why:'To‘g‘ri! Nisbiy deformatsiya uzayishning boshlang‘ich uzunlikka nisbatidir.'
-    },
-    {
-      q:'Elastik sohada kuch 2 marta oshsa, deformatsiya qanday o‘zgaradi?',
-      a:['O‘zgarmaydi','2 marta kamayadi','2 marta ortadi','4 marta ortadi'],
-      c:2,
-      why:'Barakalla! Bu Guk qonuniga mos.'
-    }
+$('clearResults').onclick=()=>{
+  records=[];
+  renderRecords();
+};
+
+$('downloadCSV').onclick=()=>{
+  if(!records.length){
+    alert('Avval natijalarni saqlang!');
+    return;
+  }
+
+  const rows=[
+    ['№','Material','Massa','Kuch','Egilish','Yung moduli'],
+    ...records.map((r,i)=>[
+      i+1,r.material,r.mass,r.force,r.bend,r.young
+    ])
   ];
 
-  let qIndex=0;
-  let score=0;
-  let answered=false;
+  const csv='\uFEFF'+rows.map(row=>
+    row.map(v=>'"'+v+'"').join(';')
+  ).join('\n');
 
-  function renderQuestion(){
-    answered=false;
-    const q=questions[qIndex];
-
-    $('quizCount').textContent=(qIndex+1)+' / '+questions.length;
-    $('question').textContent=q.q;
-    $('feedback').textContent='Javoblardan birini tanlang.';
-    $('nextBtn').disabled=true;
-    $('nextBtn').textContent=qIndex===questions.length-1
-      ?'Natijani ko‘rish ✓':'Keyingi savol →';
-
-    $('progressBar').style.width=(qIndex/questions.length*100)+'%';
-    $('answers').innerHTML='';
-
-    q.a.forEach((answer,i)=>{
-      const btn=document.createElement('button');
-      btn.className='answer';
-      btn.textContent=String.fromCharCode(65+i)+') '+answer;
-
-      btn.addEventListener('click',()=>{
-        if(answered)return;
-        answered=true;
-
-        const buttons=[...$('answers').children];
-        buttons[q.c].classList.add('correct');
-
-        if(i===q.c){
-          score++;
-          $('feedback').textContent=q.why;
-          tone(740,.18);
-        }else{
-          btn.classList.add('wrong');
-          $('feedback').textContent='Bu safar emas. To‘g‘ri javob: '+q.a[q.c];
-          tone(190,.2,'triangle');
-        }
-
-        $('score').textContent=score+' ball';
-        $('nextBtn').disabled=false;
-      });
-
-      $('answers').appendChild(btn);
-    });
-  }
-
-  $('nextBtn').addEventListener('click',()=>{
-    if(!answered)return;
-
-    if(qIndex<questions.length-1){
-      qIndex++;
-      renderQuestion();
-      tone(500,.08);
-    }else{
-      $('question').textContent=`Natija: ${score} / ${questions.length} ball`;
-      $('answers').innerHTML='';
-
-      $('feedback').textContent=score===5
-        ?'Mukammal! Sen YOUNG LAB laboratoriyasini a’lo darajada yakunlading.'
-        :score>=3
-        ?'Yaxshi natija! Mavzuni yana bir bor takrorlab ko‘r.'
-        :'Mashq qilishda davom et!';
-
-      $('nextBtn').textContent='Qayta boshlash ↻';
-      $('nextBtn').disabled=false;
-      $('progressBar').style.width='100%';
-      tone(660,.2);
-
-      $('nextBtn').onclick=()=>{
-        qIndex=0;
-        score=0;
-        $('score').textContent='0 ball';
-        $('nextBtn').onclick=null;
-        renderQuestion();
-      };
-    }
+  const blob=new Blob([csv],{
+    type:'text/csv;charset=utf-8;'
   });
 
-  renderQuestion();
-})();
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='young-lab-natijalar.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
+/* TEST SAVOLLARI */
+
+const questions=[
+  {
+    q:'Elastik deformatsiya nima?',
+    a:[
+      'Kuch olinganda jism avvalgi holatiga qaytadi',
+      'Jism butunlay yemiriladi',
+      'Jism qiziydi',
+      'Jism massasi ortadi'
+    ],
+    c:0
+  },
+  {
+    q:'Yung modulining SI birligi qaysi?',
+    a:['Nyuton','Paskal','Joul','Metr'],
+    c:1
+  },
+  {
+    q:'Mexanik kuchlanish formulasi qaysi?',
+    a:['F × S','S / F','F / S','m × g'],
+    c:2
+  },
+  {
+    q:'Nisbiy deformatsiya formulasi qaysi?',
+    a:['Δl / l₀','F / S','m × g','l₀ / Δl'],
+    c:0
+  },
+  {
+    q:'Elastik sohada kuch 2 marta oshsa, deformatsiya nima bo‘ladi?',
+    a:[
+      'O‘zgarmaydi',
+      '2 marta kamayadi',
+      '2 marta ortadi',
+      '4 marta ortadi'
+    ],
+    c:2
+  }
+];
+
+let qIndex=0;
+let score=0;
+let answered=false;
+
+function showQuestion(){
+  answered=false;
+  const q=questions[qIndex];
+
+  $('quizCount').textContent=
+    (qIndex+1)+' / '+questions.length;
+  $('question').textContent=q.q;
+  $('feedback').textContent='Javobni tanlang.';
+  $('nextQuestion').disabled=true;
+  $('answers').innerHTML='';
+
+  q.a.forEach((answer,i)=>{
+    const btn=document.createElement('button');
+    btn.className='answer';
+    btn.textContent=String.fromCharCode(65+i)+') '+answer;
+
+    btn.onclick=()=>{
+      if(answered)return;
+      answered=true;
+
+      const buttons=[...$('answers').children];
+      buttons[q.c].classList.add('correct');
+
+      if(i===q.c){
+        score++;
+        $('feedback').textContent='To‘g‘ri javob! Barakalla!';
+      }else{
+        btn.classList.add('wrong');
+        $('feedback').textContent=
+          'Noto‘g‘ri. To‘g‘ri javob: '+q.a[q.c];
+      }
+
+      $('score').textContent=score+' ball';
+      $('nextQuestion').disabled=false;
+    };
+
+    $('answers').appendChild(btn);
+  });
+}
+
+$('nextQuestion').onclick=()=>{
+  if(!answered)return;
+
+  qIndex++;
+
+  if(qIndex<questions.length){
+    showQuestion();
+  }else{
+    $('question').textContent=
+      'Natijangiz: '+score+' / '+questions.length;
+    $('answers').innerHTML='';
+    $('feedback').textContent=
+      score===5?'Ajoyib! Barcha savollarga to‘g‘ri javob berdingiz!':
+      'Yaxshi urinish! Mavzuni yana takrorlang.';
+    $('nextQuestion').textContent='Qayta boshlash';
+    $('nextQuestion').disabled=false;
+
+    $('nextQuestion').onclick=()=>{
+      qIndex=0;
+      score=0;
+      $('score').textContent='0 ball';
+      $('nextQuestion').textContent='Keyingi savol →';
+      $('nextQuestion').onclick=nextQuestionHandler;
+      showQuestion();
+    };
+  }
+};
+
+function nextQuestionHandler(){
+  if(!answered)return;
+  qIndex++;
+  if(qIndex<questions.length)showQuestion();
+}
+$('nextQuestion').onclick=nextQuestionHandler;
+
+showQuestion();
 </script>
-  <!-- SOCIAL LINKS -->
-<div class="social-links">
-    <a href="https://t.me/akhmatuv" target="_blank">
-        ✈ Telegram: @akhmatuv
-    </a>
-
-    <a href="https://www.instagram.com/akhmatuv23/"
-       target="_blank">
-        📸 Instagram: @akhmatuv23
-    </a>
-</div>
-
-<style>
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    padding: 25px 10px;
-}
-
-.social-links a {
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 12px;
-    background: #eaf3ff;
-    color: #2878f0;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.social-links a:hover {
-    transform: translateY(-4px);
-    background: #2878f0;
-    color: white;
-}
-</style>
 
 </body>
 </html>
